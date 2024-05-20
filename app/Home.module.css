@@ -1,0 +1,28 @@
+
+.container {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100vw;
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Optional: Style for the sections */
+.section:nth-child(odd) {
+  background-color: #41c9ff;
+}
+
+.section:nth-child(even) {
+  background-color: #1be647;
+}

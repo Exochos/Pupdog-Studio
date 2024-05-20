@@ -1,0 +1,67 @@
+/* NavBar.module.css */
+.menu {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 98%; /* Full width */
+  padding-top: 2em;
+  height: 40vh; /* Adjust height as needed */
+  position: fixed;
+  top: -100%; /* Initially hide above the viewport */
+  left: 1%;
+  z-index: 99;
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  color: #000;
+  transition: top 0.5s ease-in-out; /* Animate the 'top' property */
+  text-transform: uppercase;
+  font-size: 24px;
+  border-radius: 0.2em;
+  border: 1px solid #000;
+}
+
+.menuOpen {
+  top: 3em; /* Slide down to the top of the viewport */
+}
+
+.menuClose {
+  top: -100%; /* Hide above the viewport */
+}
+
+@keyframes menuFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 160px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}

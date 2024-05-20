@@ -6,7 +6,12 @@ import { env } from "./env.mjs"
  * @type {import('next').NextConfig}
  */
 const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
+  images: {
+    domains: ['deck206.com'],
+    unoptimized: true,
+  },
   reactStrictMode: true,
+  output: 'export',
   experimental: { instrumentationHook: true },
   rewrites() {
     return [

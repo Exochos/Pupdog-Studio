@@ -1,0 +1,65 @@
+/* globals.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+.container {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 100vw; /* Ensure the container is 100% wide */
+}
+
+.section {
+  scroll-snap-align: start;
+  height: 90vh; /* Adjust to 100vh if needed */
+  width: 100vw; /* Ensure each section is 100% wide */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Optional: Style for the sections */
+.section:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.section:nth-child(even) {
+  background-color: #e0e0e0;
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  min-width: 160px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
