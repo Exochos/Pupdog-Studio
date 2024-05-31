@@ -8,7 +8,7 @@ export const COMPANY_LOGO_URL = "/images/logo.webp"
  * NavBar Links
  */
 export const NAV_LINKS = [
-  { name: "Home", url: "/" },
+  { name: "Home", url: "/index" },
   { name: "About Us", 
     url: "/about",
     subLinks: [
@@ -24,9 +24,10 @@ export const NAV_LINKS = [
     name: "Projects", 
     url: "/projects",
     subLinks: [
-      { name: "Project 1", url: "/projects/project1" },
-      { name: "Project 2", url: "/projects/project2" },
-      { name: "Project 3", url: "/projects/project3" },
+      { name: "West Seattle Deck", url: "/projects/west-seattle" },
+      { name: "Bellevue Deck", url: "/projects/bellevue" },
+      { name: "Seattle Deck", url: "/projects/seattle" },
+      { name: "Sammamish Deck", url: "/projects/sammamish" },
     ] 
   },
 /**   { name: "Blog", url: "/blog" },*/
@@ -36,3 +37,8 @@ export const NAV_LINKS = [
  * Contact Button Text
  */
 export const CONTACT_BUTTON_TEXT = "Free Estimate"
+
+/**
+ * Call to Action Text
+ */
+export const CALL_TO_ACTION_TEXT = "Get a Free Estimate!"

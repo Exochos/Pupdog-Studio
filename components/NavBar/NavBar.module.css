@@ -3,25 +3,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 98%; /* Full width */
+  width: 100%; /* Full width */
   padding-top: 2em;
   height: 40vh; /* Adjust height as needed */
   position: fixed;
   top: -100%; /* Initially hide above the viewport */
-  left: 1%;
-  z-index: 99;
+  left: 0%;
+  z-index: 99; /* Adjust z-index if necessary */
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   color: #000;
   transition: top 0.5s ease-in-out; /* Animate the 'top' property */
   text-transform: uppercase;
   font-size: 24px;
-  border-radius: 0.2em;
+  border-bottom-left-radius: 0.2em; /* Border radius on the bottom left */
+  border-bottom-right-radius: 0.2em; /* Border radius on the bottom right */
   border: 1px solid #000;
 }
 
 .menuOpen {
-  top: 3em; /* Slide down to the top of the viewport */
+  top: 2.8em; /* Slide down to the top of the viewport */
 }
 
 .menuClose {
@@ -48,7 +49,7 @@
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  min-width: 160px;
+  min-width: 200px;
 }
 
 .dropdown:hover .dropdown-content {

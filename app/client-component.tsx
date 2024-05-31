@@ -2,8 +2,9 @@
 "use client"
 
 import { useEffect } from "react"
+import CallToAction from "components/CallAction/CallToAction"
 import NavBar from "components/NavBar/NavBar"
-import styles from './Home.module.css' // Import CSS module
+import styles from './Home.module.css' 
 
 const sections = [
   { id: 'section1', content: 'Section 1' },
@@ -70,6 +71,7 @@ export default function ClientComponent() {
           </section>
         ))}
       </div>
+      <CallToAction />
     </>
   )
 }

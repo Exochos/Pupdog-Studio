@@ -4,8 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { useEffect, useRef, useState } from "react"
 import { twMerge } from "tailwind-merge"
-import { COMPANY_LOGO_URL, COMPANY_NAME, CONTACT_BUTTON_TEXT, NAV_LINKS } from "./constants"
-import styles from "./NavBar.module.css" 
+import styles from "./NavBar.module.css"
+import { COMPANY_LOGO_URL, COMPANY_NAME, CONTACT_BUTTON_TEXT, NAV_LINKS } from "../../Data/constants"
 
 const useNavBarStyles = cva(["flex", "items-left", "bg-transparent", "text-black", "w-full"], {
   variants: {},
@@ -50,8 +50,8 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
 
   return (
     <div className={twMerge(navBarClasses, className)} {...props}>
-      <header>
-        <nav className="fixed inset-x-1 z-20 rounded-sm border-2 border-gray-500 bg-white shadow-lg dark:border-emerald-800">
+      <header className="w-full">
+        <nav className="sticky inset-x-0 border-2 border-emerald-700 bg-white shadow-lg dark:border-emerald-800">
           <div className="navigation relative mx-auto flex max-w-[94vw] flex-wrap items-center justify-between py-2">
             <a className="logo flex items-center space-x-4 pl-2" href="/">
               <Image priority src={COMPANY_LOGO_URL} alt={COMPANY_NAME} width={140} height={100} />
@@ -95,6 +95,7 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
                 stroke="currentColor"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
+                style={{ zIndex: 1000 }}
               >
                 {menuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />

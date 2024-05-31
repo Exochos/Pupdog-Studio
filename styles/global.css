@@ -1,9 +1,10 @@
 /* globals.css */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow: hidden;
 }
 
 .container {
@@ -33,7 +34,6 @@ body, html {
 .section:nth-child(even) {
   background-color: #e0e0e0;
 }
-
 
 .dropdown {
   position: relative;
