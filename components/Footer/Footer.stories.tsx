@@ -1,7 +1,7 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import { FOOTER_LINKS } from './constants';
 import { Footer } from './Footer';
+import { FOOTER_LINKS } from '../../Data/constants';
 
 export default {
   title: 'Components/Footer',
