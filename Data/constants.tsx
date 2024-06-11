@@ -42,3 +42,8 @@ export const CONTACT_BUTTON_TEXT = "Free Estimate"
  * Call to Action Text
  */
 export const CALL_TO_ACTION_TEXT = "Get a Free Estimate!"
+
+/**
+ * Phone Number
+ */
+export const PHONE_NUMBER = "206-600-9459"

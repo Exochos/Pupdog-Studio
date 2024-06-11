@@ -1,13 +1,14 @@
 // metadata.ts
 import { Metadata } from 'next';
+import { COMPANY_LOGO_URL, COMPANY_NAME, CONTACT_BUTTON_TEXT, NAV_LINKS } from '../Data/constants';
 
 export const metadata: Metadata = {
-  title: "Next.js Enterprise Boilerplate",
+  title: COMPANY_NAME,
   twitter: {
     card: "summary_large_image",
   },
   openGraph: {
-    url: "https://next-enterprise.vercel.app/",
+    url: 'https://deck206.com',
     images: [
       {
         width: 1200,

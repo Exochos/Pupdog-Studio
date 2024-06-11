@@ -19,6 +19,7 @@ const CallToAction = () => {
       <button
         className="bg-white hover:bg-blue-700 text-black font-bold py-2 px-4 w-full md:w-auto md:px-8"
         onClick={handleClick}
+        aria-label={`Call: ${PHONE_NUMBER}}`}
       >
         {CALL_TO_ACTION_TEXT}
       </button>
