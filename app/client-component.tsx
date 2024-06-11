@@ -16,49 +16,46 @@ const sections = [
 
 export default function ClientComponent() {
   useEffect(() => {
-    let touchStartY = 0
-    let touchEndY = 0
+    let touchStartY = 0;
+    let touchEndY = 0;
 
-    const handleTouchStart = (e) => {
-      touchStartY = e.changedTouches[0].screenY
-    }
-
-    const handleTouchEnd = (e) => {
-      touchEndY = e.changedTouches[0].screenY
-      handleGesture()
-    }
-
-    const handleGesture = () => {
-      if (touchStartY - touchEndY > 50) {
-        scrollToNext()
+    const handleTouchStart = (touchEvent: TouchEvent) => {
+      if (touchEvent.touches && touchEvent.touches[0]) {
+        touchStartY = touchEvent.touches[0].clientY;
       }
-      if (touchEndY - touchStartY > 50) {
-        scrollToPrev()
-      }
-    }
+    };
 
-    const scrollToNext = () => {
-      const currentSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
-      if (currentSection && currentSection.nextElementSibling) {
-        currentSection.nextElementSibling.scrollIntoView({ behavior: 'smooth' })
+    const handleTouchEnd = (touchEvent: TouchEvent) => {
+      if (touchEvent.changedTouches && touchEvent.changedTouches[0]) {
+        touchEndY = touchEvent.changedTouches[0].clientY;
+        handleScroll();
       }
-    }
+    };
 
-    const scrollToPrev = () => {
-      const currentSection = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2)
-      if (currentSection && currentSection.previousElementSibling) {
-        currentSection.previousElementSibling.scrollIntoView({ behavior: 'smooth' })
+    const handleTouchMove = (touchEvent: TouchEvent) => {
+      if (touchEvent.touches && touchEvent.touches[0]) {
+        touchEndY = touchEvent.touches[0].clientY;
       }
-    }
+    };
 
-    window.addEventListener('touchstart', handleTouchStart)
-    window.addEventListener('touchend', handleTouchEnd)
+    const handleScroll = () => {
+      if (touchStartY > touchEndY) {
+        console.log('scroll down');
+      } else {
+        console.log('scroll up');
+      }
+    };
+
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchend', handleTouchEnd, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
 
     return () => {
-      window.removeEventListener('touchstart', handleTouchStart)
-      window.removeEventListener('touchend', handleTouchEnd)
-    }
-  }, [])
+      document.removeEventListener('touchstart', handleTouchStart, false);
+      document.removeEventListener('touchend', handleTouchEnd, false);
+      document.removeEventListener('touchmove', handleTouchMove, false);
+    };
+  }, []);
 
   return (
     <>
