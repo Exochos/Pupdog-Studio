@@ -2,7 +2,7 @@
 * Footer component
 *  */
 import React from 'react'
-import { FOOTER_LINKS } from './constants'
+import { FOOTER_LINKS } from '../../Data/constants'
 
 
 export const Footer: React.FC<{ children: React.ReactNode }> = ({ children }) => {

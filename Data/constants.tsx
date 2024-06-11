@@ -47,3 +47,10 @@ export const CALL_TO_ACTION_TEXT = "Get a Free Estimate!"
  * Phone Number
  */
 export const PHONE_NUMBER = "206-600-9459"
+
+export const FOOTER_LINKS = [
+  { name: "Home", url: "/index" },
+  { name: "About Us", url: "/about" },
+  { name: "Projects", url: "/projects" },
+  { name: "Contact Us", url: "/about#contact" },
+]
