@@ -11,7 +11,6 @@ export default {
 // eslint-disable-next-line react/no-children-prop
 const Template: Story = (args) => <Footer children={undefined} {...args} />;
 
-// eslint-disable-next-line array-callback-return
 FOOTER_LINKS.map((link) => {
   Template.args = {
     children: link.name,
