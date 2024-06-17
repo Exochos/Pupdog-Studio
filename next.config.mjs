@@ -13,6 +13,7 @@ const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
   reactStrictMode: true,
   output: 'export',
   experimental: { instrumentationHook: true },
+  // Remove rewrites as they are not supported in static export
 });
 
 export default config;

@@ -68,7 +68,10 @@ export default function ClientComponent() {
           </section>
         ))}
       </div>
-      <CallToAction />
+      <CallToAction
+        phoneNumber="1234567890"
+        callToActionText="Call Now"
+      />
     </>
   )
 }
