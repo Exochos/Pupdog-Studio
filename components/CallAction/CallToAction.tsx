@@ -68,7 +68,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
     return null;
   }
 
-  const bgColor = theme === 'light' ? 'white' : '#333';
+  const bgColor = theme === 'light' ? 'white' : '#343';
   const borderColor = theme === 'light' ? 'black' : '#fff';
   const textColor = theme === 'light' ? 'black' : '#fff';
 
