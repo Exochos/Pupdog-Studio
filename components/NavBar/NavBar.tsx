@@ -28,7 +28,7 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setMenuOpen(false)
     }
   }
@@ -61,34 +61,35 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
               {NAV_LINKS.map((link, index) =>
                 link.subLinks ? (
                   <div key={index} className={styles.dropdown}>
-                    <Link href={link.url} className="text-xl text-gray-800 hover:underline font-semibold">
+                    <Link href={link.url} className="text-xl font-semibold text-gray-800 hover:underline">
                       {link.name}
                     </Link>
                     <div className={styles["dropdown-content"]}>
                       {link.subLinks.map((sublink, subindex) => (
-                        <Link key={subindex} href={sublink.url} className="text-lg font-bold text-black hover:underline">
+                        <Link
+                          key={subindex}
+                          href={sublink.url}
+                          className="text-lg font-bold text-black hover:underline"
+                        >
                           {sublink.name}
                         </Link>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <Link key={index} href={link.url} className="text-xl text-gray-800 hover:underline font-semibold">
+                  <Link key={index} href={link.url} className="text-xl font-semibold text-gray-800 hover:underline">
                     {link.name}
                   </Link>
                 )
               )}
               <Link
                 href="/contact"
-                className="rounded-sm text-xl bg-teal-700 px-4 py-2 text-white shadow-lg transition duration-200 ease-in-out hover:bg-white hover:text-teal-700 hover:shadow-xl active:bg-white active:text-blue-200"
+                className="rounded-sm bg-teal-700 px-4 py-2 text-xl text-white shadow-lg transition duration-200 ease-in-out hover:bg-white hover:text-teal-700 hover:shadow-xl active:bg-white active:text-blue-200"
               >
                 {contactName}
               </Link>
             </div>
-            <button
-              className="pr-8 text-gray-900 focus:outline-none md:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
+            <button className="pr-8 text-gray-900 focus:outline-none md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
               <svg
                 className="h-8 w-8 dark:bg-gray-800"
                 fill="none"
@@ -116,7 +117,11 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
                     </Link>
                     <div className={styles["dropdown-content"]}>
                       {link.subLinks.map((sublink, subindex) => (
-                        <Link key={subindex} href={sublink.url} className="text-lg font-bold text-black hover:underline">
+                        <Link
+                          key={subindex}
+                          href={sublink.url}
+                          className="text-lg font-bold text-black hover:underline"
+                        >
                           {sublink.name}
                         </Link>
                       ))}
@@ -132,7 +137,7 @@ export const NavBar: React.FC<NavBarProps> = ({ className, children, contactName
               )}
               <Link
                 href="/contact"
-                className="rounded-sm bg-teal-700 px-4 py-2 text-white shadow-lg transition duration-200 ease-in-out hover:bg-white hover:text-teal-700 hover:shadow-xl active:bg-white active:text-teal-700 border-2 border-teal-700"
+                className="rounded-sm border-2 border-teal-700 bg-teal-700 px-4 py-2 text-white shadow-lg transition duration-200 ease-in-out hover:bg-white hover:text-teal-700 hover:shadow-xl active:bg-white active:text-teal-700"
               >
                 {contactName}
               </Link>

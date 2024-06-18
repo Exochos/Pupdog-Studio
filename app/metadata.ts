@@ -1,6 +1,6 @@
 // metadata.ts
-import { Metadata } from 'next';
-import { COMPANY_LOGO_URL, COMPANY_NAME, CONTACT_BUTTON_TEXT, NAV_LINKS } from '../Data/constants';
+import { Metadata } from "next"
+import { COMPANY_LOGO_URL, COMPANY_NAME, CONTACT_BUTTON_TEXT, NAV_LINKS } from "../Data/constants"
 
 export const metadata: Metadata = {
   title: COMPANY_NAME,
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   openGraph: {
-    url: 'https://deck206.com',
+    url: "https://deck206.com",
     images: [
       {
         width: 1200,
@@ -17,4 +17,4 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+}

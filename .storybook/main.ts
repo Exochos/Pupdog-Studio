@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/nextjs";
+import type { StorybookConfig } from "@storybook/nextjs"
 
 const config: StorybookConfig = {
   stories: ["../components/**/*.stories.mdx", "../components/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -10,7 +10,7 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  staticDirs: ['../public'], // Add this line to serve static files from the public directory
+  staticDirs: ["../public"], // Add this line to serve static files from the public directory
   typescript: {
     check: false,
     checkOptions: {},
@@ -22,4 +22,4 @@ const config: StorybookConfig = {
   },
 }
 
-export default config;
+export default config

@@ -6,7 +6,7 @@ const meta: Meta<typeof NavBar> = {
   title: "Components/NavBar",
   component: NavBar,
   argTypes: {
-    contactName: { control: 'text' },
+    contactName: { control: "text" },
   },
   args: {
     contactName: "Contact Us",
