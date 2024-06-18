@@ -13,7 +13,7 @@ export interface CallToActionProps {
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({
-  display = "hidden",
+  display = "show",
   phoneNumber = "206-555-1234",
   ctaMessage = "Call Us",
   theme = "light",
