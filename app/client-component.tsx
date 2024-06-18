@@ -70,7 +70,7 @@ export default function ClientComponent() {
       </div>
       <CallToAction
         phoneNumber="1234567890"
-        callToActionText="Call Now"
+        ctaMessage="Call Now"
       />
     </>
   )

@@ -6,46 +6,25 @@ import 'animate.css';
 /* <a href="https://www.freepik.com/icon/message_5356190">Icon by adrianadam</a> */
 
 export interface CallToActionProps {
-  display?: 'desktop' | 'mobile' | 'hidden';
+  display?: 'show' | 'hidden';
   phoneNumber?: string;
-  callToActionText?: string;
-  ctaIcon?: 'call' | 'message' | 'email';
+  ctaMessage?: string;
   theme?: 'light' | 'dark';
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({ 
-  display = 'desktop', 
-  phoneNumber = '1234567890', 
-  ctaIcon, 
+  display = 'hidden',
+  phoneNumber = '206-555-1234',
+  ctaMessage = 'Call Us',
   theme = 'light' 
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(display !== 'hidden');
-  const [view, setView] = useState<'desktop' | 'mobile'>('desktop');
   const [shouldRender, setShouldRender] = useState<boolean>(display !== 'hidden');
-  const [icon, setIcon] = useState<'call' | 'message' | 'email'>('call');
-  const [text, setText] = useState<string>('Call Us');
-
-  const iconData = {
-    call: { src: '/images/call_icon.png', text: 'Give Us a Call' },
-    message: { src: '/images/message_icon.png', text: 'Message Us' },
-    email: { src: '/images/email_icon.png', text: 'Get a Free Quote' }
-  };
-
-  useEffect(() => {
-    if (ctaIcon) {
-      setIcon(ctaIcon);
-      setText(iconData[ctaIcon].text);
-    } else {
-      const icons = ['call', 'message', 'email'] as const;
-      const randomIcon = icons[Math.floor(Math.random() * icons.length)];
-      setIcon(randomIcon);
-      setText(iconData[randomIcon].text);
-    }
-  }, [ctaIcon]);
+  const [view, setView] = useState<'desktop' | 'mobile'>('desktop');
 
   useEffect(() => {
     if (display === 'hidden') {
-      setTimeout(() => setShouldRender(false), 1500); // Match the duration of the fade-out animation
+      setTimeout(() => setShouldRender(false), 1500);
     } else {
       setShouldRender(true);
     }
@@ -105,10 +84,11 @@ const CallToAction: React.FC<CallToActionProps> = ({
       <button
         className={`${styles.ctaButton} animate__animated animate__pulse animate__repeat-3`}
         onClick={handleClick}
-        aria-label={`Call: ${text}`}
+        aria-label={`Call: ${ctaMessage}`}
       >
-        <Image src={iconData[icon].src} alt="CTA Icon" width={24} height={24} />
-        <span>{text}</span>
+        <Image src="/images/call_icon.svg" alt="Call Icon" width={24} height={24} />
+        <Image src="/images/message_icon.png" alt="Message Icon" width={24} height={24} />
+        <span>{ctaMessage}</span>
       </button>
       <button
         className={styles.closeButton}

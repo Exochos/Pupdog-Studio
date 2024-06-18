@@ -33,7 +33,7 @@ const Template: Story<CallToActionProps> = (args) => <CallToAction {...args} />;
 
 export const ToggleView = Template.bind({});
 ToggleView.args = {
-  display: 'desktop',
+  display: 'hidden',
   phoneNumber: '1234567890',
-  callToActionText: 'Call Now',
+  ctaMessage: 'Call Now',
 };
