@@ -118,3 +118,17 @@ jobs:
           body: ${{ steps.get-comment-body.outputs.body }}
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
+          
+      - name: Deploy to Server
+        if: github.ref == 'refs/heads/main'
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan $SERVER_HOST >> ~/.ssh/known_hosts
+          scp -r out/* $SERVER_USER@$SERVER_HOST:/var/www/html
+          ssh $SERVER_USER@$SERVER_HOST 'sudo systemctl restart nginx'
