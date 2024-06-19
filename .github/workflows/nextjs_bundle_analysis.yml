@@ -130,6 +130,5 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan $SERVER_HOST >> ~/.ssh/known_hosts
-          ssh $SERVER_USER@$SERVER_HOST 'mkdir -p /tmp/deploy'
-          scp -r out/* $SERVER_USER@$SERVER_HOST:/tmp/deploy
-          ssh $SERVER_USER@$SERVER_HOST 'sudo cp -r /tmp/deploy/* /var/www/html/ && sudo systemctl restart nginx'
+          scp -r out/* $SERVER_USER@$SERVER_HOST:/var/www/html/
+          ssh $SERVER_USER@$SERVER_HOST 'systemctl restart nginx'
