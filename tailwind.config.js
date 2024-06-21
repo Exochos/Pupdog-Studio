@@ -83,7 +83,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
   future: {
     hoverOnlyWhenSupported: true,
   },
