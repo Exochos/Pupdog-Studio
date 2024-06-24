@@ -62,7 +62,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
           className={`chat chat-end relative transition-opacity duration-500 ${
             showChatBubble ? "animate__animated animate__fadeInUp" : "animate__animated animate__fadeOutDown"
           }`}
-          style={{ animationDelay: "800ms" }} // Delay to ensure it starts after the main icon animation
+          style={{ animationDelay: "800ms" }}
         >
           <button
             className="absolute right-0 top-0 border-none bg-transparent text-lg font-bold text-black"
