@@ -1,9 +1,8 @@
 /* components/CallToAction.module.css */
-
 .ctaContainer {
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: 1em;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -12,25 +11,39 @@
 }
 
 .messageIconContainer {
+  width: 4em;
+  height: 4em;
+  position: relative;
   background-color: var(--cta-bg-color, white);
-  border: 2px solid var(--cta-border-color, black);
-  border-radius: 50%;
-  padding: 0.5rem;
+  border-radius: 40%;
+  padding: 0.3em;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 2s, width 2s;
+}
+
+.messageIconContainer:hover {
+  transform: rotateY(360deg);
+}
+
+.iconButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 .chatBubbleContainer {
-  background-color: var(--cta-bg-color, white);
-  border: 1px solid var(--cta-border-color, black);
-  border-radius: 1rem;
   padding: 0.4em;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .chatWrapper {

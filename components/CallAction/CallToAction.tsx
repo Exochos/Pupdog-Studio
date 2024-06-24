@@ -1,15 +1,12 @@
-import Image from "next/image"
-import React, { useEffect, useState } from "react"
-import styles from "./CallToAction.module.css"
-import "animate.css"
-
-/* <a href="https://www.freepik.com/icon/message_5356190">Icon by adrianadam</a> */
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import "animate.css";
 
 export interface CallToActionProps {
-  display?: "show" | "hidden"
-  phoneNumber?: string
-  ctaMessage?: string
-  theme?: "light" | "dark"
+  display?: "show" | "hidden";
+  phoneNumber?: string;
+  ctaMessage?: string;
+  theme?: "light" | "dark";
 }
 
 const CallToAction: React.FC<CallToActionProps> = ({
@@ -18,35 +15,26 @@ const CallToAction: React.FC<CallToActionProps> = ({
   ctaMessage = "Call Us",
   theme = "light",
 }) => {
-  const [isVisible, setIsVisible] = useState<boolean>(display !== "hidden")
-  const [shouldRender, setShouldRender] = useState<boolean>(display !== "hidden")
-  const [view, setView] = useState<"desktop" | "mobile">("desktop")
+  const [isVisible, setIsVisible] = useState<boolean>(display !== "hidden");
+  const [shouldRender, setShouldRender] = useState<boolean>(display !== "hidden");
+  const [showChatBubble, setShowChatBubble] = useState<boolean>(false);
 
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     if (display === "hidden") {
-      setTimeout(() => setShouldRender(false), 1500)
+      setTimeout(() => setShouldRender(false), 1500);
+      setShowChatBubble(false);
     } else {
-      setShouldRender(true)
+      setShouldRender(true);
+      setTimeout(() => setShowChatBubble(true), 1500); // Delay for chat bubble to show after main icon animation
+      timer = setTimeout(() => setShowChatBubble(false), 10000); // Auto-hide chat bubble after 20 seconds
     }
-    setIsVisible(display !== "hidden")
-
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setView("mobile")
-      } else {
-        setView("desktop")
-      }
-    }
-
-    if (display !== "hidden") {
-      handleResize()
-      window.addEventListener("resize", handleResize)
-    }
+    setIsVisible(display !== "hidden");
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [display])
+      clearTimeout(timer);
+    };
+  }, [display]);
 
   const handleClick = () => {
     if (window.gtag) {
@@ -54,81 +42,64 @@ const CallToAction: React.FC<CallToActionProps> = ({
         event_category: "Button",
         event_label: "Call Button",
         value: phoneNumber,
-      })
+      });
     }
-    window.location.href = `tel:${phoneNumber}`
-  }
+    window.location.href = `tel:${phoneNumber}`;
+  };
 
-  const handleClose = () => {
-    setIsVisible(false)
-    setTimeout(() => setShouldRender(false), 1500) // Match the duration of the fade-out animation
-  }
+  const handleCloseBubble = () => {
+    setShowChatBubble(false);
+  };
 
   if (!shouldRender) {
-    return null
+    return null;
   }
 
-  const bgColor = theme === "light" ? "white" : "#343"
-  const borderColor = theme === "light" ? "black" : "#fef"
-  const textColor = theme === "light" ? "black" : "#fff"
-
   return (
-    <div className={styles.ctaContainer}>
-      <div
-        className={`${styles.chatBubbleContainer} ${
-          isVisible ? "animate__animated animate__zoomInRight" : "animate__animated animate__zoomOutRight"
-        }`}
-        style={
-          {
-            "--cta-bg-color": bgColor,
-            "--cta-border-color": borderColor,
-            "--cta-text-color": textColor,
-          } as React.CSSProperties
-        }
-      >
-        <div className={styles.chatWrapper}>
-          <div className="chat chat-start"></div>
-          <div className="chat chat-end">
-            <div className="avatar chat-image">
-              <div className="w-10 rounded-full">
-                <Image
-                  alt="Tailwind CSS chat bubble component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  width={40}
-                  height={40}
-                />
-              </div>
-            </div>
-            <div className="animate__animated animate__fadeInUp chat-bubble">
-              <div className="chat-content">
-                <p className="text-sm">Hi! How can we help you today?</p>
-              </div>
+    <div className="fixed bottom-0 right-4 flex flex-col items-end m-4 gap-4">
+      {showChatBubble && (
+        <div
+          className={`relative chat chat-end transition-opacity duration-500 ${
+            showChatBubble ? "animate__animated animate__fadeInUp" : "animate__animated animate__fadeOutDown"
+          }`}
+          style={{ animationDelay: '800ms' }} // Delay to ensure it starts after the main icon animation
+        >
+          <button
+            className="absolute top-0 right-0 bg-transparent border-none text-black text-lg font-bold"
+            onClick={handleCloseBubble}
+            aria-label="Close"
+          >
+            &times;
+          </button>
+          <div className="chat-image avatar">
+            <div className="w-10 rounded-full">
+              <img alt="Tailwind CSS chat bubble component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
             </div>
           </div>
+          <div className="chat-bubble chat-bubble-info">
+            Hi! How can we help you today?
+          </div>
         </div>
-      </div>
-
+      )}
       <div
-        className={`${styles.messageIconContainer} ${
+        className={`w-16 h-16 relative bg-white rounded-full p-2 flex justify-center shadow-lg overflow-hidden transition-transform duration-[500ms] border border-black
+          ${
           isVisible ? "animate__animated animate__zoomInRight" : "animate__animated animate__zoomOutRight"
         }`}
-        style={
-          {
-            "--cta-bg-color": bgColor,
-            "--cta-border-color": borderColor,
-            "--cta-text-color": textColor,
-          } as React.CSSProperties
-        }
+        style={{ transitionDuration: '500ms' }}
       >
-        <button className={styles.iconButton} onClick={handleClick} aria-label={`Call: ${ctaMessage}`}>
-          <Image src="/images/message_icon.png" alt="Message Icon" width={48} height={48} />
-        </button>
-        <button className={styles.closeButton} onClick={handleClose} aria-label="Close Call Button">
-          &times;
-        </button>
+        <div className="hover:rotate-[360deg] transform-gpu transition-transform duration-[500ms]">
+          <button
+            className="bg-transparent border-none outline-none cursor-pointer flex items-center justify-center"
+            onClick={handleClick}
+            aria-label={`Call: ${ctaMessage}`}
+          >
+            <Image src="/images/message_icon.png" alt="Message Icon" width={60} height={60} />
+          </button>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CallToAction
+export default CallToAction;
