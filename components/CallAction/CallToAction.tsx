@@ -81,11 +81,11 @@ const CallToAction: React.FC<CallToActionProps> = ({
               />
             </div>
           </div>
-          <div className="chat-bubble chat-bubble-info">Hi! How can we help you today?</div>
+          <div className="chat-bubble chat-bubble-warning">Hi! How can we help you today?</div>
         </div>
       )}
       <div
-        className={`relative flex h-16 w-16 justify-center overflow-hidden rounded-full border border-black bg-white p-2 shadow-lg transition-transform duration-[500ms]
+        className={`relative flex h-14 w-14 justify-center overflow-hidden rounded-full border-2 border-slate-500 bg-white p-2 shadow-lg transition-transform duration-[500ms]
           ${isVisible ? "animate__animated animate__zoomInRight" : "animate__animated animate__zoomOutRight"}`}
         style={{ transitionDuration: "500ms" }}
       >
@@ -95,7 +95,7 @@ const CallToAction: React.FC<CallToActionProps> = ({
             onClick={handleClick}
             aria-label={`Call: ${ctaMessage}`}
           >
-            <Image src="/images/message_icon.png" alt="Message Icon" width={60} height={60} />
+            <Image src="/images/message_icon.png" alt="Message Icon" width={40} height={40} />
           </button>
         </div>
       </div>
