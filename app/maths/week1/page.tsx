@@ -42,7 +42,7 @@ const Week1Page: React.FC = () => {
               Input Number:
             </label>
             <input
-              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
+              className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 shadow placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               id="inputNumber"
               type="text"
               placeholder="Enter your number in base 10"
@@ -53,7 +53,7 @@ const Week1Page: React.FC = () => {
               New Base:
             </label>
             <input
-              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
+              className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 shadow placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               id="base"
               type="text"
               placeholder="Enter the new base"
@@ -64,7 +64,7 @@ const Week1Page: React.FC = () => {
               Output Number:
             </label>
             <input
-              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
+              className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 shadow placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               id="outputNumber"
               type="text"
               placeholder="Output number will appear here"
