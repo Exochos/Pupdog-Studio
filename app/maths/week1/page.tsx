@@ -33,7 +33,7 @@ const Week1Page: React.FC = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
-        <h1 className="mb-6 text-center text-2xl font-bold">
+        <h1 className="mb-6 text-center text-2xl font-bold text-black">
           Week 1 Maths Assignment 1<br /> Multi-Base Numerical Converter
         </h1>
         <form>
@@ -42,32 +42,34 @@ const Week1Page: React.FC = () => {
               Input Number:
             </label>
             <input
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-100 shadow focus:outline-none"
+              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
               id="inputNumber"
               type="text"
               placeholder="Enter your number in base 10"
             />
           </div>
           <div className="mb-6">
-            <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="email">
-              Base:
+            <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="base">
+              New Base:
             </label>
             <input
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
               id="base"
               type="text"
-              placeholder="Enter the base you want to convert to"
+              placeholder="Enter the new base"
             />
           </div>
           <div className="mb-6">
             <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="message">
               Output Number:
             </label>
-            <textarea
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+            <input
+              className="block flex-1 border-0 bg-transparent shadow py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 w-full"
               id="outputNumber"
-              placeholder="Your number in the new base"
-            ></textarea>
+              type="text"
+              placeholder="Output number will appear here"
+              readOnly
+            />
           </div>
           <div className="flex items-center justify-between">
             <button
