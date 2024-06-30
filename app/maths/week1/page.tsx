@@ -1,7 +1,11 @@
 "use client"
+import Head from "next/head"
 import React, { useEffect, useState } from "react"
+import { metadata } from "./metadata";
+ 
 
 const Week1Page: React.FC = () => {
+
   const errorMessages = {
     number: "Please enter a number",
     base: "Please enter a new base",
@@ -89,6 +93,12 @@ const Week1Page: React.FC = () => {
   }
 
   return (
+    <>
+      <Head>
+        <title>Week 1 Maths Assignment</title>
+        <meta name="description" content="This is the week 1 maths assignment page." />
+      </Head>
+
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
       <div className="mx-auto max-w-screen-lg p-4">
         <div className="flex flex-col gap-4 md:flex-row">
@@ -168,6 +178,7 @@ const Week1Page: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
