@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from "react"
-import { metadata } from "./metadata"
 
 const Week1Page: React.FC = () => {
   const errorMessages = {
