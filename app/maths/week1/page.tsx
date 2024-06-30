@@ -1,7 +1,6 @@
 "use client"
-
-import { parse } from "path"
 import React, { useEffect, useState } from "react"
+import { metadata } from "./metadata"
 
 const Week1Page: React.FC = () => {
   const errorMessages = {
