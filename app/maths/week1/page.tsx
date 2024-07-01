@@ -1,11 +1,9 @@
 "use client"
 import Head from "next/head"
 import React, { useEffect, useState } from "react"
-import { metadata } from "./metadata";
- 
+import { metadata } from "./metadata"
 
 const Week1Page: React.FC = () => {
-
   const errorMessages = {
     number: "Please enter a number",
     base: "Please enter a new base",
@@ -99,85 +97,85 @@ const Week1Page: React.FC = () => {
         <meta name="description" content="This is the week 1 maths assignment page." />
       </Head>
 
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="mx-auto max-w-screen-lg p-4">
-        <div className="flex flex-col gap-4 md:flex-row">
-          <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
-            <h3 className="mb-6 text-2xl font-bold text-black">Week 1 Maths Assignment 1</h3>
-            <form>
-              <div className="mb-4">
-                <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="inputNumber">
-                  Input Number:
-                </label>
-                <input
-                  className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-emerald-300 px-3 py-2 text-black shadow focus:outline-none"
-                  id="inputNumber"
-                  type="text"
-                  value={inputValue}
-                  onChange={handleInputChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter your number in base 10"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="base">
-                  New Base:
-                </label>
-                <input
-                  className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-emerald-300 px-3 py-2 text-black shadow focus:outline-none"
-                  id="base"
-                  type="text"
-                  value={baseValue}
-                  onChange={handleBaseChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter a base between 2 and 16"
-                />
-              </div>
-              <div className="mb-6">
-                <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="outputNumber">
-                  Output Number:
-                </label>
-                <input
-                  className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-white px-3 py-2 text-black shadow focus:outline-none"
-                  id="outputNumber"
-                  type="text"
-                  placeholder="Output number will appear here"
-                  readOnly
-                />
-              </div>
-              <div className="mb-4 flex items-center justify-center">
-                <p id="error" className="text-m text-center italic text-red-500">
-                  {errorMessage}
-                </p>
-              </div>
-              <div className="flex items-center justify-center">
-                <button
-                  className="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
-                  type="button"
-                  onClick={calculate}
-                >
-                  Calculate New Base
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
-            <h3 className="mb-6 text-2xl font-bold text-black">How this program works</h3>
-            <p className="text-gray-700">
-              First, we error check the input and base to make sure they are valid for our program. We then convert the
-              input number to the new base.
-              <br />
-              We will use an array to store the new number. We will then loop through the input number and calculate the
-              remainder when dividing by the new base. We will then add the remainder to the array and update the input
-              number to the floor of the input number divided by the new base. We will continue this process until the
-              input number is 0. We will then reverse the array and join the elements to get the new number in the new
-              base.
-              <br />
-            </p>
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <div className="mx-auto max-w-screen-lg p-4">
+          <div className="flex flex-col gap-4 md:flex-row">
+            <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
+              <h3 className="mb-6 text-2xl font-bold text-black">Week 1 Maths Assignment 1</h3>
+              <form>
+                <div className="mb-4">
+                  <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="inputNumber">
+                    Input Number:
+                  </label>
+                  <input
+                    className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-emerald-300 px-3 py-2 text-black shadow focus:outline-none"
+                    id="inputNumber"
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onBlur={handleBlur}
+                    placeholder="Enter your number in base 10"
+                  />
+                </div>
+                <div className="mb-4">
+                  <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="base">
+                    New Base:
+                  </label>
+                  <input
+                    className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-emerald-300 px-3 py-2 text-black shadow focus:outline-none"
+                    id="base"
+                    type="text"
+                    value={baseValue}
+                    onChange={handleBaseChange}
+                    onBlur={handleBlur}
+                    placeholder="Enter a base between 2 and 16"
+                  />
+                </div>
+                <div className="mb-6">
+                  <label className="mb-2 block text-sm font-bold text-gray-700" htmlFor="outputNumber">
+                    Output Number:
+                  </label>
+                  <input
+                    className="focus:shadow-outline block w-full flex-1 rounded border border-gray-300 bg-white px-3 py-2 text-black shadow focus:outline-none"
+                    id="outputNumber"
+                    type="text"
+                    placeholder="Output number will appear here"
+                    readOnly
+                  />
+                </div>
+                <div className="mb-4 flex items-center justify-center">
+                  <p id="error" className="text-m text-center italic text-red-500">
+                    {errorMessage}
+                  </p>
+                </div>
+                <div className="flex items-center justify-center">
+                  <button
+                    className="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none"
+                    type="button"
+                    onClick={calculate}
+                  >
+                    Calculate New Base
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
+              <h3 className="mb-6 text-2xl font-bold text-black">How this program works</h3>
+              <p className="text-gray-700">
+                First, we error check the input and base to make sure they are valid for our program. We then convert
+                the input number to the new base.
+                <br />
+                We will use an array to store the new number. We will then loop through the input number and calculate
+                the remainder when dividing by the new base. We will then add the remainder to the array and update the
+                input number to the floor of the input number divided by the new base. We will continue this process
+                until the input number is 0. We will then reverse the array and join the elements to get the new number
+                in the new base.
+                <br />
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   )
 }
