@@ -1,7 +1,7 @@
 "use client"
 
 import Head from "next/head"
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function MathsAssignment() {
   const [sign, setSign] = useState(false)
@@ -58,7 +58,7 @@ export default function MathsAssignment() {
         <div className="mx-auto max-w-screen-lg p-4">
           <div className="flex flex-col gap-4 md:flex-row">
             <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
-              <h3 className="mb-6 text-2xl font-bold text-black">IEEE 754 Floating Point Numbers</h3>
+              <h3 className="mb-6 text-2xl font-bold text-black">IEEE 754 Floating Point Number Calculator</h3>
               <div className="overflow-x-auto">
                 <table className="w-full table-fixed border-collapse">
                   <thead>
