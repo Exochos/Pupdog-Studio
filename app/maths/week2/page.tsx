@@ -1,51 +1,51 @@
-"use client";
+"use client"
 
-import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import Head from "next/head"
+import { useEffect, useState } from "react"
 
 export default function MathsAssignment() {
-  const [sign, setSign] = useState(false);
-  const [exponent, setExponent] = useState(Array(8).fill(false));
-  const [mantissa, setMantissa] = useState(Array(23).fill(false));
-  const [totalDecimal, setTotalDecimal] = useState('0');
-  const [totalExponent, setTotalExponent] = useState('0e0');
+  const [sign, setSign] = useState(false)
+  const [exponent, setExponent] = useState(Array(8).fill(false))
+  const [mantissa, setMantissa] = useState(Array(23).fill(false))
+  const [totalDecimal, setTotalDecimal] = useState("0")
+  const [totalExponent, setTotalExponent] = useState("0e0")
 
-  const handleCheckboxChange = (index: number | null, type: 'sign' | 'exponent' | 'mantissa') => {
-    if (type === 'sign') {
-      setSign(!sign);
-    } else if (type === 'exponent' && index !== null) {
-      const newExponent = [...exponent];
-      newExponent[index] = !newExponent[index];
-      setExponent(newExponent);
-    } else if (type === 'mantissa' && index !== null) {
-      const newMantissa = [...mantissa];
-      newMantissa[index] = !newMantissa[index];
-      setMantissa(newMantissa);
+  const handleCheckboxChange = (index: number | null, type: "sign" | "exponent" | "mantissa") => {
+    if (type === "sign") {
+      setSign(!sign)
+    } else if (type === "exponent" && index !== null) {
+      const newExponent = [...exponent]
+      newExponent[index] = !newExponent[index]
+      setExponent(newExponent)
+    } else if (type === "mantissa" && index !== null) {
+      const newMantissa = [...mantissa]
+      newMantissa[index] = !newMantissa[index]
+      setMantissa(newMantissa)
     }
-  };
+  }
 
   useEffect(() => {
     const calculateTotal = () => {
       let exponentTotal = exponent.reduce((acc, val, index) => {
-        return val ? acc + Math.pow(2, 7 - index) : acc;
-      }, 0);
+        return val ? acc + Math.pow(2, 7 - index) : acc
+      }, 0)
 
       let mantissaTotal = mantissa.reduce((acc, val, index) => {
-        return val ? acc + Math.pow(2, -(index + 1)) : acc;
-      }, 0);
+        return val ? acc + Math.pow(2, -(index + 1)) : acc
+      }, 0)
 
-      let total = (1 + mantissaTotal) * Math.pow(2, exponentTotal - 127);
-      if (sign) total = -total;
+      let total = (1 + mantissaTotal) * Math.pow(2, exponentTotal - 127)
+      if (sign) total = -total
 
-      const totalDecimalStr = total.toFixed(10);
-      const totalExponentStr = total.toExponential();
+      const totalDecimalStr = total.toFixed(10)
+      const totalExponentStr = total.toExponential()
 
-      setTotalDecimal(totalDecimalStr);
-      setTotalExponent(totalExponentStr);
-    };
+      setTotalDecimal(totalDecimalStr)
+      setTotalExponent(totalExponentStr)
+    }
 
-    calculateTotal();
-  }, [sign, exponent, mantissa]);
+    calculateTotal()
+  }, [sign, exponent, mantissa])
 
   return (
     <>
