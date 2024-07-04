@@ -1,26 +1,35 @@
 "use client"
-
 import Head from "next/head"
 import { useEffect, useState } from "react"
+import "./styles.css"
 
 export default function MathsAssignment() {
   const [sign, setSign] = useState(false)
   const [exponent, setExponent] = useState(Array(8).fill(false))
   const [mantissa, setMantissa] = useState(Array(23).fill(false))
-  const [totalDecimal, setTotalDecimal] = useState("0")
   const [totalExponent, setTotalExponent] = useState("0e0")
+  const [mantissaTooltip, setMantissaTooltip] = useState(Array(23).fill(false))
+  const [exponentTooltip, setExponentTooltip] = useState(Array(8).fill(false))
+  const [signTooltip, setSignTooltip] = useState(false)
 
-  const handleCheckboxChange = (index: number | null, type: "sign" | "exponent" | "mantissa") => {
+  const handleCheckboxChange = (index: number | null, type: string) => {
     if (type === "sign") {
       setSign(!sign)
+      setSignTooltip(!sign) // Open tooltip when checked
     } else if (type === "exponent" && index !== null) {
       const newExponent = [...exponent]
       newExponent[index] = !newExponent[index]
       setExponent(newExponent)
+      const newExponentTooltip = [...exponentTooltip]
+      newExponentTooltip[index] = newExponent[index] // Open tooltip when checked
+      setExponentTooltip(newExponentTooltip)
     } else if (type === "mantissa" && index !== null) {
       const newMantissa = [...mantissa]
       newMantissa[index] = !newMantissa[index]
       setMantissa(newMantissa)
+      const newMantissaTooltip = [...mantissaTooltip]
+      newMantissaTooltip[index] = newMantissa[index] // Open tooltip when checked
+      setMantissaTooltip(newMantissaTooltip)
     }
   }
 
@@ -37,15 +46,31 @@ export default function MathsAssignment() {
       let total = (1 + mantissaTotal) * Math.pow(2, exponentTotal - 127)
       if (sign) total = -total
 
-      const totalDecimalStr = total.toFixed(10)
       const totalExponentStr = total.toExponential()
 
-      setTotalDecimal(totalDecimalStr)
       setTotalExponent(totalExponentStr)
     }
 
     calculateTotal()
   }, [sign, exponent, mantissa])
+
+  const displayValue = (index: number, type: string) => {
+    if (type === "exponent") {
+      return `2^${7 - index}`
+    } else if (type === "mantissa") {
+      return `2^-${index + 1}`
+    }
+    return null
+  }
+
+  const getCellClass = (checked: boolean, type: string) => {
+    if (checked) {
+      if (type === "sign") return "highlighted-sign"
+      if (type === "exponent") return "highlighted-exponent"
+      if (type === "mantissa") return "highlighted-mantissa"
+    }
+    return ""
+  }
 
   return (
     <>
@@ -55,98 +80,117 @@ export default function MathsAssignment() {
       </Head>
 
       <div className="flex min-h-screen items-center justify-center bg-gray-100">
-        <div className="mx-auto max-w-screen-lg p-4">
-          <div className="flex flex-col gap-4 md:flex-row">
+        <div className="p-4">
+          <div className="flex flex-col gap-4">
             <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
               <h3 className="mb-6 text-2xl font-bold text-black">IEEE 754 Floating Point Number Calculator</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full table-fixed border-collapse">
+              <div className="overflow-x-auto p-4">
+                <table className="w-full table-fixed border-collapse p-6">
                   <thead>
                     <tr>
-                      <th className="border border-gray-400 p-1">Sign</th>
-                      <th className="border border-gray-400 p-1" colSpan={8}>
-                        Exponent
+                      <th className="border border-gray-400 bg-gray-100 p-2 text-black" colSpan={2}>
+                        Sign (1 bit)
                       </th>
-                      <th className="border border-gray-400 p-1" colSpan={23}>
-                        Mantissa
+                      <th className="border border-gray-400 bg-gray-100 p-1 text-black" colSpan={8}>
+                        Exponent (8 bits)
+                      </th>
+                      <th className="border border-gray-400 bg-gray-100 p-1 text-black" colSpan={23}>
+                        Mantissa (23 bits)
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="border border-gray-400 bg-gray-200 text-center" colSpan={1}>
-                        1 bit
-                      </td>
-                      <td className="border border-gray-400 bg-gray-200 text-center" colSpan={8}>
-                        8 bits
-                      </td>
-                      <td className="border border-gray-400 bg-gray-200 text-center" colSpan={23}>
-                        23 bits
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-400 bg-red-100">
-                        <div className="tooltip" data-tip="Sign Bit">
+                      <td
+                        className={`border border-black bg-red-100 py-5 text-center ${getCellClass(sign, "sign")}`}
+                        colSpan={2}
+                      >
+                        <div
+                          className={`morph tooltip tooltip-bottom tooltip-error ${signTooltip ? "tooltip-open" : ""}`}
+                          data-tip="Sign Bit"
+                        >
                           <input
                             type="checkbox"
                             name="sign"
                             value="1"
                             checked={sign}
                             onChange={() => handleCheckboxChange(null, "sign")}
+                            id="sign-checkbox"
                           />
+                          <label htmlFor="sign-checkbox" className="checkbox-label"></label>
                         </div>
                       </td>
-                      {Array.from({ length: 8 }).map((_, index) => (
-                        <td key={index} className="border border-gray-400 bg-yellow-100 text-center">
-                          <div className="tooltip" data-tip={Math.pow(2, 7 - index)}>
-                            <input
-                              type="checkbox"
-                              name="exponent"
-                              value={index}
-                              checked={exponent[index]}
-                              onChange={() => handleCheckboxChange(index, "exponent")}
-                            />
-                          </div>
-                        </td>
-                      ))}
-                      {Array.from({ length: 23 }).map((_, index) => (
-                        <td key={index} className="border border-gray-400 bg-green-100 text-center">
-                          <div className="tooltip" data-tip={Math.pow(2, 22 - index)}>
-                            <input
-                              type="checkbox"
-                              name="mantissa"
-                              value={index}
-                              checked={mantissa[index]}
-                              onChange={() => handleCheckboxChange(index, "mantissa")}
-                            />
-                          </div>
-                        </td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td className="border border-gray-400 bg-red-100 text-center">{sign ? "-" : "+"}</td>
-                      {exponent.map((checked, index) => (
-                        <td key={index} className="border border-gray-400 bg-yellow-100 text-center">
-                          {checked ? 1 : 0}
-                        </td>
-                      ))}
-                      {mantissa.map((checked, index) => (
-                        <td key={index} className="border border-gray-400 bg-green-100 text-center">
-                          {checked ? 1 : 0}
-                        </td>
-                      ))}
+
+                      {/* Exponent row */}
+                      {Array.from({ length: 8 }).map((_, index) => {
+                        const reversedIndex = 7 - index
+                        return (
+                          <td
+                            key={index}
+                            className={`border border-black bg-yellow-100 py-5 text-center ${getCellClass(
+                              exponent[reversedIndex],
+                              "exponent"
+                            )}`}
+                          >
+                            <div
+                              className={`morph tooltip-offset tooltip tooltip-bottom tooltip-warning ${
+                                exponentTooltip[reversedIndex] ? "tooltip-open" : ""
+                              }`}
+                              data-tip={displayValue(reversedIndex, "exponent")}
+                            >
+                              <input
+                                type="checkbox"
+                                name="exponent"
+                                value={reversedIndex}
+                                checked={exponent[reversedIndex]}
+                                onChange={() => handleCheckboxChange(reversedIndex, "exponent")}
+                                id={`exponent-checkbox-${reversedIndex}`}
+                              />
+                              <label htmlFor={`exponent-checkbox-${reversedIndex}`} className="checkbox-label"></label>
+                            </div>
+                          </td>
+                        )
+                      })}
+
+                      {/* Mantissa row */}
+                      {Array.from({ length: 23 })
+                        .reverse()
+                        .map((_, index) => (
+                          <td
+                            key={index}
+                            className={`border border-black bg-blue-100 py-5 text-center ${getCellClass(
+                              mantissa[22 - index],
+                              "mantissa"
+                            )}`}
+                          >
+                            <div
+                              className={`morph tooltip tooltip-bottom tooltip-primary ${
+                                mantissaTooltip[22 - index] ? "tooltip-open" : ""
+                              }`}
+                              data-tip={`2^-${index + 1}`}
+                            >
+                              <input
+                                type="checkbox"
+                                name="mantissa"
+                                value={index}
+                                checked={mantissa[22 - index]}
+                                onChange={() => handleCheckboxChange(22 - index, "mantissa")}
+                                id={`mantissa-checkbox-${22 - index}`}
+                              />
+                              <label htmlFor={`mantissa-checkbox-${22 - index}`} className="checkbox-label"></label>
+                            </div>
+                          </td>
+                        ))}
+                      {/* End of mantissa row */}
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          <div className="mt-4 flex flex-col gap-4 md:flex-row">
-            <div className="flex-1 rounded-lg bg-white p-6 shadow-lg">
+          <div className="mt-4 flex flex-col gap-4 md:flex-row md:gap-8">
+            <div className="flex-1 rounded-lg bg-white p-6 text-center shadow-lg">
               <h3 className="mb-6 text-2xl font-bold text-black">Running Total</h3>
-              <p className="text-lg">
-                <strong>Decimal:</strong> {totalDecimal}
-              </p>
               <p className="text-lg">
                 <strong>Exponent:</strong> {totalExponent}
               </p>
