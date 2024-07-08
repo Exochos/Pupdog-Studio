@@ -1,7 +1,10 @@
 "use client"
+import metadata from "./metadata"
 import Head from "next/head"
 import { useEffect, useState } from "react"
 import "./styles.css"
+
+
 
 export default function MathsAssignment() {
   const [sign, setSign] = useState(false)
@@ -47,7 +50,6 @@ export default function MathsAssignment() {
       if (sign) total = -total
 
       const totalExponentStr = total.toExponential()
-
       setTotalExponent(totalExponentStr)
     }
 
@@ -193,6 +195,20 @@ export default function MathsAssignment() {
               <h3 className="mb-6 text-2xl font-bold text-black">Running Total</h3>
               <p className="text-lg">
                 <strong>Exponent:</strong> {totalExponent}
+              </p>
+              <strong>Note:</strong> This calculator does not account for special values like NaN or Infinity.
+            </div>
+          </div>
+          <div className="mt-4 flex items-center justify-center">
+            <div className="flex-1 rounded-lg bg-white p-6 text-center shadow-lg">
+              <p className="text-xs text-black">
+                <strong> How it works:</strong>
+                When we click on the checkboxes, we can see the binary representation of the IEEE 754 floating point
+                number. The sign bit is the first bit, the exponent is the next 8 bits, and the mantissa is the last 23
+                bits. The exponent is calculated by adding the values of the checked bits, and the mantissa is
+                calculated by adding the values of the checked bits and dividing by 2. The total is calculated by adding
+                the mantissa to 1 and multiplying by 2 to the power of the exponent minus 127. The total is displayed in
+                scientific notation.
               </p>
             </div>
           </div>
