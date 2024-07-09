@@ -8,12 +8,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   openGraph: {
-    url: "https://deck206.com",
+    url: "https://pupdog.studio",
     images: [
       {
-        width: 1200,
+        width: 630,
         height: 630,
-        url: "https://raw.githubusercontent.com/Blazity/next-enterprise/main/.github/assets/project-logo.png",
+        url: "/images/PupLogo.png",
       },
     ],
   },

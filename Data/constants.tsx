@@ -1,7 +1,7 @@
 /**
  * NavBar Constants
  */
-export const COMPANY_NAME = "Deck206"
+export const COMPANY_NAME = "PupDog Studio"
 export const COMPANY_LOGO_URL = "/images/logo.webp"
 
 /**
