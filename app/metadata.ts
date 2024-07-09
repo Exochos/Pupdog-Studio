@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       {
         width: 630,
         height: 630,
-        url: "/images/PupLogo.png",
+        url: "../public/images/PupLogo.png",
       },
     ],
   },
