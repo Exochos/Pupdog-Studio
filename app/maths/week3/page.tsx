@@ -1,24 +1,37 @@
 "use client"
 import * as Tabs from "@radix-ui/react-tabs"
+import * as Progress from "@radix-ui/react-progress"
+import MyChart from "./normalChart"
 import Head from "next/head"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import classNames from "classnames"
 
 const Week3Page: React.FC = () => {
   const [numFlips, setNumFlips] = useState<number | string>("")
   const [results, setResults] = useState<{ heads: number; tails: number } | null>(null)
+  const [progress, setProgress] = useState(0)
 
   const handleSimulate = () => {
     const flips = parseInt(numFlips as string, 10)
     if (isNaN(flips) || flips <= 0) return
 
+    setResults(null)
+    setProgress(0)
+
     let heads = 0
     let tails = 0
 
-    for (let i = 0; i < flips; i++) {
-      Math.random() < 0.5 ? heads++ : tails++
+    const simulateFlip = (i: number) => {
+      if (i < flips) {
+        Math.random() < 0.5 ? heads++ : tails++
+        setProgress(Math.floor(((i + 1) / flips) * 100))
+        setTimeout(() => simulateFlip(i + 1), 50) // Simulate each flip with a delay
+      } else {
+        setResults({ heads, tails })
+      }
     }
 
-    setResults({ heads, tails })
+    simulateFlip(0)
   }
 
   return (
@@ -48,7 +61,11 @@ const Week3Page: React.FC = () => {
           <Tabs.Content value="tab1" className="p-4">
             <h1 className="text-2xl font-bold text-gray-800">Coin Flip Simulation</h1>
             <p className="text-gray-700">
-              Enter the number of coin flips you would like to simulate and click the button to see the results.
+              Enter the number of coin flips you would like to simulate and click the button to see the results. <br />
+              <div>
+                <h1>Chart.js in Next.js</h1>
+                <MyChart />
+              </div>
             </p>
             <div className="mt-4 flex items-center gap-4">
               <input
@@ -65,6 +82,11 @@ const Week3Page: React.FC = () => {
                 Simulate Coin Flips
               </button>
             </div>
+            <div className="mt-4">
+              <Progress.Root className="relative h-4 overflow-hidden rounded bg-gray-200">
+                <Progress.Indicator className="h-full bg-blue-500" style={{ width: `${progress}%` }} />
+              </Progress.Root>
+            </div>
             {results && (
               <div className="mt-4">
                 <div className="card w-96 bg-base-100 shadow-xl">
@@ -73,10 +95,10 @@ const Week3Page: React.FC = () => {
                   </figure>
                   <div className="card-body items-center text-center">
                     <h2 className="card-title">Results</h2>
-                    <div className="text-2xl font-bold text-gray-100">
+                    <div className="text-2xl font-bold text-gray-800">
                       Heads: {results.heads} ({((results.heads / (results.heads + results.tails)) * 100).toFixed(2)}%)
                     </div>
-                    <div className="text-2xl font-bold text-gray-100">
+                    <div className="text-2xl font-bold text-gray-800">
                       Tails: {results.tails} ({((results.tails / (results.heads + results.tails)) * 100).toFixed(2)}%)
                     </div>
                   </div>
