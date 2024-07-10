@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     url: "https://pupdog.studio",
     images: [
       {
-        width: 630,
-        height: 630,
-        url: "../public/images/PupLogo.png",
+        width: 400,
+        height: 400,
+        url: "http://pupdog.studio/images/PupLogo.png",
       },
     ],
   },
