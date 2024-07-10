@@ -1,10 +1,8 @@
 "use client"
-import * as Tabs from "@radix-ui/react-tabs"
 import * as Progress from "@radix-ui/react-progress"
+import * as Tabs from "@radix-ui/react-tabs"
+import React, { useState } from "react"
 import MyChart from "./normalChart"
-import Head from "next/head"
-import React, { useState, useEffect } from "react"
-import classNames from "classnames"
 
 const Week3Page: React.FC = () => {
   const [numFlips, setNumFlips] = useState<number | string>("")
