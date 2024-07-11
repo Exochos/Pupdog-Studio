@@ -1,12 +1,10 @@
-// components/NormalDistributionChart.js
-import Chart from "chart.js/auto"
 import { useEffect, useRef } from "react"
+import Chart from "chart.js/auto"
 
-const NormalDistributionChart = () => {
+const MyChart = ({ ratios }) => {
   const chartRef = useRef(null)
   const myChartRef = useRef(null)
 
-  // Function to generate normal distribution data
   const generateNormalDistribution = (mean, stdDev, numPoints) => {
     const data = []
     const labels = []
@@ -15,43 +13,60 @@ const NormalDistributionChart = () => {
       const x = mean + i
       const y = (1 / (stdDev * Math.sqrt(2 * Math.PI))) * Math.exp(-0.5 * Math.pow((x - mean) / stdDev, 2))
       data.push(y)
-      labels.push(x.toFixed(2)) // to show labels with 2 decimal places
+      labels.push(x.toFixed(2))
     }
     return { labels, data }
   }
 
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d")
-
-    // Clean up previous chart instance
     if (myChartRef.current) {
       myChartRef.current.destroy()
     }
 
-    const { labels, data } = generateNormalDistribution(0, 1, 100)
+    const mean = 0.5
+    const stdDev = 0.1
+    const { labels, data } = generateNormalDistribution(mean, stdDev, 100)
+    const datasets = [
+      {
+        label: "Normal Distribution",
+        data: data,
+        borderWidth: 1,
+        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        fill: true,
+      },
+    ]
 
-    // Create new chart instance
+    if (ratios && ratios.length > 0) {
+      ratios.forEach((ratio) => {
+        const ratioLabel = (ratio * stdDev + mean).toFixed(2)
+        const index = labels.indexOf(ratioLabel)
+
+        if (index !== -1) {
+          datasets.push({
+            label: `Coin Flip Result (${ratio})`,
+            data: labels.map((_, i) => (i === index ? data[i] : null)),
+            pointRadius: 5,
+            pointBackgroundColor: "red",
+            showLine: false,
+          })
+        }
+      })
+    }
+
     myChartRef.current = new Chart(ctx, {
       type: "line",
       data: {
         labels: labels,
-        datasets: [
-          {
-            label: "Normal Distribution",
-            data: data,
-            borderWidth: 1,
-            borderColor: "rgba(75, 192, 192, 1)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            fill: true,
-          },
-        ],
+        datasets: datasets,
       },
       options: {
         scales: {
           x: {
             title: {
               display: true,
-              text: "Value",
+              text: "Ratio of Heads",
             },
           },
           y: {
@@ -65,13 +80,12 @@ const NormalDistributionChart = () => {
       },
     })
 
-    // Cleanup function to destroy chart instance
     return () => {
       myChartRef.current.destroy()
     }
-  }, [])
+  }, [ratios])
 
   return <canvas ref={chartRef} id="myChart"></canvas>
 }
 
-export default NormalDistributionChart
+export default MyChart
