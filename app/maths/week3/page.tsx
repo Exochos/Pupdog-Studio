@@ -34,16 +34,16 @@ const Week3Page: React.FC = () => {
       <Tabs.Root defaultValue="tab1">
         <Tabs.List className="tabs tabs-lifted">
           <Tabs.Trigger value="tab1" className="tab-lifted tab text-gray-300">
-            Assignment 1
+            A1
           </Tabs.Trigger>
           <Tabs.Trigger value="tab2" className="tab-lifted text-grey-300 tab">
-            Assignment 2
+            A2
           </Tabs.Trigger>
           <Tabs.Trigger value="tab3" className="tab-lifted text-grey-300 tab">
-            Assignment 3
+            A3
           </Tabs.Trigger>
           <Tabs.Trigger value="tab4" className="tab-lifted tab text-gray-300">
-            Assignment 4
+            A4
           </Tabs.Trigger>
         </Tabs.List>
 
