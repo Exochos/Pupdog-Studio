@@ -43,10 +43,9 @@ const Week3Page: React.FC = () => {
             Assignment 3
           </Tabs.Trigger>
           <Tabs.Trigger value="tab4" className="tab-lifted tab text-gray-300">
-          Assignment 4
-        </Tabs.Trigger>
+            Assignment 4
+          </Tabs.Trigger>
         </Tabs.List>
-
 
         <Tabs.Content value="tab1" className="p-4 text-center">
           <div className="items-center justify-center">
@@ -77,7 +76,6 @@ const Week3Page: React.FC = () => {
           </div>
         </Tabs.Content>
 
-
         <Tabs.Content value="tab2" className="p-4 text-center">
           <div className="p-4 text-center">
             <div className="items-center justify-center">
@@ -90,7 +88,7 @@ const Week3Page: React.FC = () => {
                 Roll Dice
               </button>
               <br />
-              <div className="flex items-center justify-center m-4 p-4">
+              <div className="m-4 flex items-center justify-center p-4">
                 <div style={{ width: "100%", height: "400px" }}>
                   <DiceChart numRolls={numRolls} />
                 </div>
@@ -103,7 +101,7 @@ const Week3Page: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-800">Assignment 3</h1>
           Simulate drawing a card from a shuffled deck 20 times, count how many are red, and plot the count of red
           versus black cards.
-          <div className="flex items-center justify-center m-4 p-4">
+          <div className="m-4 flex items-center justify-center p-4">
             <div style={{ width: "100%", height: "400px" }}>
               <DrawingCards numRolls={20} />
             </div>
