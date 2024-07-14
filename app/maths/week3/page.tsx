@@ -2,6 +2,7 @@
 import * as Tabs from "@radix-ui/react-tabs"
 import dynamic from "next/dynamic"
 import React, { useState } from "react"
+import DrawingCards from "./DrawingCards"
 
 const MyChart = dynamic(() => import("./normalChart"), { ssr: false })
 const DiceChart = dynamic(() => import("./DiceChart"), { ssr: false })
@@ -72,7 +73,7 @@ const Week3Page: React.FC = () => {
           </div>
         </Tabs.Content>
 
-        
+
         <Tabs.Content value="tab2" className="p-4 text-center">
           <div className="p-4 text-center">
             <div className="items-center justify-center">
@@ -95,8 +96,14 @@ const Week3Page: React.FC = () => {
         </Tabs.Content>
 
         <Tabs.Content value="tab3" className="p-4">
+          <h1 className="text-2xl font-bold text-gray-800">Assignment 3</h1>
           Simulate drawing a card from a shuffled deck 20 times, count how many are red, and plot the count of red
           versus black cards.
+          <div className="flex items-center justify-center m-4 p-4">
+            <div style={{ width: "100%", height: "400px" }}>
+              <DrawingCards numRolls={20} />
+            </div>
+          </div>
         </Tabs.Content>
       </Tabs.Root>
     </div>
