@@ -36,7 +36,7 @@ const DrawingCards: React.FC<{ numRolls: number }> = ({ numRolls }) => {
           scales: {
             y: {
               beginAtZero: true,
-              max: 26
+              max: 26,
             },
           },
         },
@@ -50,13 +50,26 @@ const DrawingCards: React.FC<{ numRolls: number }> = ({ numRolls }) => {
 
   useEffect(() => {
     const drawCard = async () => {
+      let currentRedCards = 0
+      let currentBlackCards = 0
+
       for (let i = 0; i < numRolls; i++) {
         await new Promise((resolve) => setTimeout(resolve, 200)) // Delay for animation change to speed up or slow down
         const card = Math.random() < 0.5 ? "red" : "black"
-        if (card === "red" && redCards < 26) {
-          setRedCards((prev) => prev + 1)
-        } else if (card === "black" && blackCards < 26) {
-          setBlackCards((prev) => prev + 1)
+        if (card === "red") {
+          currentRedCards++
+          setRedCards(currentRedCards)
+        } else {
+          currentBlackCards++
+          setBlackCards(currentBlackCards)
+        }
+
+        if (chartInstanceRef.current && chartInstanceRef.current.data) {
+          const datasets = chartInstanceRef.current.data.datasets;
+          if (datasets && datasets[0]) {
+            datasets[0].data = [currentRedCards, currentBlackCards];
+            chartInstanceRef.current.update();
+          }
         }
       }
     }
@@ -67,16 +80,6 @@ const DrawingCards: React.FC<{ numRolls: number }> = ({ numRolls }) => {
       drawCard()
     }
   }, [numRolls])
-
-  useEffect(() => {
-    if (chartInstanceRef.current) {
-      const datasets = chartInstanceRef.current.data.datasets
-      if (datasets && datasets[0]) {
-        datasets[0].data = [redCards, blackCards]
-        chartInstanceRef.current.update()
-      }
-    }
-  }, [redCards, blackCards])
 
   return (
     <div className="flex justify-center items-center h-full">
