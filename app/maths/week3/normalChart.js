@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react"
 import Chart from "chart.js/auto"
+import { useEffect, useRef } from "react"
 
 const MyChart = ({ ratios }) => {
   const chartRef = useRef(null)
