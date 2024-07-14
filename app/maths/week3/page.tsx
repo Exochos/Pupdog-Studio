@@ -3,6 +3,7 @@ import * as Tabs from "@radix-ui/react-tabs"
 import dynamic from "next/dynamic"
 import React, { useState } from "react"
 import DrawingCards from "./DrawingCards"
+import CompoundEvents from "./CompoundEvents"
 
 const MyChart = dynamic(() => import("./normalChart"), { ssr: false })
 const DiceChart = dynamic(() => import("./DiceChart"), { ssr: false })
@@ -30,7 +31,7 @@ const Week3Page: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto mt-20 rounded-lg bg-white p-4 shadow-lg">
+    <div className="container mx-auto mt-10 rounded-lg bg-white p-4 shadow-lg">
       <Tabs.Root defaultValue="tab1">
         <Tabs.List className="tabs tabs-lifted">
           <Tabs.Trigger value="tab1" className="tab-lifted tab text-gray-300">
@@ -80,6 +81,10 @@ const Week3Page: React.FC = () => {
           <div className="p-4 text-center">
             <div className="items-center justify-center">
               <h1 className="justify-center text-2xl font-bold text-gray-800">Dice Rolling Simulation</h1>
+              <p>
+                Simulate rolling a six-sided die 60 times, print the frequency of each outcome, and plot the
+                distribution.
+              </p>
               <br />
               <button
                 className="rounded bg-blue-500 px-4 py-2 font-bold text-white shadow hover:bg-blue-700 focus:outline-none"
@@ -104,6 +109,19 @@ const Week3Page: React.FC = () => {
           <div className="m-4 flex items-center justify-center p-4">
             <div style={{ width: "100%", height: "400px" }}>
               <DrawingCards numRolls={20} />
+            </div>
+          </div>
+        </Tabs.Content>
+
+        <Tabs.Content value="tab4" className="p-4">
+          <h1 className="text-2xl font-bold text-gray-800">Task 4: Probability of Compound Events</h1>
+          <p>
+            Simulate flipping two coins 50 times, count the outcomes, and plot both scenarios: both heads and at least
+            one head.
+          </p>
+          <div className="m-4 flex items-center justify-center p-2">
+            <div style={{ width: "100%", height: "400px" }}>
+              <CompoundEvents numRolls={50} />
             </div>
           </div>
         </Tabs.Content>
