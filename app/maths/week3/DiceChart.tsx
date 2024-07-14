@@ -56,10 +56,10 @@ const DiceChart: React.FC<{ numRolls: number }> = ({ numRolls }) => {
         setCurrentRoll([...rolls])
 
         if (chartInstanceRef.current) {
-          const chartInstance = chartInstanceRef.current;
+          const chartInstance = chartInstanceRef.current
           if (chartInstance.data.datasets[0]) {
-            chartInstance.data.datasets[0].data = [...rolls];
-            chartInstance.update();
+            chartInstance.data.datasets[0].data = [...rolls]
+            chartInstance.update()
           }
         }
       }
@@ -71,7 +71,7 @@ const DiceChart: React.FC<{ numRolls: number }> = ({ numRolls }) => {
   }, [numRolls])
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex h-full items-center justify-center">
       <canvas ref={chartRef} id="chartDiceRoll"></canvas>
     </div>
   )

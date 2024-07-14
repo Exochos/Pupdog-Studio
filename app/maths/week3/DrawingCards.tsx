@@ -65,10 +65,10 @@ const DrawingCards: React.FC<{ numRolls: number }> = ({ numRolls }) => {
         }
 
         if (chartInstanceRef.current && chartInstanceRef.current.data) {
-          const datasets = chartInstanceRef.current.data.datasets;
+          const datasets = chartInstanceRef.current.data.datasets
           if (datasets && datasets[0]) {
-            datasets[0].data = [currentRedCards, currentBlackCards];
-            chartInstanceRef.current.update();
+            datasets[0].data = [currentRedCards, currentBlackCards]
+            chartInstanceRef.current.update()
           }
         }
       }
@@ -82,7 +82,7 @@ const DrawingCards: React.FC<{ numRolls: number }> = ({ numRolls }) => {
   }, [numRolls])
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex h-full items-center justify-center">
       <canvas ref={chartRef} />
     </div>
   )
