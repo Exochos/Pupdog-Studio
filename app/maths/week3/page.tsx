@@ -2,8 +2,8 @@
 import * as Tabs from "@radix-ui/react-tabs"
 import dynamic from "next/dynamic"
 import React, { useState } from "react"
-import DrawingCards from "./DrawingCards"
 import CompoundEvents from "./CompoundEvents"
+import DrawingCards from "./DrawingCards"
 
 const MyChart = dynamic(() => import("./normalChart"), { ssr: false })
 const DiceChart = dynamic(() => import("./DiceChart"), { ssr: false })
@@ -71,7 +71,7 @@ const Week3Page: React.FC = () => {
                 Simulate Coin Flips
               </button>
             </div>
-            <div>
+            <div className="flex h-full items-center justify-center" style={{ width: "100%", height: "400px" }}>
               <MyChart ratios={ratios} />
             </div>
           </div>
@@ -103,25 +103,29 @@ const Week3Page: React.FC = () => {
         </Tabs.Content>
 
         <Tabs.Content value="tab3" className="p-4">
-          <h1 className="text-2xl font-bold text-gray-800">Assignment 3</h1>
-          Simulate drawing a card from a shuffled deck 20 times, count how many are red, and plot the count of red
-          versus black cards.
-          <div className="m-4 flex items-center justify-center p-4">
-            <div style={{ width: "100%", height: "400px" }}>
-              <DrawingCards numRolls={20} />
+          <div className="p-4 text-center">
+            <h1 className="text-2xl font-bold text-gray-800">Rolling a Die</h1>
+            Simulate drawing a card from a shuffled deck 20 times, count how many are red, and plot the count of red
+            versus black cards.
+            <div className="m-4 flex items-center justify-center p-4">
+              <div style={{ width: "100%", height: "400px" }}>
+                <DrawingCards numRolls={20} />
+              </div>
             </div>
           </div>
         </Tabs.Content>
 
         <Tabs.Content value="tab4" className="p-4">
-          <h1 className="text-2xl font-bold text-gray-800">Task 4: Probability of Compound Events</h1>
-          <p>
-            Simulate flipping two coins 50 times, count the outcomes, and plot both scenarios: both heads and at least
-            one head.
-          </p>
-          <div className="m-4 flex items-center justify-center p-2">
-            <div style={{ width: "100%", height: "400px" }}>
-              <CompoundEvents numRolls={50} />
+          <div className="p-4 text-center">
+            <h1 className="text-2xl font-bold text-gray-800">Probability of Compound Events</h1>
+            <p>
+              Simulate flipping two coins 50 times, count the outcomes, and plot both scenarios: both heads and at least
+              one head.
+            </p>
+            <div className="m-4 flex items-center justify-center p-2">
+              <div style={{ width: "100%", height: "400px" }}>
+                <CompoundEvents numRolls={50} />
+              </div>
             </div>
           </div>
         </Tabs.Content>
