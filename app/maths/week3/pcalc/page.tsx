@@ -1,6 +1,6 @@
 "use client"
-import React, { useState, useEffect, useRef } from "react"
 import Chart from "chart.js/auto"
+import React, { useEffect, useState, useRef } from "react"
 
 const PCalc: React.FC = () => {
   // State management
