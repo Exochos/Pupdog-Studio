@@ -5,7 +5,6 @@ import React, { useEffect, useRef, useState } from "react"
 // Register chart.js plugins
 Chart.register(...registerables)
 
-
 const PCalc: React.FC = () => {
   // State management
   const [prevalence, setPrevalence] = useState<number | string>("")
