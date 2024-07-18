@@ -3,7 +3,7 @@ import { BarController, BarElement, CategoryScale, Chart as ChartJS, LinearScale
 import React, { useEffect, useRef, useState } from "react"
 
 // Register the necessary components
-ChartJS.register(BarElement, CategoryScale, LinearScale, BarController)
+ChartJS.register(BarController, BarElement, CategoryScale, LinearScale)
 
 const NDice: React.FC = () => {
   // State management
