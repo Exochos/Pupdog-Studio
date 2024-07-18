@@ -1,8 +1,6 @@
 "use client"
 import { Chart, registerables } from "chart.js"
 import React, { useEffect, useRef, useState } from "react"
-
-// Register chart.js plugins
 Chart.register(...registerables)
 
 const PCalc: React.FC = () => {

@@ -48,7 +48,7 @@ const NDice: React.FC = () => {
       }
     }
 
-    return distribution.map((value) => (value / sizeMonteCarlo) * 100) // Convert to percentage for better visualization
+    return distribution.map((value) => (value / sizeMonteCarlo) * 100)
   }
 
   // Handle simulate
@@ -96,11 +96,12 @@ const NDice: React.FC = () => {
       const n = parseInt(nDiceSide as string, 10)
       const m = parseInt(mNumberDice as string, 10)
 
-      const labels = Array.from({ length: n * m - m + 1 }, (_, i) => i + m) // Possible sums from m to n*m
-
+      const labels = Array.from({ length: n * m - m + 1 }, (_, i) => i + m)
       const resultsFrequency = Array.from({ length: n * m - m + 1 }, () => 0)
       results.forEach((result) => {
-        resultsFrequency[result - m]++ // Align with the labels index
+        if (resultsFrequency[result] !== undefined) {
+          resultsFrequency[result] = (resultsFrequency[result] || 0) + 1
+        }
       })
 
       chartInstanceRef.current = new ChartJS(chartRef.current, {
@@ -115,7 +116,7 @@ const NDice: React.FC = () => {
             },
             {
               label: "Monte Carlo Distribution",
-              data: distribution.slice(m), // Align with the labels index
+              data: distribution.slice(m),
               backgroundColor: "rgba(153, 102, 255, 0.6)",
             },
           ],
@@ -185,7 +186,7 @@ const NDice: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="w-full rounded-lg bg-white p-4 shadow-lg lg:w-2/3">
+        <div className="w-full rounded-lg bg-white p-4 m-4 shadow-lg lg:w-2/3">
           {results.length > 0 && (
             <div className="mt-6">
               <h2 className="text-xl font-bold">Results & Monte Carlo Distribution</h2>
