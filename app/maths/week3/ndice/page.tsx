@@ -1,7 +1,8 @@
 "use client"
+import { BarController, BarElement, CategoryScale, Chart as ChartJS, LinearScale } from "chart.js"
 import React, { useEffect, useRef, useState } from "react"
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, BarController } from "chart.js"
 
+// Register the necessary components
 ChartJS.register(BarElement, CategoryScale, LinearScale, BarController)
 
 const NDice: React.FC = () => {
@@ -42,7 +43,9 @@ const NDice: React.FC = () => {
       for (let j = 0; j < m; j++) {
         sum += Math.floor(Math.random() * n) + 1
       }
-      distribution[sum]++
+      if (distribution[sum] !== undefined) {
+        distribution[sum] = (distribution[sum] || 0) + 1
+      }
     }
 
     return distribution.map((value) => (value / sizeMonteCarlo) * 100) // Convert to percentage for better visualization
