@@ -18,9 +18,30 @@ const NDice: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement>(null)
   const chartInstanceRef = useRef<ChartJS | null>(null)
 
+  // Set error messages
+  const errorMessages = {
+    neg: "Invalid input. Please enter a positive number.",
+    empty: "Invalid input. Please enter a value.",
+    not: "Invalid input. Please enter a number.",
+    large: "Number to large. Please enter a smaller number.",
+  }
+
   // Handle change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
+    const intValue = parseInt(value, 10)
+
+    let error = null
+
+    if (value === "") {
+      error = errorMessages.empty
+    } else if (intValue < 1) {
+      error = errorMessages.neg
+    } else if (intValue > 10000) {
+      error = errorMessages.large
+    }
+
+    setError(error)
     switch (name) {
       case "nDiceSide":
         setNDiceSide(value)
@@ -31,12 +52,14 @@ const NDice: React.FC = () => {
       case "kNumberRolls":
         setKNumberRolls(value)
         break
+      default:
+        break
     }
   }
 
   // Monte Carlo simulation to generate a normal distribution
   const generateDistribution = (n: number, m: number) => {
-    const sizeMonteCarlo = 30000
+    const sizeMonteCarlo = 10000
     const distribution = Array.from({ length: n * m + 1 }, () => 0)
 
     for (let i = 0; i < sizeMonteCarlo; i++) {
@@ -58,9 +81,36 @@ const NDice: React.FC = () => {
     const k = parseInt(kNumberRolls as string, 10)
     const m = parseInt(mNumberDice as string, 10)
 
-    if (isNaN(n) || isNaN(k) || isNaN(m) || n < 1 || k < 1 || m < 1) {
-      setError("Invalid input")
-      return
+    switch (true) {
+      case isNaN(n):
+        setError(errorMessages.not)
+        return
+      case isNaN(m):
+        setError(errorMessages.not)
+        return
+      case isNaN(k):
+        setError(errorMessages.not)
+        return
+      case n < 1:
+        setError(errorMessages.neg)
+        return
+      case m < 1:
+        setError(errorMessages.neg)
+        return
+      case k < 1:
+        setError(errorMessages.neg)
+        return
+      case n > 10000:
+        setError(errorMessages.large)
+        return
+      case m > 10000:
+        setError(errorMessages.large)
+        return
+      case k > 10000:
+        setError(errorMessages.large)
+        return
+      default:
+        break
     }
 
     const results = []
@@ -86,6 +136,7 @@ const NDice: React.FC = () => {
     setKNumberRolls("")
     setResults([])
     setDistribution([])
+    setError(null)
   }
 
   useEffect(() => {
@@ -165,106 +216,103 @@ const NDice: React.FC = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-10 flex flex-col flex-wrap items-center justify-center">
-        <div className="w-full rounded-lg bg-white p-4 shadow-lg lg:w-1/3">
-          <h1 className="text-2xl font-bold text-black">N-Dice Simulator:</h1>
-          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
-            <input type="checkbox" className="peer" />
-            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
-              Assignment?
+      <div className="container mx-auto mt-10 flex flex-col items-center justify-center p-2 lg:flex-row lg:space-x-4">
+        <div className="flex w-full flex-col items-center lg:w-1/3">
+          <div className="w-full rounded-lg bg-white p-4 shadow-lg">
+            <h1 className="text-2xl font-bold text-black">Dice Throwing Simulator</h1>
+            <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+              <input type="checkbox" className="peer" />
+              <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+                Assignment?
+              </div>
+              <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+                <p>
+                  Develop a program that calculates the probability distribution when rolling M number of N-sided dice.
+                </p>
+                <p>
+                  Task 1: Implementing the Dice Roll Function Write a Python function that simulates rolling M number of
+                  N-sided dice once and returns the sum of the outcomes. Task 2: Simulating Multiple Rolls Create a
+                  function to simulate rolling M number of N-sided dice K times and record the results. Task 3:
+                  Calculating Probability Distribution Write a function to calculate the probability of each possible
+                  sum when M number of N-sided dice are rolled. Task 4: User Interface Allow the user to input the
+                  values of N, M, K and display the probability distribution.
+                </p>
+              </div>
             </div>
-            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
-              <p>
-                Develop a program that calculates the probability distribution when rolling M number of N-sided dice.
-              </p>
-              <p>
-                Task 1: Implementing the Dice Roll Function Write a Python function that simulates rolling M number of
-                N-sided dice once and returns the sum of the outcomes. Task 2: Simulating Multiple Rolls Create a
-                function to simulate rolling M number of N-sided dice K times and record the results. Task 3:
-                Calculating Probability Distribution Write a function to calculate the probability of each possible sum
-                when M number of N-sided dice are rolled. Task 4: User Interface Allow the user to input the values of
-                N, M, K and display the probability distribution.
-              </p>
+
+            <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+              <input type="checkbox" className="peer" />
+              <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+                Whats the N-Dice Simulator?
+              </div>
+              <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+                <p>
+                  The N-Dice Simulator is a tool that allows you to simulate the rolling of multiple dice with a
+                  specified number of sides and number of rolls.
+                </p>
+              </div>
+            </div>
+            <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+              <input type="checkbox" className="peer" />
+              <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+                How does it work?
+              </div>
+              <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+                <p>
+                  The simulator generates random numbers between 1 and the number of sides of the dice, and adds them up
+                  to get the sum of the dice rolls. It then repeats this process for the specified number of rolls.
+                </p>
+              </div>
             </div>
           </div>
 
-          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
-            <input type="checkbox" className="peer" />
-            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
-              Whats the N-Dice Simulator?
-            </div>
-            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
-              <p>
-                The N-Dice Simulator is a tool that allows you to simulate the rolling of multiple dice with a specified
-                number of sides and number of rolls.
-              </p>
-            </div>
-          </div>
-          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
-            <input type="checkbox" className="peer" />
-            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
-              How does it work?
-            </div>
-            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
-              <p>
-                The simulator generates random numbers between 1 and the number of sides of the dice, and adds them up
-                to get the sum of the dice rolls. It then repeats this process for the specified number of rolls.
-              </p>
+          <div className="mt-4 w-full rounded-lg bg-white p-4 shadow-lg">
+            <div className="m-4 grid grid-cols-1 gap-6">
+              <input
+                type="number"
+                name="nDiceSide"
+                className="input input-bordered"
+                placeholder="Enter number of sides on dice"
+                value={nDiceSide}
+                onChange={handleChange}
+              />
+              <input
+                type="number"
+                name="mNumberDice"
+                className="input input-bordered"
+                placeholder="Enter number of dice"
+                value={mNumberDice}
+                onChange={handleChange}
+              />
+              <input
+                type="number"
+                name="kNumberRolls"
+                className="input input-bordered"
+                placeholder="Enter number of rolls"
+                value={kNumberRolls}
+                onChange={handleChange}
+              />
+              {error && <span className="text-red-500">{error}</span>}
+              <button className="btn btn-primary mt-4" onClick={handleSimulate}>
+                Simulate
+              </button>
+              <button className="btn btn-info mt-4" onClick={handleReset}>
+                Reset
+              </button>
             </div>
           </div>
         </div>
 
-        <hr className="my-4 w-1/3" />
-        <div className="w-full rounded-lg bg-white p-4 shadow-lg lg:w-1/3">
-          <div className="m-4 grid grid-cols-1 gap-6">
-            <input
-              type="number"
-              name="nDiceSide"
-              className="input input-bordered"
-              placeholder="Enter number of sides on dice"
-              value={nDiceSide}
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              name="mNumberDice"
-              className="input input-bordered"
-              placeholder="Enter number of dice"
-              value={mNumberDice}
-              onChange={handleChange}
-            />
-            <input
-              type="number"
-              name="kNumberRolls"
-              className="input input-bordered"
-              placeholder="Enter number of rolls"
-              value={kNumberRolls}
-              onChange={handleChange}
-            />
-            {error && <span className="text-red-500">{error}</span>}
-            <button
-              className="btn btn-primary mt-4"
-              onClick={handleSimulate}
-              disabled={nDiceSide === "" || mNumberDice === "" || kNumberRolls === ""}
-            >
-              Simulate
-            </button>
-            <button className="btn btn-secondary mt-4" onClick={handleReset}>
-              Reset
-            </button>
-          </div>
-        </div>
-        <div className="m-4 w-full rounded-lg bg-white p-4 shadow-lg lg:w-2/3">
-          {results.length > 0 && (
+        {results.length > 0 && (
+          <div className="height-auto m-4 w-full rounded-lg bg-white p-4 shadow-lg lg:w-2/3">
             <div className="mt-6">
               <h2 className="text-xl font-bold">Results & Monte Carlo Distribution</h2>
-              <canvas ref={chartRef} />
+              <canvas ref={chartRef} id="chart" className="mt-4" width={400} height={200}></canvas>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   )
 }
-
 export default NDice
