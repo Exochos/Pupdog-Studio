@@ -1,6 +1,7 @@
 "use client"
 import { BarController, BarElement, CategoryScale, Chart as ChartJS, LinearScale } from "chart.js"
 import React, { useEffect, useRef, useState } from "react"
+import "./styles.css"
 
 // Register the necessary components
 ChartJS.register(BarController, BarElement, CategoryScale, LinearScale)
@@ -113,17 +114,35 @@ const NDice: React.FC = () => {
               label: "Roll Results",
               data: resultsFrequency,
               backgroundColor: "rgba(75, 192, 192, 0.6)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
             },
             {
               label: "Monte Carlo Distribution",
               data: distribution.slice(m),
-              backgroundColor: "rgba(153, 102, 255, 0.6)",
+              backgroundColor: "rgba(153, 102, 255, 0.2)",
+              borderColor: "rgba(153, 102, 255, 1)",
+              borderWidth: 1,
             },
           ],
         },
         options: {
+          plugins: {
+            legend: {
+              display: true,
+              position: "bottom",
+              labels: {
+                color: "black",
+              },
+              title: {
+                display: true,
+                text: "Legend",
+                color: "black",
+              },
+            },
+          },
           animation: {
-            duration: 1000,
+            duration: 200,
           },
           scales: {
             x: {
@@ -146,7 +165,56 @@ const NDice: React.FC = () => {
 
   return (
     <>
-      <div className="container mx-auto mt-10 flex flex-wrap justify-center">
+      <div className="container mx-auto mt-10 flex flex-col flex-wrap items-center justify-center">
+        <div className="w-full rounded-lg bg-white p-4 shadow-lg lg:w-1/3">
+          <h1 className="text-2xl font-bold text-black">N-Dice Simulator:</h1>
+          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+            <input type="checkbox" className="peer" />
+            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+              Assignment?
+            </div>
+            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+              <p>
+                Develop a program that calculates the probability distribution when rolling M number of N-sided dice.
+              </p>
+              <p>
+                Task 1: Implementing the Dice Roll Function Write a Python function that simulates rolling M number of
+                N-sided dice once and returns the sum of the outcomes. Task 2: Simulating Multiple Rolls Create a
+                function to simulate rolling M number of N-sided dice K times and record the results. Task 3:
+                Calculating Probability Distribution Write a function to calculate the probability of each possible sum
+                when M number of N-sided dice are rolled. Task 4: User Interface Allow the user to input the values of
+                N, M, K and display the probability distribution.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+            <input type="checkbox" className="peer" />
+            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+              Whats the N-Dice Simulator?
+            </div>
+            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+              <p>
+                The N-Dice Simulator is a tool that allows you to simulate the rolling of multiple dice with a specified
+                number of sides and number of rolls.
+              </p>
+            </div>
+          </div>
+          <div className="bg-grey-800 bg-opacity-40/40 collapse collapse-arrow mt-4 rounded-lg border-2 border-gray-200 shadow-lg">
+            <input type="checkbox" className="peer" />
+            <div className="bg-primary peer-checked:bg-primary collapse-title text-primary-content peer-checked:text-secondary-content">
+              How does it work?
+            </div>
+            <div className="bg-primary peer-checked:bg-primary peer-checked:text-secondary-info collapse-content text-primary-content">
+              <p>
+                The simulator generates random numbers between 1 and the number of sides of the dice, and adds them up
+                to get the sum of the dice rolls. It then repeats this process for the specified number of rolls.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr className="my-4 w-1/3" />
         <div className="w-full rounded-lg bg-white p-4 shadow-lg lg:w-1/3">
           <div className="m-4 grid grid-cols-1 gap-6">
             <input
@@ -186,7 +254,7 @@ const NDice: React.FC = () => {
             </button>
           </div>
         </div>
-        <div className="w-full rounded-lg bg-white p-4 m-4 shadow-lg lg:w-2/3">
+        <div className="m-4 w-full rounded-lg bg-white p-4 shadow-lg lg:w-2/3">
           {results.length > 0 && (
             <div className="mt-6">
               <h2 className="text-xl font-bold">Results & Monte Carlo Distribution</h2>
