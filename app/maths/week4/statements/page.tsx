@@ -1,19 +1,10 @@
 "use client"
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { metaData } from "./metaData"
 import Truth from "./Truths"
+import { logEvent } from "../../../utils/googleAnalytics"
 
-const { AND, OR, NOT, XOR, IF } = Truth
-
-const operations: { [key: string]: (a: boolean, b: boolean) => boolean } = {
-  AND,
-  OR,
-  NOT,
-  XOR,
-  IF,
-}
-
-const Page: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Tab1")
+export default function Page(): JSX.Element {
   const [aValue, setAValue] = useState(true)
   const [bValue, setBValue] = useState(true)
   const [selectedOperation, setSelectedOperation] = useState("AND")
@@ -22,54 +13,74 @@ const Page: React.FC = () => {
 
   const calculateResult = () => {
     if (selectedOperation === "NOT") {
-      setResult((operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(aValue, bValue).toString())
+      setResult((Truth[selectedOperation] as (a: boolean) => boolean)(aValue).toString())
     } else {
-      setResult((operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(aValue, bValue).toString())
+      setResult(
+        (Truth[selectedOperation as keyof typeof Truth] as (a: boolean, b: boolean) => boolean)(
+          aValue,
+          bValue
+        ).toString()
+      )
     }
 
     const table = [
-      { a: true, b: true, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(true, true) },
-      { a: true, b: false, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(true, false) },
-      { a: false, b: true, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(false, true) },
-      { a: false, b: false, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(false, false) },
+      {
+        a: true,
+        b: true,
+        result: (Truth[selectedOperation as keyof typeof Truth] as (a: boolean, b: boolean) => boolean)(true, true),
+      },
+      {
+        a: true,
+        b: false,
+        result: (Truth[selectedOperation as keyof typeof Truth] as (a: boolean, b: boolean) => boolean)(true, false),
+      },
+      {
+        a: false,
+        b: true,
+        result: (Truth[selectedOperation as keyof typeof Truth] as (a: boolean, b: boolean) => boolean)(false, true),
+      },
+      {
+        a: false,
+        b: false,
+        result: (Truth[selectedOperation as keyof typeof Truth] as (a: boolean, b: boolean) => boolean)(false, false),
+      },
     ]
 
     setTruthTable(table)
+
+    // Track button click
+    logEvent("User", "Calculate Result", `Operation: ${selectedOperation}`)
   }
 
-  const handleToggle = (value: boolean, setValue: React.Dispatch<React.SetStateAction<boolean>>) => {
+  const handleToggle = (value: boolean, setValue: React.Dispatch<React.SetStateAction<boolean>>, label: string) => {
     setValue(!value)
+
+    // Track toggle clicks
+    logEvent("User", "Toggle Value", label)
   }
 
   return (
-    <>
-      <div className="container mx-auto flex h-screen w-screen items-center justify-center p-4">
-        <div className="card aspect-[1/1.75] w-full max-w-xs bg-white p-2 shadow-xl transition-transform duration-300 md:w-3/5">
-          <div role="tablist" className="tabs tabs-lifted tabs-md">
-            <button
-              role="tab"
-              aria-selected={activeTab === "Tab1"}
-              className={`tab ${activeTab === "Tab1" ? "tab-active" : ""}`}
-              onClick={() => setActiveTab("Tab1")}
-            >
-              Truths
-            </button>
-            <button
-              role="tab"
-              aria-selected={activeTab === "Tab2"}
-              className={`tab ${activeTab === "Tab2" ? "tab-active" : ""}`}
-              onClick={() => setActiveTab("Tab2")}
-            >
-              Powerset Assignment
-            </button>
-          </div>
-          <div role="tabpanel" className={`tab-panel ${activeTab === "Tab1" ? "" : "hidden"}`}>
-            <h2 className="m-4 text-center text-xl font-bold text-black">Truths</h2>
+    <html lang="en">
+      <head>
+        <meta content="description" name="{metaData.description}" />
+        <meta content="author" name="{metaData.author}" />
+        <meta content="date" name="{metaData.date}" />
+        <title>{metaData.title}</title>
+      </head>
+      <body>
+        <div className="container mx-auto flex h-screen w-screen items-center justify-center p-4">
+          <div className="card aspect-[1/1.75] w-full max-w-xs bg-white p-2 shadow-xl transition-transform duration-300 md:w-3/5">
+            <h2 className="m-4 text-center text-xl font-bold text-black">Mathematical Statements</h2>
+            <p className="m-4 text-center text-lg text-black">
+              This page demonstrates the truth values of mathematical statements. As well as the truth table for each
+              statement. To get started, click on the buttons to toggle the truth values of A and B. Then select an
+              operation from the dropdown and click on the calculate button to see the result.
+            </p>
             <div className="grid gap-4 p-4">
               <div className="flex items-center justify-center">
                 <div className="animate__animated animate__fadeIn animate__delay-4s">
                   <button
-                    onClick={() => handleToggle(aValue, setAValue)}
+                    onClick={() => handleToggle(aValue, setAValue, "A")}
                     className={`transition-colors duration-500 ${
                       aValue ? "bg-green-500" : "bg-red-300"
                     } rounded px-4 py-2 font-bold text-black`}
@@ -94,7 +105,7 @@ const Page: React.FC = () => {
               <div className="flex items-center justify-center">
                 <div className="animate__animated animate__fadeIn animate__delay-4s">
                   <button
-                    onClick={() => handleToggle(bValue, setBValue)}
+                    onClick={() => handleToggle(bValue, setBValue, "B")}
                     className={`transition-colors duration-500 ${
                       bValue ? "bg-green-500" : "bg-red-300"
                     } rounded px-4 py-2 font-bold text-black`}
@@ -136,14 +147,8 @@ const Page: React.FC = () => {
               </div>
             </div>
           </div>
-          <div role="tabpanel" className={`tab-panel ${activeTab === "Tab2" ? "" : "hidden"}`}>
-            <h2 className="m-4 text-center text-xl font-bold text-gray-800">Powerset Assignment</h2>
-            <p>Powerset assignment content goes here...</p>
-          </div>
         </div>
-      </div>
-    </>
+      </body>
+    </html>
   )
 }
-
-export default Page

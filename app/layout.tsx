@@ -2,6 +2,7 @@
 import { useEffect } from "react"
 import "styles/tailwind.css"
 import { initializeGA, logPageView } from "./utils/googleAnalytics"
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     initializeGA("G-ZV2QJBY6FK")
