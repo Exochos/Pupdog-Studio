@@ -4,7 +4,7 @@ import Truth from "./Truths"
 
 const { AND, OR, NOT, XOR, IF } = Truth
 
-const operations = {
+const operations: { [key: string]: (a: boolean, b: boolean) => boolean } = {
   AND,
   OR,
   NOT,
@@ -22,16 +22,16 @@ const Page: React.FC = () => {
 
   const calculateResult = () => {
     if (selectedOperation === "NOT") {
-      setResult(operations[selectedOperation](aValue).toString())
+      setResult((operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(aValue, bValue).toString())
     } else {
-      setResult(operations[selectedOperation](aValue, bValue).toString())
+      setResult((operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(aValue, bValue).toString())
     }
 
     const table = [
-      { a: true, b: true, result: operations[selectedOperation](true, true) },
-      { a: true, b: false, result: operations[selectedOperation](true, false) },
-      { a: false, b: true, result: operations[selectedOperation](false, true) },
-      { a: false, b: false, result: operations[selectedOperation](false, false) },
+      { a: true, b: true, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(true, true) },
+      { a: true, b: false, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(true, false) },
+      { a: false, b: true, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(false, true) },
+      { a: false, b: false, result: (operations[selectedOperation] as (a: boolean, b: boolean) => boolean)(false, false) },
     ]
 
     setTruthTable(table)
