@@ -1,9 +1,9 @@
 /**
-  * Truths.tsx
-  * Truths Functions
-  * 
-  * @module Truths
-  */
+ * Truths.tsx
+ * Truths Functions
+ *
+ * @module Truths
+ */
 
 const Truth = {
   AND: (a: boolean, b: boolean) => a && b,
@@ -13,7 +13,7 @@ const Truth = {
   NAND: (a: boolean, b: boolean) => !(a && b),
   NOR: (a: boolean, b: boolean) => !(a || b),
   XNOR: (a: boolean, b: boolean) => a === b,
-  IF : (a: boolean, b: boolean) => !a || b
-};
+  IF: (a: boolean, b: boolean) => !a || b,
+}
 
-export default Truth;
+export default Truth

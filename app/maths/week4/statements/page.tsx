@@ -1,16 +1,18 @@
 "use client"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { metaData } from "./metaData"
 import Truth from "./Truths"
 import { logEvent } from "../../../utils/googleAnalytics"
 
 export default function Page(): JSX.Element {
+  // State variables
   const [aValue, setAValue] = useState(true)
   const [bValue, setBValue] = useState(true)
   const [selectedOperation, setSelectedOperation] = useState("AND")
   const [result, setResult] = useState<string | boolean>("")
   const [truthTable, setTruthTable] = useState<{ a: boolean; b: boolean; result: boolean }[]>([])
 
+  // Calculate the result of the selected operation
   const calculateResult = () => {
     if (selectedOperation === "NOT") {
       setResult((Truth[selectedOperation] as (a: boolean) => boolean)(aValue).toString())
@@ -23,6 +25,7 @@ export default function Page(): JSX.Element {
       )
     }
 
+    // Generate truth table
     const table = [
       {
         a: true,
