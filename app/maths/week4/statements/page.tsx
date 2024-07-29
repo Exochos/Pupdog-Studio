@@ -72,7 +72,7 @@ export default function Page(): JSX.Element {
       </head>
       <body>
         <div className="container mx-auto flex h-screen w-screen items-center justify-center p-4">
-          <div className="card aspect-[1/1.75] w-full max-w-xs bg-white p-2 shadow-xl transition-transform duration-300 md:w-3/5">
+          <div className="card w-full max-w-xs bg-white p-2 shadow-xl transition-transform duration-300 md:w-3/5">
             <h2 className="m-4 text-center text-xl font-bold text-black">Mathematical Statements</h2>
             <p className="m-4 text-center text-lg text-black">
               This page demonstrates the truth values of mathematical statements. As well as the truth table for each
