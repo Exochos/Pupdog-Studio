@@ -103,7 +103,8 @@ export default function Page(): JSX.Element {
             <button className="btn btn-outline btn-primary my-2" onClick={handleClick}>
               Generate Power Set
             </button>
-            <p id="powerSet"></p>
+            <p id="powerSet" className="m-4 text-m text-black"
+            >{powerSet.length > 0 && `Power Set: {${powerSet.join(", ")}}`}</p>
           </div>
         </div>
       </body>
