@@ -104,7 +104,7 @@ export default function Page(): JSX.Element {
               Generate Power Set
             </button>
             <p id="powerSet" className="text-m m-4 text-black">
-              {powerSet.length > 0 && `Power Set: {${powerSet.join(", ")}}`}
+              <code>{powerSet.length > 0 && `{${powerSet.join(", ")}}`}</code>
             </p>
           </div>
         </div>
