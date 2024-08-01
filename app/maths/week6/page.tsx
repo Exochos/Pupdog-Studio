@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from "react"
-// @ts-ignore
+import React, { useEffect, useState } from "react"
+import "animate.css"
 import { BlockMath } from "react-katex"
 import "katex/dist/katex.min.css"
 import { logEvent } from "../../utils/googleAnalytics"
@@ -16,6 +16,7 @@ function Page(): JSX.Element {
   const [permutations, setPermutations] = useState<number | null>(null)
   const [combinations, setCombinations] = useState<number | null>(null)
   const [activeTab, setActiveTab] = useState<"permutations" | "combinations">("combinations")
+  const [animate, setAnimate] = useState<boolean>(false)
 
   // Error messages
   const errorMessages = {
@@ -24,7 +25,7 @@ function Page(): JSX.Element {
     noValues: "Please enter values for n and r.",
   }
 
-  const formula = `C(n, r) = \\frac{n!}{r!(n - r)!}`
+  const formula = `C(n, k) = \\frac{n!}{r!(n - k)!}`
 
   // Factorial function
   const factorial = (n: number): number => {
@@ -77,22 +78,34 @@ function Page(): JSX.Element {
   })!}`
   const permutationFormula = `P(${N || "n"}, ${R || "r"}) = \\frac{${N || "n"}!}{(${N || "n"} - ${R || "r"})!}`
 
+  useEffect(() => {
+    // Trigger the animation
+    setAnimate(true)
+  }, [])
+
   return (
     <>
       <head>
-        <title>Permutations and Combinations Calculator || MathCalc</title>
+        <title>Permutations and Combinations Calculator </title>
         <meta
           name="description"
           content="This application calculates permutations and combinations based on user input."
         />
+        <meta
+          name="keywords"
+          content="Permutations, Combinations, Mathematics, Discrete Mathematics, Factorial, Calculator"
+        />
       </head>
 
       <div className="container mx-auto flex h-screen w-screen items-center justify-center">
-        <div className="card m-2 w-full bg-green-100 p-2 shadow-xl transition-transform duration-300 md:w-2/5">
-          <h2 className="my-2 text-xl font-bold text-black">Discrete Mathematics: Permutations and Combinations</h2>
+        <div
+          className={`card m-2 w-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
+            animate ? "animate__animated animate__jackInTheBox" : ""
+          }`}
+        >
           <div className="tabs tabs-lifted">
             <button
-              className={`tab-bordered tab ${activeTab === "combinations" ? "tab-active" : ""}`}
+              className={`tab-bordered text-l tab ${activeTab === "combinations" ? "tab-active" : ""}`}
               onClick={() => setActiveTab("combinations")}
             >
               Combinations
@@ -118,7 +131,10 @@ function Page(): JSX.Element {
                       <p>
                         In Discrete Mathematics, a combination is a selection of a group of items from a larger group,
                         where the order of selection does not matter. Combinations are used to calculate the number of
-                        ways to choose <strong>r</strong> items from a set of <strong>n</strong> different items.
+                        ways to choose <strong>r</strong> items from a set of <strong>k </strong>different items. <br />
+                        <br />
+                        <i> Essentially n choose k</i>
+                        <br />
                         <br />
                         The formula for combinations is given by:
                       </p>
@@ -128,6 +144,9 @@ function Page(): JSX.Element {
                         <strong>n</strong> is the total number of items
                         <br />
                         <strong>r</strong> is the number of items to choose.
+                        <br />
+                        <strong>!</strong> denotes the factorial of a number. which is the product of all positive
+                        integers
                       </p>
                     </article>
                   </div>
@@ -139,8 +158,14 @@ function Page(): JSX.Element {
                   </label>
                   <div className="collapse-content peer-checked:block">
                     <hr className="mb-2 w-full border-gray-300" />
+                    <p className="text-sm text-gray-700">
+                      Enter the values of <strong>n</strong> and <strong>r</strong> to calculate the number of
+                      combinations.
+                    </p>
+                    <hr className="mt-2 w-full border-gray-300" />
                     <div className="flex items-start justify-between">
                       <div className="gap flex flex-col">
+                        <label className="text-gray-700">Total number of items (n):</label>
                         <input
                           type="number"
                           className="input input-bordered mb-2"
@@ -151,6 +176,7 @@ function Page(): JSX.Element {
                             calculateCombinations()
                           }}
                         />
+                        <label className="text-gray-700">Number of items to choose (r):</label>
                         <input
                           type="number"
                           className="input input-bordered mb-2"
@@ -163,7 +189,9 @@ function Page(): JSX.Element {
                         />
                       </div>
                       <div className="mx-4 flex items-center justify-center px-2">
-                        <BlockMath math={combinationFormula + " = " + (combinations || 0)} />
+                        <div className="m-10 flex flex-col gap-2 text-black">
+                          <BlockMath math={combinationFormula + " = " + (combinations || 0)} />
+                        </div>
                       </div>
                     </div>
                     {error && <p className="mt-4 text-red-500">{error}</p>}
