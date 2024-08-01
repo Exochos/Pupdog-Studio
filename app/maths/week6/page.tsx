@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react"
 import "animate.css"
+// @ts-ignore
 import { BlockMath } from "react-katex"
 import "katex/dist/katex.min.css"
 import { logEvent } from "../../utils/googleAnalytics"

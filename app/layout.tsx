@@ -20,8 +20,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   }, [])
 
   return (
-    <html lang="en"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9359140916151157"
-     crossorigin="anonymous"></script>
+    <html lang="en">
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9359140916151157"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
       <body>{children}</body>
     </html>
   )
