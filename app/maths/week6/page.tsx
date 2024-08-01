@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react"
+// @ts-ignore
 import { BlockMath } from "react-katex"
 import "katex/dist/katex.min.css"
 import { logEvent } from "../../utils/googleAnalytics"
@@ -63,61 +64,68 @@ function Page(): JSX.Element {
   const permutationFormula = `P(${N || "n"}, ${R || "r"}) = \\frac{${N || "n"}!}{(${N || "n"} - ${R || "r"})!}`
 
   return (
-    <div className="container mx-auto flex h-screen w-screen items-center justify-center">
-      <div className="card w-full p-2 shadow-xl transition-transform duration-300 md:w-2/5">
-        <h2 className="text-2xl font-bold text-black">Permutations and Combinations Calculator</h2>
-        <code className="text-sm text-gray-700">
-          Create an application that calculates permutations and combinations based on user input. The application
-          should allow the user to enter the values for n (total items) and r (items to be chosen or arranged) and then
-          display the results.
-        </code>
-        <hr className="my-4" />
-        <div className="my-4">
-          <article className="text-sm text-gray-700">
-            The formula for combinations is given by:
-            <BlockMath math={formula} />
-            <BlockMath math={combinationFormula} />
-            <hr />
-            The formula for permutations is given by:
-            <BlockMath math={permutationFormula} />
-          </article>
-        </div>
-        <div className="form-control">
-          <label htmlFor="n" className="label">
-            Total Items (n)
-          </label>
-          <input
-            type="number"
-            id="n"
-            className="input input-bordered"
-            placeholder="Enter the total number of items"
-            value={N}
-            onChange={(e) => setN(e.target.value)}
-          />
+    <>
+      <head>
+        <title>Permutations and Combinations Calculator</title>
+        <meta name="description" content="Permutations and Combinations Calculator" />
+      </head>
 
-          <label htmlFor="r" className="label">
-            Items to Choose (r): {R}
-          </label>
-          <input
-            type="number"
-            id="r"
-            className="input input-bordered"
-            placeholder="Enter the number of items to choose"
-            value={R}
-            onChange={(e) => setR(e.target.value)}
-          />
+      <div className="container mx-auto flex h-screen w-screen items-center justify-center">
+        <div className="card w-full p-2 shadow-xl transition-transform duration-300 md:w-2/5">
+          <h2 className="text-2xl font-bold text-black">Permutations and Combinations Calculator</h2>
+          <code className="text-sm text-gray-700">
+            Create an application that calculates permutations and combinations based on user input. The application
+            should allow the user to enter the values for n (total items) and r (items to be chosen or arranged) and
+            then display the results.
+          </code>
           <hr className="my-4" />
-          <button className="btn btn-outline btn-primary m-2" onClick={handleClick}>
-            Calculate Permutations and Combinations
-          </button>
-        </div>
-        {error && <p className="text-red-500">{error}</p>}
-        <div id="results" className="mt-4 text-gray-700">
-          {permutations !== null && <p>Permutations (P(n, r)): {permutations}</p>}
-          {combinations !== null && <p>Combinations (C(n, r)): {combinations}</p>}
+          <div className="my-4">
+            <article className="text-sm text-gray-700">
+              The formula for combinations is given by:
+              <BlockMath math={formula} />
+              <BlockMath math={combinationFormula + " = " + combinations} />
+              <hr />
+              The formula for permutations is given by:
+              <BlockMath math={permutationFormula} />
+            </article>
+          </div>
+          <div className="form-control">
+            <label htmlFor="n" className="label">
+              Total Items (n)
+            </label>
+            <input
+              type="number"
+              id="n"
+              className="input input-bordered"
+              placeholder="Enter the total number of items"
+              value={N}
+              onChange={(e) => setN(e.target.value)}
+            />
+
+            <label htmlFor="r" className="label">
+              Items to Choose (r): {R}
+            </label>
+            <input
+              type="number"
+              id="r"
+              className="input input-bordered"
+              placeholder="Enter the number of items to choose"
+              value={R}
+              onChange={(e) => setR(e.target.value)}
+            />
+            <hr className="my-4" />
+            <button className="btn btn-outline btn-primary m-2" onClick={handleClick}>
+              Calculate Permutations and Combinations
+            </button>
+          </div>
+          {error && <p className="text-red-500">{error}</p>}
+          <div id="results" className="mt-4 text-gray-700">
+            {permutations !== null && <p>Permutations (P(n, r)): {permutations}</p>}
+            {combinations !== null && <p>Combinations (C(n, r)): {combinations}</p>}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
