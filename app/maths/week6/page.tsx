@@ -15,6 +15,7 @@ function Page(): JSX.Element {
   const [error, setError] = useState<string>("")
   const [permutations, setPermutations] = useState<number | null>(null)
   const [combinations, setCombinations] = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState<"permutations" | "combinations">("permutations")
 
   // Error messages
   const errorMessages = {
@@ -66,29 +67,55 @@ function Page(): JSX.Element {
   return (
     <>
       <head>
-        <title>Permutations and Combinations Calculator</title>
-        <meta name="description" content="Permutations and Combinations Calculator" />
+        <title>Permutations and Combinations Calculator || MathCalc</title>
+        <meta
+          name="description"
+          content="This application calculates permutations and combinations based on user input."
+        />
       </head>
 
       <div className="container mx-auto flex h-screen w-screen items-center justify-center">
         <div className="card w-full p-2 shadow-xl transition-transform duration-300 md:w-2/5">
           <h2 className="text-2xl font-bold text-black">Permutations and Combinations Calculator</h2>
-          <code className="text-sm text-gray-700">
-            Create an application that calculates permutations and combinations based on user input. The application
-            should allow the user to enter the values for n (total items) and r (items to be chosen or arranged) and
-            then display the results.
-          </code>
           <hr className="my-4" />
-          <div className="my-4">
-            <article className="text-sm text-gray-700">
-              The formula for combinations is given by:
-              <BlockMath math={formula} />
-              <BlockMath math={combinationFormula + " = " + combinations} />
-              <hr />
-              The formula for permutations is given by:
-              <BlockMath math={permutationFormula} />
-            </article>
+
+          <div className="tabs tabs-lifted">
+            <button
+              className={`tab-bordered tab ${activeTab === "permutations" ? "tab-active" : ""}`}
+              onClick={() => setActiveTab("permutations")}
+            >
+              Permutations
+            </button>
+            <button
+              className={`tab-bordered tab ${activeTab === "combinations" ? "tab-active" : ""}`}
+              onClick={() => setActiveTab("combinations")}
+            >
+              Combinations
+            </button>
           </div>
+
+          <div className="my-4">
+            {activeTab === "combinations" && (
+              <article className="text-sm text-gray-700">
+                The formula for combinations is given by:
+                <br />
+                <BlockMath math={formula} />
+                <hr className="my-4" />
+                <p>
+                  Combinations are the number of ways to choose r items from a set of n items, where the order of
+                  selection does not matter.
+                </p>
+                <BlockMath math={combinationFormula + " = " + combinations} />
+              </article>
+            )}
+            {activeTab === "permutations" && (
+              <article className="text-sm text-gray-700">
+                The formula for permutations is given by:
+                <BlockMath math={permutationFormula} />
+              </article>
+            )}
+          </div>
+
           <div className="form-control">
             <label htmlFor="n" className="label">
               Total Items (n)
@@ -115,13 +142,13 @@ function Page(): JSX.Element {
             />
             <hr className="my-4" />
             <button className="btn btn-outline btn-primary m-2" onClick={handleClick}>
-              Calculate Permutations and Combinations
+              Calculate {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
             </button>
           </div>
           {error && <p className="text-red-500">{error}</p>}
           <div id="results" className="mt-4 text-gray-700">
-            {permutations !== null && <p>Permutations (P(n, r)): {permutations}</p>}
-            {combinations !== null && <p>Combinations (C(n, r)): {combinations}</p>}
+            {activeTab === "permutations" && permutations !== null && <p>Permutations (P(n, r)): {permutations}</p>}
+            {activeTab === "combinations" && combinations !== null && <p>Combinations (C(n, r)): {combinations}</p>}
           </div>
         </div>
       </div>
