@@ -75,36 +75,40 @@ function Page(): JSX.Element {
       </head>
 
       <div className="container mx-auto flex h-screen w-screen items-center justify-center">
-        <div className="card w-full p-2 shadow-xl transition-transform duration-300 md:w-2/5">
-          <h2 className="text-2xl font-bold text-black">Permutations and Combinations Calculator</h2>
-          <hr className="my-4" />
-
+        <div className="card m-2 w-full bg-green-100 p-2 shadow-xl transition-transform duration-300 md:w-2/5">
+          <h2 className="my-2 text-xl font-bold text-black">Discrete Mathematics: Permutations and Combinations</h2>
           <div className="tabs tabs-lifted">
-            <button
-              className={`tab-bordered tab ${activeTab === "permutations" ? "tab-active" : ""}`}
-              onClick={() => setActiveTab("permutations")}
-            >
-              Permutations
-            </button>
             <button
               className={`tab-bordered tab ${activeTab === "combinations" ? "tab-active" : ""}`}
               onClick={() => setActiveTab("combinations")}
             >
               Combinations
             </button>
+            <button
+              className={`tab-bordered tab ${activeTab === "permutations" ? "tab-active" : ""}`}
+              onClick={() => setActiveTab("permutations")}
+            >
+              Permutations
+            </button>
           </div>
 
           <div className="my-4">
             {activeTab === "combinations" && (
               <article className="text-sm text-gray-700">
-                The formula for combinations is given by:
+                <p>
+                  In Discrete Mathematics, a combination is a selection of items from a larger pool, where the order of
+                  selection does not matter. Combinations are used to calculate the number of ways to choose{" "}
+                  <strong>r</strong> items from a set of <strong>n</strong> items. The formula for combinations is given
+                  by:
+                </p>
                 <br />
                 <BlockMath math={formula} />
-                <hr className="my-4" />
-                <p>
-                  Combinations are the number of ways to choose r items from a set of n items, where the order of
-                  selection does not matter.
+                <p className="mt-4">
+                  where <strong>n</strong> is the total number of items and <strong>r</strong> is the number of items to
+                  choose.
                 </p>
+                <hr className="my-4" />
+
                 <BlockMath math={combinationFormula + " = " + combinations} />
               </article>
             )}
@@ -146,10 +150,6 @@ function Page(): JSX.Element {
             </button>
           </div>
           {error && <p className="text-red-500">{error}</p>}
-          <div id="results" className="mt-4 text-gray-700">
-            {activeTab === "permutations" && permutations !== null && <p>Permutations (P(n, r)): {permutations}</p>}
-            {activeTab === "combinations" && combinations !== null && <p>Combinations (C(n, r)): {combinations}</p>}
-          </div>
         </div>
       </div>
     </>
