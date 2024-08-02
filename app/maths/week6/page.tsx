@@ -16,6 +16,8 @@ function Page(): JSX.Element {
   const [error, setError] = useState<string>("")
   const [permutations, setPermutations] = useState<number | null>(null)
   const [combinations, setCombinations] = useState<number | null>(null)
+  const [steps, setSteps] = useState<string[]>([])
+  const [displayedSteps, setDisplayedSteps] = useState<string[]>([])
   const [activeTab, setActiveTab] = useState<"permutations" | "combinations">("combinations")
   const [animate, setAnimate] = useState<boolean>(false)
 
@@ -34,18 +36,46 @@ function Page(): JSX.Element {
     return n * factorial(n - 1)
   }
 
-  // Calculate combinations
+  // Calculate combinations with steps
   const calculateCombinations = () => {
     const n = parseInt(N as string)
     const r = parseInt(R as string)
 
     if (isNaN(n) || n < 0 || isNaN(r) || r < 0 || r > n) {
       setCombinations(null)
+      setSteps([])
+      setDisplayedSteps([])
       return
     }
 
-    setCombinations(factorial(n) / (factorial(r) * factorial(n - r)))
+    const nFactorial = factorial(n)
+    const rFactorial = factorial(r)
+    const nrFactorial = factorial(n - r)
+
+    const combinationValue = nFactorial / (rFactorial * nrFactorial)
+
+    setCombinations(combinationValue)
+    setSteps([
+      `C(${n}, ${r}) = \\frac{${n}!}{${r}!(${n} - ${r})!}`,
+      `C(${n}, ${r}) = \\frac{${nFactorial}}{${rFactorial}!${nrFactorial}}`,
+      `C(${n}, ${r}) = ${combinationValue}`,
+    ])
   }
+
+  // Display steps one by one
+  useEffect(() => {
+    setDisplayedSteps([])
+    let stepIndex = 0
+    const interval = setInterval(() => {
+      if (stepIndex < steps.length) {
+        setDisplayedSteps((prevSteps) => [...prevSteps, steps[stepIndex]])
+        stepIndex += 1
+      } else {
+        clearInterval(interval)
+      }
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [steps])
 
   // Handle button click
   const handleClick = () => {
@@ -64,14 +94,20 @@ function Page(): JSX.Element {
     }
 
     setError("")
-    const permutations = factorial(n) / factorial(n - r)
-    const combinations = factorial(n) / (factorial(r) * factorial(n - r))
-
-    setPermutations(permutations)
-    setCombinations(combinations)
-
+    calculateCombinations()
     // Log event
     logEvent("Calculate", "Permutations and Combinations", `N: ${n}, R: ${r}`)
+  }
+
+  // Handle reset button click
+  const handleReset = () => {
+    setN("")
+    setR("")
+    setError("")
+    setPermutations(null)
+    setCombinations(null)
+    setSteps([])
+    setDisplayedSteps([])
   }
 
   const combinationFormula = `C(${N || "n"}, ${R || "r"}) = \\frac{${N || "n"}!}{${R || "r"}!(${N || "n"} - ${
@@ -100,8 +136,8 @@ function Page(): JSX.Element {
 
       <div className="container mx-auto flex h-screen w-screen items-center justify-center">
         <div
-          className={`mt-10 h-full w-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
-            animate ? "animate__animated animate__jackInTheBox" : ""
+          className={`h-full w-full border-2 border-black bg-blue-100 p-6 shadow-xl transition-transform duration-300 ${
+            animate ? "animate__animated animate__zoomInUp" : ""
           }`}
         >
           <div className="tabs tabs-lifted">
@@ -152,50 +188,58 @@ function Page(): JSX.Element {
                     </article>
                   </div>
                 </div>
+
                 <div className="collapse collapse-plus rounded-none border-y-2 border-black p-1">
-                  <input type="checkbox" id="collapse2" className="peer" />
+                  <input type="checkbox" id="collapse2" className="peer" defaultChecked />
                   <label htmlFor="collapse2" className="collapse-title cursor-pointer text-black">
                     Calculate Combinations
                   </label>
                   <div className="collapse-content peer-checked:block">
                     <hr className="mb-2 w-full border-gray-300" />
-                    <p className="text-sm text-gray-700">
-                      Enter the values of <strong>n</strong> and <strong>r</strong> to calculate the number of
+                    <p className="m-4 text-sm text-gray-700">
+                      Enter the values of <strong>n</strong> and <strong>k</strong> to calculate the number of
                       combinations.
                     </p>
-                    <hr className="mt-2 w-full border-gray-300" />
-                    <div className="flex items-start justify-between">
-                      <div className="gap flex flex-col">
+                    <hr className="m-4 mt-2 w-full border-gray-300" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex flex-col">
                         <label className="text-gray-700">Total number of items (n):</label>
                         <input
-                          type="number"
-                          className="input input-bordered mb-2"
-                          placeholder="Enter the value of n"
+                          type="string"
+                          className="input-m input input-bordered m-4 mb-2 bg-gray-100 text-black"
+                          placeholder="Enter n"
                           value={N}
                           onChange={(e) => {
                             setN(e.target.value)
                             calculateCombinations()
                           }}
                         />
-                        <label className="text-gray-700">Number of items to choose (r):</label>
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-gray-700">Number of items to choose (k):</label>
                         <input
-                          type="number"
-                          className="input input-bordered mb-2"
-                          placeholder="Enter the value of r"
+                          type="string"
+                          className="input-m input input-bordered m-4 mb-2 bg-gray-100 text-black"
+                          placeholder="Enter the value of k"
                           value={R}
                           onChange={(e) => {
                             setR(e.target.value)
-                            calculateCombinations()
                           }}
                         />
                       </div>
-                      <div className="mx-4 flex items-center justify-center px-2">
-                        <div className="m-10 flex flex-col gap-2 text-black">
-                          <BlockMath math={combinationFormula + " = " + (combinations || 0)} />
-                        </div>
-                      </div>
+                    </div>
+                    <div className="mt-4 flex items-center justify-center gap-4">
+                      <button className="btn btn-primary" onClick={handleClick}>
+                        Calculate
+                      </button>
+                      <button className="btn btn-secondary" onClick={handleReset}>
+                        Reset
+                      </button>
                     </div>
                     {error && <p className="mt-4 text-red-500">{error}</p>}
+                  </div>
+                  <div className="mt-4 text-sm text-gray-700">
+                    <BlockMath math={combinationFormula + " = " + (combinations || 0)} />
                   </div>
                 </div>
               </div>
