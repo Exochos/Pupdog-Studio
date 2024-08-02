@@ -100,7 +100,7 @@ function Page(): JSX.Element {
 
       <div className="container mx-auto flex h-screen w-screen items-center justify-center">
         <div
-          className={`card m-2 w-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
+          className={`mt-10 w-full h-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
             animate ? "animate__animated animate__jackInTheBox" : ""
           }`}
         >
@@ -124,7 +124,7 @@ function Page(): JSX.Element {
               <div className="join join-vertical w-full">
                 <div className="collapse collapse-plus rounded-none border-y-2 border-black p-1">
                   <input type="checkbox" id="collapse1" className="peer" defaultChecked />
-                  <label htmlFor="collapse1" className="text-bold collapse-title cursor-pointer text-black">
+                  <label htmlFor="collapse1" className="text-bold collapse-title cursor-pointer text-black text-lg">
                     Combinations
                   </label>
                   <div className="collapse-content peer-checked:block">
