@@ -54,11 +54,24 @@ function Page(): JSX.Element {
 
     const combinationValue = nFactorial / (rFactorial * nrFactorial)
 
+    // Function to find the greatest common divisor (GCD)
+    const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
+
+    // Reduce the fraction
+    const numerator = nFactorial
+    const denominator = rFactorial * nrFactorial
+    const divisor = gcd(numerator, denominator)
+    const reducedNumerator = numerator / divisor
+    const reducedDenominator = denominator / divisor
+
     setCombinations(combinationValue)
     setSteps([
       `C(${n}, ${r}) = \\frac{${n}!}{${r}!(${n} - ${r})!}`,
-      `C(${n}, ${r}) = \\frac{${nFactorial}}{${rFactorial}!${nrFactorial}}`,
-      `C(${n}, ${r}) = ${combinationValue}`,
+      `C(${n}, ${r}) = \\frac{${nFactorial}}{${rFactorial} \\cdot ${nrFactorial}}`,
+      `C(${n}, ${r}) = \\frac{${numerator}}{${denominator}}`,
+      reducedDenominator !== 1
+        ? `C(${n}, ${r}) = \\frac{${reducedNumerator}}{${reducedDenominator}}`
+        : `C(${n}, ${r}) = ${reducedNumerator}`,
     ])
   }
 
@@ -68,7 +81,7 @@ function Page(): JSX.Element {
     let stepIndex = 0
     const interval = setInterval(() => {
       if (stepIndex < steps.length) {
-        setDisplayedSteps((prevSteps) => [...prevSteps, steps[stepIndex]])
+        setDisplayedSteps((prevSteps) => [...prevSteps, steps[stepIndex]].filter((step) => step !== undefined))
         stepIndex += 1
       } else {
         clearInterval(interval)
@@ -123,7 +136,7 @@ function Page(): JSX.Element {
   return (
     <>
       <head>
-        <title>Permutations and Combinations Calculator </title>
+        <title>Permutations and Combinations Calculator</title>
         <meta
           name="description"
           content="This application calculates permutations and combinations based on user input."
@@ -134,9 +147,9 @@ function Page(): JSX.Element {
         />
       </head>
 
-      <div className="container mx-auto flex h-screen w-screen items-center justify-center">
+      <div className="container mx-auto flex min-h-[calc(100vh-2rem)] items-center justify-center py-4">
         <div
-          className={`h-full w-full border-2 border-black bg-blue-100 p-6 shadow-xl transition-transform duration-300 ${
+          className={`h-full w-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
             animate ? "animate__animated animate__zoomInUp" : ""
           }`}
         >
@@ -229,17 +242,26 @@ function Page(): JSX.Element {
                       </div>
                     </div>
                     <div className="mt-4 flex items-center justify-center gap-4">
-                      <button className="btn btn-primary" onClick={handleClick}>
+                      <button className="btn btn-outline btn-success" onClick={handleClick}>
                         Calculate
                       </button>
-                      <button className="btn btn-secondary" onClick={handleReset}>
+                      <button className="btn btn-outline btn-warning" onClick={handleReset}>
                         Reset
                       </button>
                     </div>
                     {error && <p className="mt-4 text-red-500">{error}</p>}
                   </div>
+                  <hr className="m-4 w-full border-gray-700" />
                   <div className="mt-4 text-sm text-gray-700">
-                    <BlockMath math={combinationFormula + " = " + (combinations || 0)} />
+                    <BlockMath math={combinationFormula} />
+                    <div className="mt-4">
+                      {displayedSteps.map((step, index) => (
+                        <div key={index} className="animate__animated animate__fadeInUp">
+                          <br />
+                          <BlockMath math={step} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -310,6 +332,19 @@ function Page(): JSX.Element {
                 </div>
               </div>
             )}
+            <footer className="mt-2 w-full text-center text-xs text-black">
+              <p>
+                Created with ❤️ by Jeremy Ward <br />
+                <a
+                  href="https://github.com/Exochos/Pupdog-Studio/blob/main/app/maths/week6/page.tsx"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline"
+                >
+                  View Source Code on GitHub
+                </a>
+              </p>
+            </footer>
           </div>
         </div>
       </div>
