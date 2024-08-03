@@ -335,7 +335,7 @@ function Page(): JSX.Element {
             )}
             <footer className="mt-2 w-full text-center text-xs text-black">
               <p>
-                Created with ❤️ by Jeremy Ward <br />
+                Created with ❤️ by <a href="https://pupdog.studio/" className="underline">Pupdog Studio</a><br />
                 <a
                   href="https://github.com/Exochos/Pupdog-Studio/blob/main/app/maths/week6/page.tsx"
                   target="_blank"
@@ -343,7 +343,8 @@ function Page(): JSX.Element {
                   className="underline"
                 >
                   View Source Code on GitHub
-                </a>
+                </a><br />
+                Mit License © 2024 Pupdog Studio
               </p>
             </footer>
           </div>
