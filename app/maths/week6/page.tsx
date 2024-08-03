@@ -29,14 +29,59 @@ function Page(): JSX.Element {
   }
 
   const formula = `C(n, k) = \\frac{n!}{r!(n - k)!}`
-  const formula2 = `P(n, k) = \\frac{n!}{(n - k)!}`
+  const formula2 = `P(n, r) = \\frac{n!}{(n - r)!}`
 
-  // Factorial function
-  const factorial = (n: number): number => {
-    if (n === 0) return 1
-    return n * factorial(n - 1)
+  // Show the steps to calculate the Permutations
+  const calculatePermutations = () => {
+    const n = parseInt(N as string)
+    const r = parseInt(R as string)
+    if (isNaN(n) || n < 0 || isNaN(r) || r < 0 || r > n) {
+      setPermutations(null)
+      setSteps([])
+      setDisplayedSteps([])
+      return
+    }
+    const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
+    const calculateFactorial = (num: number): bigint => {
+      let result = BigInt(1)
+      for (let i = 2; i <= num; i++) {
+        result *= BigInt(i)
+      }
+      return result
+    }
+    const nFactorial = calculateFactorial(n)
+    const nrFactorial = calculateFactorial(n - r)
+    const numerator = nFactorial
+    const denominator = nrFactorial
+    const steps = [
+      `P(${n}, ${r}) = \\frac{${n}!}{(${n} - ${r})!}`,
+      `P(${n}, ${r}) = \\frac{${nFactorial}}{${nrFactorial}}`,
+      `P(${n}, ${r}) = \\frac{${numerator}}{${denominator}}`,
+    ]
+    let currentNumerator = numerator
+    let currentDenominator = denominator
+    while (currentDenominator !== BigInt(1)) {
+      const divisor = gcd(Number(currentNumerator), Number(currentDenominator))
+      if (divisor === 1) break
+
+      const newNumerator = currentNumerator / BigInt(divisor)
+      const newDenominator = currentDenominator / BigInt(divisor)
+
+      steps.push(`P(${n}, ${r}) = ( ${divisor} ) * \\frac{${newNumerator}}{${newDenominator}}`)
+
+      currentNumerator = newNumerator
+      currentDenominator = newDenominator
+    }
+
+    if (currentDenominator === BigInt(1)) {
+      steps.push(`P(${n}, ${r}) = ${currentNumerator}`)
+    } else {
+      steps.push(`P(${n}, ${r}) = \\frac{${currentNumerator}}{${currentDenominator}}`)
+    }
+
+    setSteps(steps)
+    setPermutations(Number(currentNumerator / currentDenominator))
   }
-
 
   // Show the steps to calculate the Combinations
   const calculateCombinations = () => {
@@ -107,7 +152,7 @@ function Page(): JSX.Element {
     return () => clearInterval(interval)
   }, [steps])
 
-  // Handle button click
+  // Handle calculate button click
   const handleClick = () => {
     const n = parseInt(N as string)
     const r = parseInt(R as string)
@@ -124,9 +169,13 @@ function Page(): JSX.Element {
     }
 
     setError("")
-    calculateCombinations()
+    if (activeTab === "combinations") {
+      calculateCombinations()
+    } else {
+      calculatePermutations()
+    }
     // Log event
-    logEvent("Calculate", "Permutations and Combinations", `N: ${n}, R: ${r}`)
+    logEvent("Calculate", `${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}`, `N: ${n}, R: ${r}`)
   }
 
   // Handle reset button click
@@ -173,13 +222,19 @@ function Page(): JSX.Element {
           <div className="tabs tabs-lifted">
             <button
               className={`tab-bordered text-l tab ${activeTab === "combinations" ? "tab-active" : ""}`}
-              onClick={() => setActiveTab("combinations")}
+              onClick={() => {
+                setActiveTab("combinations")
+                handleReset()
+              }}
             >
               Combinations
             </button>
             <button
               className={`tab-bordered tab ${activeTab === "permutations" ? "tab-active" : ""}`}
-              onClick={() => setActiveTab("permutations")}
+              onClick={() => {
+                setActiveTab("permutations")
+                handleReset()
+              }}
             >
               Permutations
             </button>
@@ -289,9 +344,9 @@ function Page(): JSX.Element {
             )}
             {activeTab === "permutations" && (
               <div className="join join-vertical w-full">
-                <div className="collapse collapse-plus p-1">
-                  <input type="checkbox" id="collapse3" className="peer" />
-                  <label htmlFor="collapse3" className="collapse-title cursor-pointer text-black">
+                <div className="collapse collapse-plus rounded-none border-y-2 border-black p-1">
+                  <input type="checkbox" id="collapse1" className="peer" defaultChecked />
+                  <label htmlFor="collapse1" className="text-bold collapse-title cursor-pointer text-lg text-black">
                     Permutations
                   </label>
                   <div className="collapse-content peer-checked:block">
@@ -301,6 +356,7 @@ function Page(): JSX.Element {
                         Permutations are used to calculate the number of ways to choose <strong>r</strong> items from a
                         set of <strong>n</strong> different items where the order of selection matters.
                         <br />
+                        <br />
                         The formula for permutations is given by:
                       </p>
                       <br />
@@ -309,65 +365,84 @@ function Page(): JSX.Element {
                         <strong>n</strong> is the total number of items
                         <br />
                         <strong>r</strong> is the number of items to choose.
+                        <br />
+                        <strong>!</strong> denotes the factorial of a number, which is the product of all positive
+                        integers up to that number.
                       </p>
                     </article>
                   </div>
                 </div>
-                <div className="collapse collapse-plus p-1">
-                  <input type="checkbox" id="collapse4" className="peer" />
-                  <label
-                    htmlFor="collapse4"
-                    className="collapse-title cursor-pointer text-black peer-checked:bg-gray-200"
-                  >
+
+                <div className="collapse collapse-plus rounded-none border-y-2 border-black p-1">
+                  <input type="checkbox" id="collapse2" className="peer" defaultChecked />
+                  <label htmlFor="collapse2" className="collapse-title cursor-pointer text-black">
                     Calculate Permutations
                   </label>
                   <div className="collapse-content peer-checked:block">
-                    <div className="flex items-start justify-between">
-                      <div className="flex flex-col gap-2">
-                        <label className="text-gray-700">Enter the value of n:</label>
+                    <hr className="mb-2 w-full border-gray-300" />
+                    <p className="m-4 text-sm text-gray-700">
+                      Enter the values of <strong>n</strong> and <strong>r</strong> to calculate the number of
+                      permutations.
+                    </p>
+                    <hr className="m-4 mt-2 w-full border-gray-300" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex flex-col">
+                        <label className="text-gray-700">Total number of items (n):</label>
                         <input
-                          type="number"
-                          className="input input-bordered"
-                          placeholder="Enter the value of n"
+                          type="string"
+                          className="input-m input input-bordered m-4 mb-2 bg-gray-100 text-black"
+                          placeholder="Enter n"
                           value={N}
-                          onChange={(e) => setN(e.target.value)}
-                          defaultChecked
+                          onChange={(e) => {
+                            setN(e.target.value)
+                            calculatePermutations()
+                          }}
                         />
-                        <label className="text-gray-700">Enter the value of r:</label>
+                      </div>
+                      <div className="flex flex-col">
+                        <label className="text-gray-700">Number of items to choose (r):</label>
                         <input
-                          type="number"
-                          className="input input-bordered"
+                          type="string"
+                          className="input-m input input-bordered m-4 mb-2 bg-gray-100 text-black"
                           placeholder="Enter the value of r"
                           value={R}
-                          onChange={(e) => setR(e.target.value)}
-                          defaultChecked
+                          onChange={(e) => {
+                            setR(e.target.value)
+                          }}
                         />
                       </div>
-                      <div className="collapse collapse-plus p-1">
-                        <input type="checkbox" id="collapse4" className="peer" />
-                        <label
-                          htmlFor="collapse4"
-                          className="collapse-title cursor-pointer text-black peer-checked:bg-gray-200"
-                        >
-                          Calculate Permutations
-                        </label>
-                        <div className="collapse-content peer-checked:block">
-                          <div className="ml-4">
-                            <BlockMath math={permutationFormula + " = " + (permutations || 0)} />
-                          </div>
-                        </div>
-                      </div>
                     </div>
-                    <button className="btn btn-primary mt-4" onClick={handleClick}>
-                      Calculate
-                    </button>
+                    <div className="mt-4 flex items-center justify-center gap-4">
+                      <button className="btn btn-outline btn-success" onClick={handleClick}>
+                        Calculate
+                      </button>
+                      <button className="btn btn-outline btn-warning" onClick={handleReset}>
+                        Reset
+                      </button>
+                    </div>
                     {error && <p className="mt-4 text-red-500">{error}</p>}
+                  </div>
+                </div>
+                <div className="collapse collapse-plus p-1">
+                  <input type="checkbox" id="collapse3" className="peer" defaultChecked />
+                  <label htmlFor="collapse3" className="collapse-title cursor-pointer text-black">
+                    Steps
+                  </label>
+                  <div className="collapse-content text-sm text-gray-700 peer-checked:block">
+                    <BlockMath math={permutationFormula} />
+                    <div className="flex flex-col gap-2">
+                      {displayedSteps.map((step, index) => (
+                        <div key={index} className="text-sm text-gray-700">
+                          <BlockMath math={step} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             )}
             <footer className="mt-2 w-full text-center text-xs text-black">
-              <hr className="pt-2 w-full border-gray-700" />
+              <hr className="w-full border-gray-700 pt-2" />
               <p>
                 Created with ❤️ by{" "}
                 <a href="https://pupdog.studio/" className="underline">
