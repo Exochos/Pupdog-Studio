@@ -29,6 +29,7 @@ function Page(): JSX.Element {
   }
 
   const formula = `C(n, k) = \\frac{n!}{r!(n - k)!}`
+  const formula2 = `P(n, k) = \\frac{n!}{(n - k)!}`
 
   // Factorial function
   const factorial = (n: number): number => {
@@ -36,43 +37,58 @@ function Page(): JSX.Element {
     return n * factorial(n - 1)
   }
 
-  // Calculate combinations with steps
+
+  // Show the steps to calculate the Combinations
   const calculateCombinations = () => {
     const n = parseInt(N as string)
     const r = parseInt(R as string)
-
     if (isNaN(n) || n < 0 || isNaN(r) || r < 0 || r > n) {
       setCombinations(null)
       setSteps([])
       setDisplayedSteps([])
       return
     }
-
-    const nFactorial = factorial(n)
-    const rFactorial = factorial(r)
-    const nrFactorial = factorial(n - r)
-
-    const combinationValue = nFactorial / (rFactorial * nrFactorial)
-
-    // Function to find the greatest common divisor (GCD)
     const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
-
-    // Reduce the fraction
+    const calculateFactorial = (num: number): bigint => {
+      let result = BigInt(1)
+      for (let i = 2; i <= num; i++) {
+        result *= BigInt(i)
+      }
+      return result
+    }
+    const nFactorial = calculateFactorial(n)
+    const rFactorial = calculateFactorial(r)
+    const nrFactorial = calculateFactorial(n - r)
     const numerator = nFactorial
     const denominator = rFactorial * nrFactorial
-    const divisor = gcd(numerator, denominator)
-    const reducedNumerator = numerator / divisor
-    const reducedDenominator = denominator / divisor
-
-    setCombinations(combinationValue)
-    setSteps([
+    const steps = [
       `C(${n}, ${r}) = \\frac{${n}!}{${r}!(${n} - ${r})!}`,
       `C(${n}, ${r}) = \\frac{${nFactorial}}{${rFactorial} \\cdot ${nrFactorial}}`,
       `C(${n}, ${r}) = \\frac{${numerator}}{${denominator}}`,
-      reducedDenominator !== 1
-        ? `C(${n}, ${r}) = \\frac{${reducedNumerator}}{${reducedDenominator}}`
-        : `C(${n}, ${r}) = ${reducedNumerator}`,
-    ])
+    ]
+    let currentNumerator = numerator
+    let currentDenominator = denominator
+    while (currentDenominator !== BigInt(1)) {
+      const divisor = gcd(Number(currentNumerator), Number(currentDenominator))
+      if (divisor === 1) break
+
+      const newNumerator = currentNumerator / BigInt(divisor)
+      const newDenominator = currentDenominator / BigInt(divisor)
+
+      steps.push(`C(${n}, ${r}) = ( ${divisor} ) * \\frac{${newNumerator}}{${newDenominator}}`)
+
+      currentNumerator = newNumerator
+      currentDenominator = newDenominator
+    }
+
+    if (currentDenominator === BigInt(1)) {
+      steps.push(`C(${n}, ${r}) = ${currentNumerator}`)
+    } else {
+      steps.push(`C(${n}, ${r}) = \\frac{${currentNumerator}}{${currentDenominator}}`)
+    }
+
+    setSteps(steps)
+    setCombinations(Number(currentNumerator / currentDenominator))
   }
 
   // Display steps one by one
@@ -252,13 +268,17 @@ function Page(): JSX.Element {
                     </div>
                     {error && <p className="mt-4 text-red-500">{error}</p>}
                   </div>
-                  <hr className="m-4 w-full border-gray-700" />
-                  <div className="mt-4 text-sm text-gray-700">
+                </div>
+                <div className="collapse collapse-plus p-1">
+                  <input type="checkbox" id="collapse3" className="peer" defaultChecked />
+                  <label htmlFor="collapse3" className="collapse-title cursor-pointer text-black">
+                    Steps
+                  </label>
+                  <div className="collapse-content text-sm text-gray-700 peer-checked:block">
                     <BlockMath math={combinationFormula} />
-                    <div className="mt-4">
+                    <div className="flex flex-col gap-2">
                       {displayedSteps.map((step, index) => (
-                        <div key={index} className="animate__animated animate__fadeInUp">
-                          <br />
+                        <div key={index} className="text-sm text-gray-700">
                           <BlockMath math={step} />
                         </div>
                       ))}
@@ -284,7 +304,7 @@ function Page(): JSX.Element {
                         The formula for permutations is given by:
                       </p>
                       <br />
-                      <BlockMath math={formula} />
+                      <BlockMath math={formula2} />
                       <p className="mt-4">
                         <strong>n</strong> is the total number of items
                         <br />
@@ -311,6 +331,7 @@ function Page(): JSX.Element {
                           placeholder="Enter the value of n"
                           value={N}
                           onChange={(e) => setN(e.target.value)}
+                          defaultChecked
                         />
                         <label className="text-gray-700">Enter the value of r:</label>
                         <input
@@ -319,10 +340,22 @@ function Page(): JSX.Element {
                           placeholder="Enter the value of r"
                           value={R}
                           onChange={(e) => setR(e.target.value)}
+                          defaultChecked
                         />
                       </div>
-                      <div className="ml-4">
-                        <BlockMath math={permutationFormula + " = " + (permutations || 0)} />
+                      <div className="collapse collapse-plus p-1">
+                        <input type="checkbox" id="collapse4" className="peer" />
+                        <label
+                          htmlFor="collapse4"
+                          className="collapse-title cursor-pointer text-black peer-checked:bg-gray-200"
+                        >
+                          Calculate Permutations
+                        </label>
+                        <div className="collapse-content peer-checked:block">
+                          <div className="ml-4">
+                            <BlockMath math={permutationFormula + " = " + (permutations || 0)} />
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <button className="btn btn-primary mt-4" onClick={handleClick}>
@@ -334,8 +367,13 @@ function Page(): JSX.Element {
               </div>
             )}
             <footer className="mt-2 w-full text-center text-xs text-black">
+              <hr className="pt-2 w-full border-gray-700" />
               <p>
-                Created with ❤️ by <a href="https://pupdog.studio/" className="underline">Pupdog Studio</a><br />
+                Created with ❤️ by{" "}
+                <a href="https://pupdog.studio/" className="underline">
+                  Pupdog Studio
+                </a>
+                <br />
                 <a
                   href="https://github.com/Exochos/Pupdog-Studio/blob/main/app/maths/week6/page.tsx"
                   target="_blank"
@@ -343,8 +381,11 @@ function Page(): JSX.Element {
                   className="underline"
                 >
                   View Source Code on GitHub
-                </a><br />
-                Mit License © 2024 Pupdog Studio
+                </a>
+                <br />
+                <a href="https://opensource.org/license/mit" target="_blank" rel="noreferrer" className="underline">
+                  MIT License © Pupdog Studio 2024
+                </a>
               </p>
             </footer>
           </div>
