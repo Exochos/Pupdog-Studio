@@ -81,6 +81,7 @@ function Page(): JSX.Element {
     let stepIndex = 0
     const interval = setInterval(() => {
       if (stepIndex < steps.length) {
+        // @ts-ignore
         setDisplayedSteps((prevSteps) => [...prevSteps, steps[stepIndex]].filter((step) => step !== undefined))
         stepIndex += 1
       } else {
