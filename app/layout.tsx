@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
           expires={150}
         >
-         In order to comply with the GDPR we are required to inform you that we use cookies on this website.
+          In order to comply with the GDPR we are required to inform you that we use cookies on this website.
         </CookieConsent>
         <Script
           async
