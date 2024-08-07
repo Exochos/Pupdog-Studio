@@ -57,13 +57,13 @@ const Week8Page = () => {
           <div className="container">
             {activeTab === "arithmetics" && (
               <>
-                <h1 className="text-2xl font-bold text-black my-4">Arithmetic Sequences:</h1>
+                <h1 className="my-4 text-2xl font-bold text-black">Arithmetic Sequences:</h1>
                 <div className="space-y-4"></div>
               </>
             )}
             {activeTab === "geometric" && (
               <>
-                <h1 className="text-2xl font-bold text-black my-4">Geometric Sequences:</h1>
+                <h1 className="my-4 text-2xl font-bold text-black">Geometric Sequences:</h1>
                 <div className="space-y-4"></div>
               </>
             )}
