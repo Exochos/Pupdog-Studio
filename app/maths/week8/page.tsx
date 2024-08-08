@@ -25,9 +25,9 @@ const Week8Page = () => {
           content="Arithmetic Sequences, Geometric Sequences, Sequences, Maths, Mathematics, Calculator"
         />
       </Head>
-      <div className="container mx-auto flex min-h-[calc(100vh-2rem)] items-center justify-center py-4">
+      <div className="container mx-auto flex items-center justify-center py-1">
         <div
-          className={`h-full w-full border-2 border-black bg-blue-100 p-2 shadow-xl transition-transform duration-300 ${
+          className={`h-full w-full border-2 border-black p-2 shadow-xl transition-transform duration-300 ${
             activeTab === "arithmetics" ? "animate__animated animate__zoomInUp" : ""
           }`}
         >
@@ -45,27 +45,28 @@ const Week8Page = () => {
               Geometric
             </button>
           </div>
-          <div className="container">
+          <div className="container p-2">
             {activeTab === "arithmetics" && (
               <>
-                <h1 className="p-2 text-xl font-bold text-black">Arithmetic Sequences:</h1>
-                <hr />
-                <div className="card w-full bg-base-100 shadow-xl">
-                  <article className="assemblage assemblage-like" id="KlB">
-                    <h3 className="heading">
-                      <span className="title">Arithmetic Sequences.</span>
-                    </h3>
-                    <p id="jcG">
-                      If the terms of a sequence differ by a constant, we say the sequence is{" "}
-                      <dfn className="terminology">arithmetic</dfn>. If the initial term (<InlineMath math="a_0" />) of
-                      the sequence is <InlineMath math="a" /> and the{" "}
-                      <dfn className="terminology">common difference</dfn> is <InlineMath math="d," /> then we have,
-                    </p>
-                    <p id="PjP">
-                      Recursive definition: <InlineMath math="a_n = a_{n-1} + d" /> with <InlineMath math="a_0 = a." />
-                    </p>
-                    <p id="vqY">
-                      Closed formula: <InlineMath math="a_n = a + dn." />
+                <div className="card m-2 mt-10 w-1/2 rounded-none border-2 border-black p-2 shadow-xl">
+                  <article>
+                    <div
+                      className="text-md absolute left-4 rounded-none bg-blue-100 px-2 py-1 font-semibold text-black shadow-md"
+                      style={{ top: "-20px" }}
+                    >
+                      Arithmetic Progression
+                    </div>
+                    <p className="ml-10 mt-4 text-sm text-gray-700">
+                      &quot;An arithmetic progression or arithmetic sequence is a sequence of numbers such that the
+                      difference from any succeeding term to its preceding term remains constant throughout the
+                      sequence. The constant difference is called common difference of that arithmetic
+                      progression.&quot; &nbsp;
+                      <a
+                        href="https://en.wikipedia.org/wiki/Arithmetic_progression"
+                        className="text-underlined text-blue-500"
+                      >
+                        source
+                      </a>
                     </p>
                   </article>
                 </div>
