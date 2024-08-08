@@ -28,6 +28,7 @@ const Week8Page = () => {
     // Add each step with a delay,
     newSteps.forEach((step, index) => {
       setTimeout(() => {
+        // @ts-ignore
         setSteps((prevSteps: never[]) => [...prevSteps, step])
       }, index * 500)
     })
