@@ -114,7 +114,7 @@ const Week8Page = () => {
                     >
                       Calculator
                     </div>
-                    <span className="ml-10 mt-4 text-sm text-gray-700">
+                    <span className="ml-10 mt-6 pt-6 text-sm text-gray-700">
                       This calculator can be used to calculate the nth term of an arithmetic sequence given the first
                       term, common difference, and position of the term in the sequence.
                     </span>
