@@ -5,20 +5,21 @@ import React, { useState } from "react"
 import "katex/dist/katex.min.css"
 // @ts-ignore
 import { BlockMath, InlineMath } from "react-katex"
+import { Button } from "components/Button/Button"
 
 const Week8Page = () => {
   const [activeTab, setActiveTab] = useState("arithmetics")
-  const [firstTerm, setFirstTerm] = useState(0)
-  const [commonDifference, setCommonDifference] = useState(0)
-  const [position, setPosition] = useState(1)
+  const [firstTerm, setFirstTerm] = useState("")
+  const [commonDifference, setCommonDifference] = useState("")
+  const [position, setPosition] = useState("")
   const [result, setResult] = useState("")
   const [steps, setSteps] = useState([])
 
   const calculateTerm = () => {
     // Calculate the nth term of the arithmetic sequence
     const newSteps = [
-      `a_n = ${firstTerm} + ${position - 1} \\cdot ${commonDifference}`,
-      `a_n = ${firstTerm + (position - 1) * commonDifference}`,
+      `a_n = ${Number(firstTerm)} + ${Number(position) - 1} \\cdot ${commonDifference}`,
+      `a_n = ${Number(firstTerm) + (Number(position) - 1) * Number(commonDifference)}`,
     ]
 
     // Clear previous results and steps
@@ -75,7 +76,7 @@ const Week8Page = () => {
                     >
                       Arithmetic Progression
                     </div>
-                    <p className="ml-10 mt-4 text-sm text-gray-700">
+                    <p className="ml-10 mt-6 text-sm text-gray-700">
                       &quot;An arithmetic progression or arithmetic sequence is a sequence of numbers such that the
                       difference from any succeeding term to its preceding term remains constant throughout the
                       sequence. The constant difference is called common difference of that arithmetic
@@ -114,10 +115,10 @@ const Week8Page = () => {
                     >
                       Calculator
                     </div>
-                    <span className="ml-10 mt-6 pt-6 text-sm text-gray-700">
+                    <div className="ml-10 mt-2 pt-6 text-sm text-gray-700">
                       This calculator can be used to calculate the nth term of an arithmetic sequence given the first
                       term, common difference, and position of the term in the sequence.
-                    </span>
+                    </div>
                     <hr className="my-4" />
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                       <div className="flex flex-col">
@@ -125,43 +126,55 @@ const Week8Page = () => {
                           First Term (a_1):
                         </label>
                         <input
-                          type="number"
+                          type="string"
                           id="firstTerm"
                           name="firstTerm"
                           className="input input-bordered input-info my-2 w-full max-w-xs bg-white"
                           placeholder="Enter the first term"
                           value={firstTerm}
-                          onChange={(e) => setFirstTerm(parseInt(e.target.value) || 0)}
+                          onChange={(e) => setFirstTerm((parseInt(e.target.value) || 0).toString())}
                         />
                         <label htmlFor="commonDifference" className="text-sm text-gray-700">
                           Common Difference (d):
                         </label>
                         <input
-                          type="number"
+                          type="string"
                           id="commonDifference"
                           name="commonDifference"
                           className="input input-bordered input-info my-2 w-full max-w-xs bg-white"
                           placeholder="Enter the common difference"
                           value={commonDifference}
-                          onChange={(e) => setCommonDifference(parseInt(e.target.value) || 0)}
+                          onChange={(e) => setCommonDifference((parseInt(e.target.value) || 0).toString())}
                         />
                         <label htmlFor="position" className="text-sm text-gray-700">
                           Position (n):
                         </label>
                         <input
-                          type="number"
+                          type="string"
                           id="position"
                           name="position"
                           className="input input-bordered input-info my-2 w-full max-w-xs bg-white"
                           placeholder="Enter the position of the term"
                           value={position}
-                          onChange={(e) => setPosition(parseInt(e.target.value) || 0)}
+                          onChange={(e) => setPosition((parseInt(e.target.value) || 0).toString())}
                         />
                         <button
                           className="btn btn-primary mt-4 max-w-xs border-none bg-blue-100 shadow-md hover:bg-blue-300"
                           onClick={calculateTerm}
                         >
                           Calculate
+                        </button>{" "}
+                        <button
+                          className="btn btn-primary mt-4 max-w-xs border-none bg-blue-100 shadow-md hover:bg-blue-300"
+                          onClick={() => {
+                            setFirstTerm("")
+                            setCommonDifference(0)
+                            setPosition("")
+                            setResult("")
+                            setSteps([])
+                          }}
+                        >
+                          Clear
                         </button>
                       </div>
                       <div className="flex flex-col">
