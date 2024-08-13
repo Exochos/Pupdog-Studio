@@ -7,6 +7,7 @@ const Reddit = () => {
   return (
     <>
       <div className="container mx-auto flex items-center justify-center bg-white">
+        <h1 className="text-4xl font-bold">WSB Sentiment Tracker 🚀</h1>
         <div
           className={`h-full w-full border-2 border-black p-2 shadow-xl transition-transform duration-300 ${
             activeTab === "arithmetics" ? "animate__animated animate__zoomInUp" : ""
