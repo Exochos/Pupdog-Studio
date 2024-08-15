@@ -52,6 +52,7 @@
     "@vercel/otel": "^1.8.3",
     "animate.css": "^4.1.1",
     "chart.js": "^4.4.3",
+    "chartjs-chart-wordcloud": "^4.4.1",
     "class-variance-authority": "^0.7.0",
     "katex": "^0.16.11",
     "lodash": "^4.17.21",
