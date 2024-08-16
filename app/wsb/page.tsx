@@ -1,19 +1,16 @@
-"use client"
-import React, { useState } from "react"
-import { logEvent } from "../utils/googleAnalytics"
+import React from "react"
+import WordCloud from "./WordCloud"
+import wordCount from "./wordCount.json"
 
-// log page view
-logEvent("page_view", "WSB Sentiment Tracker")
+export const metadata = {
+  title: "WSB Word Cloud",
+  description: "A word cloud of the most common words used in WSB posts.",
+}
 
-function Page(): JSX.Element {
-  // State variables
-  const [symbol, setSymbol] = useState<string>("")
-
+const Page = () => {
   return (
     <>
-      <div className="container mx-auto flex items-center justify-center bg-white">
-        <h1 className="text-4xl font-bold">WSB Sentiment Tracker 🚀</h1>
-      </div>
+      <WordCloud words={wordCount} />
     </>
   )
 }
