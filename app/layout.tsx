@@ -1,7 +1,6 @@
 "use client"
-import Script from "next/script"
 import { useEffect } from "react"
-import CookieConsent from "react-cookie-consent"
+// import CookieConsent from "react-cookie-consent"
 import "styles/tailwind.css"
 import { initializeGA, logPageView } from "./utils/googleAnalytics"
 

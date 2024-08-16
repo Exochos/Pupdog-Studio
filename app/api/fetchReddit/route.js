@@ -1,8 +1,8 @@
 // app/api/fetchReddit/route.js
-import { NextResponse } from "next/server"
-import fetch from "node-fetch"
 import dotenv from "dotenv"
 import { MongoClient } from "mongodb"
+import { NextResponse } from "next/server"
+import fetch from "node-fetch"
 
 dotenv.config()
 

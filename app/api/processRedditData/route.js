@@ -1,7 +1,7 @@
 // app/api/processRedditData/route.js
+import dotenv from "dotenv"
 import { MongoClient } from "mongodb"
 import { NextResponse } from "next/server"
-import dotenv from "dotenv"
 
 dotenv.config()
 
