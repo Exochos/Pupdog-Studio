@@ -1,14 +1,42 @@
 [
   {
-    "word": "people",
-    "value": 10
+    "word": "asts",
+    "value": 24
   },
   {
-    "word": "asts",
-    "value": 9
+    "word": "people",
+    "value": 15
+  },
+  {
+    "word": "stock",
+    "value": 13
+  },
+  {
+    "word": "starlink",
+    "value": 13
   },
   {
     "word": "money",
+    "value": 9
+  },
+  {
+    "word": "launch",
+    "value": 9
+  },
+  {
+    "word": "sats",
+    "value": 9
+  },
+  {
+    "word": "spacex",
+    "value": 9
+  },
+  {
+    "word": "bought",
+    "value": 8
+  },
+  {
+    "word": "price",
     "value": 8
   },
   {
@@ -16,15 +44,67 @@
     "value": 8
   },
   {
+    "word": "satellites",
+    "value": 8
+  },
+  {
+    "word": "service",
+    "value": 8
+  },
+  {
+    "word": "atampt",
+    "value": 8
+  },
+  {
+    "word": "time",
+    "value": 7
+  },
+  {
+    "word": "dd",
+    "value": 7
+  },
+  {
     "word": "cut",
     "value": 7
   },
   {
-    "word": "bought",
+    "word": "ast",
+    "value": 7
+  },
+  {
+    "word": "verizon",
+    "value": 7
+  },
+  {
+    "word": "market",
     "value": 6
   },
   {
+    "word": "satellite",
+    "value": 6
+  },
+  {
+    "word": "sat",
+    "value": 6
+  },
+  {
+    "word": "post",
+    "value": 6
+  },
+  {
+    "word": "government",
+    "value": 6
+  },
+  {
+    "word": "shares",
+    "value": 5
+  },
+  {
     "word": "i’m",
+    "value": 5
+  },
+  {
+    "word": "pay",
     "value": 5
   },
   {
@@ -32,7 +112,7 @@
     "value": 5
   },
   {
-    "word": "price",
+    "word": "don’t",
     "value": 5
   },
   {
@@ -44,6 +124,10 @@
     "value": 5
   },
   {
+    "word": "lot",
+    "value": 5
+  },
+  {
     "word": "week",
     "value": 5
   },
@@ -52,11 +136,31 @@
     "value": 5
   },
   {
-    "word": "stock",
-    "value": 4
+    "word": "capital",
+    "value": 5
+  },
+  {
+    "word": "dilution",
+    "value": 5
+  },
+  {
+    "word": "fcc",
+    "value": 5
+  },
+  {
+    "word": "company",
+    "value": 5
   },
   {
     "word": "options",
+    "value": 4
+  },
+  {
+    "word": "day",
+    "value": 4
+  },
+  {
+    "word": "worth",
     "value": 4
   },
   {
@@ -68,7 +172,31 @@
     "value": 4
   },
   {
+    "word": "yolo",
+    "value": 4
+  },
+  {
     "word": "intel",
+    "value": 4
+  },
+  {
+    "word": "gains",
+    "value": 4
+  },
+  {
+    "word": "train",
+    "value": 4
+  },
+  {
+    "word": "nice",
+    "value": 4
+  },
+  {
+    "word": "waited",
+    "value": 4
+  },
+  {
+    "word": "clov",
     "value": 4
   },
   {
@@ -76,23 +204,63 @@
     "value": 4
   },
   {
-    "word": "shares",
+    "word": "reason",
+    "value": 4
+  },
+  {
+    "word": "pretty",
+    "value": 4
+  },
+  {
+    "word": "earnings",
+    "value": 4
+  },
+  {
+    "word": "shit",
+    "value": 4
+  },
+  {
+    "word": "investors",
+    "value": 4
+  },
+  {
+    "word": "launching",
+    "value": 4
+  },
+  {
+    "word": "mno",
+    "value": 4
+  },
+  {
+    "word": "coverage",
+    "value": 4
+  },
+  {
+    "word": "existing",
+    "value": 4
+  },
+  {
+    "word": "elon",
+    "value": 4
+  },
+  {
+    "word": "regulatory",
+    "value": 4
+  },
+  {
+    "word": "noise",
+    "value": 4
+  },
+  {
+    "word": "poor",
     "value": 3
   },
   {
-    "word": "day",
-    "value": 3
-  },
-  {
-    "word": "pay",
+    "word": "consumers",
     "value": 3
   },
   {
     "word": "reasonable",
-    "value": 3
-  },
-  {
-    "word": "don’t",
     "value": 3
   },
   {
@@ -108,15 +276,27 @@
     "value": 3
   },
   {
+    "word": "insane",
+    "value": 3
+  },
+  {
     "word": "dollars",
     "value": 3
   },
   {
-    "word": "yolo",
+    "word": "update",
     "value": 3
   },
   {
-    "word": "time",
+    "word": "bit",
+    "value": 3
+  },
+  {
+    "word": "bro",
+    "value": 3
+  },
+  {
+    "word": "stocks",
     "value": 3
   },
   {
@@ -124,7 +304,11 @@
     "value": 3
   },
   {
-    "word": "train",
+    "word": "calls",
+    "value": 3
+  },
+  {
+    "word": "job",
     "value": 3
   },
   {
@@ -132,11 +316,23 @@
     "value": 3
   },
   {
+    "word": "bad",
+    "value": 3
+  },
+  {
     "word": "guys",
     "value": 3
   },
   {
-    "word": "waited",
+    "word": "target",
+    "value": 3
+  },
+  {
+    "word": "reading",
+    "value": 3
+  },
+  {
+    "word": "argument",
     "value": 3
   },
   {
@@ -144,11 +340,15 @@
     "value": 3
   },
   {
-    "word": "reason",
+    "word": "plan",
     "value": 3
   },
   {
-    "word": "market",
+    "word": "september",
+    "value": 3
+  },
+  {
+    "word": "single",
     "value": 3
   },
   {
@@ -156,7 +356,7 @@
     "value": 3
   },
   {
-    "word": "earnings",
+    "word": "🚀",
     "value": 3
   },
   {
@@ -164,11 +364,99 @@
     "value": 3
   },
   {
+    "word": "elon’s",
+    "value": 3
+  },
+  {
+    "word": "future",
+    "value": 3
+  },
+  {
+    "word": "starlink's",
+    "value": 3
+  },
+  {
+    "word": "cellular",
+    "value": 3
+  },
+  {
+    "word": "stated",
+    "value": 3
+  },
+  {
+    "word": "analysis",
+    "value": 3
+  },
+  {
+    "word": "business",
+    "value": 3
+  },
+  {
+    "word": "private",
+    "value": 3
+  },
+  {
+    "word": "wait",
+    "value": 3
+  },
+  {
+    "word": "potential",
+    "value": 3
+  },
+  {
+    "word": "major",
+    "value": 3
+  },
+  {
+    "word": "convince",
+    "value": 3
+  },
+  {
+    "word": "technology",
+    "value": 3
+  },
+  {
+    "word": "tech",
+    "value": 3
+  },
+  {
+    "word": "companies",
+    "value": 3
+  },
+  {
+    "word": "specification",
+    "value": 3
+  },
+  {
+    "word": "scenario",
+    "value": 3
+  },
+  {
+    "word": "specifications",
+    "value": 3
+  },
+  {
+    "word": "spectrum",
+    "value": 3
+  },
+  {
+    "word": "waiver",
+    "value": 3
+  },
+  {
+    "word": "floor",
+    "value": 3
+  },
+  {
+    "word": "processing",
+    "value": 2
+  },
+  {
     "word": "penny",
     "value": 2
   },
   {
-    "word": "poor",
+    "word": "baby",
     "value": 2
   },
   {
@@ -176,7 +464,11 @@
     "value": 2
   },
   {
-    "word": "consumers",
+    "word": "1k",
+    "value": 2
+  },
+  {
+    "word": "lost",
     "value": 2
   },
   {
@@ -200,7 +492,15 @@
     "value": 2
   },
   {
-    "word": "worth",
+    "word": "entire",
+    "value": 2
+  },
+  {
+    "word": "eats",
+    "value": 2
+  },
+  {
+    "word": "reality",
     "value": 2
   },
   {
@@ -212,7 +512,15 @@
     "value": 2
   },
   {
+    "word": "huge",
+    "value": 2
+  },
+  {
     "word": "revolt",
+    "value": 2
+  },
+  {
+    "word": "stuff",
     "value": 2
   },
   {
@@ -224,7 +532,15 @@
     "value": 2
   },
   {
-    "word": "insane",
+    "word": "performance",
+    "value": 2
+  },
+  {
+    "word": "sit",
+    "value": 2
+  },
+  {
+    "word": "months",
     "value": 2
   },
   {
@@ -236,11 +552,23 @@
     "value": 2
   },
   {
-    "word": "lot",
+    "word": "hoping",
+    "value": 2
+  },
+  {
+    "word": "die",
     "value": 2
   },
   {
     "word": "balls",
+    "value": 2
+  },
+  {
+    "word": "leave",
+    "value": 2
+  },
+  {
+    "word": "comeback",
     "value": 2
   },
   {
@@ -264,19 +592,11 @@
     "value": 2
   },
   {
-    "word": "bro",
-    "value": 2
-  },
-  {
     "word": "gain",
     "value": 2
   },
   {
     "word": "700k",
-    "value": 2
-  },
-  {
-    "word": "gains",
     "value": 2
   },
   {
@@ -292,11 +612,7 @@
     "value": 2
   },
   {
-    "word": "nice",
-    "value": 2
-  },
-  {
-    "word": "calls",
+    "word": "month",
     "value": 2
   },
   {
@@ -304,7 +620,7 @@
     "value": 2
   },
   {
-    "word": "job",
+    "word": "lose",
     "value": 2
   },
   {
@@ -312,23 +628,39 @@
     "value": 2
   },
   {
-    "word": "bad",
-    "value": 2
-  },
-  {
     "word": "play",
     "value": 2
   },
   {
-    "word": "dd",
+    "word": "profit",
     "value": 2
   },
   {
-    "word": "target",
+    "word": "[deleted]",
+    "value": 2
+  },
+  {
+    "word": "putting",
     "value": 2
   },
   {
     "word": "report",
+    "value": 2
+  },
+  {
+    "word": "contracts",
+    "value": 2
+  },
+  {
+    "word": "data",
+    "value": 2
+  },
+  {
+    "word": "thinking",
+    "value": 2
+  },
+  {
+    "word": "rise",
     "value": 2
   },
   {
@@ -348,11 +680,31 @@
     "value": 2
   },
   {
+    "word": "wrong",
+    "value": 2
+  },
+  {
     "word": "cuts",
     "value": 2
   },
   {
-    "word": "🚀",
+    "word": "totally",
+    "value": 2
+  },
+  {
+    "word": "chance",
+    "value": 2
+  },
+  {
+    "word": "yeah",
+    "value": 2
+  },
+  {
+    "word": "holding",
+    "value": 2
+  },
+  {
+    "word": "news",
     "value": 2
   },
   {
@@ -360,12 +712,248 @@
     "value": 2
   },
   {
+    "word": "feel",
+    "value": 2
+  },
+  {
+    "word": "mate",
+    "value": 2
+  },
+  {
+    "word": "true",
+    "value": 2
+  },
+  {
     "word": "pton",
     "value": 2
   },
   {
-    "word": "processing",
-    "value": 1
+    "word": "win",
+    "value": 2
+  },
+  {
+    "word": "profits",
+    "value": 2
+  },
+  {
+    "word": "missed",
+    "value": 2
+  },
+  {
+    "word": "targeting",
+    "value": 2
+  },
+  {
+    "word": "d2c",
+    "value": 2
+  },
+  {
+    "word": "succeed",
+    "value": 2
+  },
+  {
+    "word": "compete",
+    "value": 2
+  },
+  {
+    "word": "core",
+    "value": 2
+  },
+  {
+    "word": "revenue",
+    "value": 2
+  },
+  {
+    "word": "current",
+    "value": 2
+  },
+  {
+    "word": "commercial",
+    "value": 2
+  },
+  {
+    "word": "misleading",
+    "value": 2
+  },
+  {
+    "word": "raise",
+    "value": 2
+  },
+  {
+    "word": "prepayments",
+    "value": 2
+  },
+  {
+    "word": "costs",
+    "value": 2
+  },
+  {
+    "word": "20m",
+    "value": 2
+  },
+  {
+    "word": "partners",
+    "value": 2
+  },
+  {
+    "word": "disasters",
+    "value": 2
+  },
+  {
+    "word": "provide",
+    "value": 2
+  },
+  {
+    "word": "continuous",
+    "value": 2
+  },
+  {
+    "word": "comparison",
+    "value": 2
+  },
+  {
+    "word": "cell",
+    "value": 2
+  },
+  {
+    "word": "break",
+    "value": 2
+  },
+  {
+    "word": "d2d",
+    "value": 2
+  },
+  {
+    "word": "exp",
+    "value": 2
+  },
+  {
+    "word": "competitor",
+    "value": 2
+  },
+  {
+    "word": "profitable",
+    "value": 2
+  },
+  {
+    "word": "agreements",
+    "value": 2
+  },
+  {
+    "word": "valuation",
+    "value": 2
+  },
+  {
+    "word": "based",
+    "value": 2
+  },
+  {
+    "word": "levels",
+    "value": 2
+  },
+  {
+    "word": "technical",
+    "value": 2
+  },
+  {
+    "word": "throughput",
+    "value": 2
+  },
+  {
+    "word": "tldr",
+    "value": 2
+  },
+  {
+    "word": "highly",
+    "value": 2
+  },
+  {
+    "word": "[img]emote|t52th52|27421",
+    "value": 2
+  },
+  {
+    "word": "dd…",
+    "value": 2
+  },
+  {
+    "word": "inflammatory",
+    "value": 2
+  },
+  {
+    "word": "decisions",
+    "value": 2
+  },
+  {
+    "word": "political",
+    "value": 2
+  },
+  {
+    "word": "businesses",
+    "value": 2
+  },
+  {
+    "word": "spacex's",
+    "value": 2
+  },
+  {
+    "word": "strict",
+    "value": 2
+  },
+  {
+    "word": "relaxing",
+    "value": 2
+  },
+  {
+    "word": "impact",
+    "value": 2
+  },
+  {
+    "word": "worst",
+    "value": 2
+  },
+  {
+    "word": "3gpp",
+    "value": 2
+  },
+  {
+    "word": "written",
+    "value": 2
+  },
+  {
+    "word": "decades",
+    "value": 2
+  },
+  {
+    "word": "conservative",
+    "value": 2
+  },
+  {
+    "word": "regulations",
+    "value": 2
+  },
+  {
+    "word": "technologies",
+    "value": 2
+  },
+  {
+    "word": "industry",
+    "value": 2
+  },
+  {
+    "word": "theoretical",
+    "value": 2
+  },
+  {
+    "word": "ue",
+    "value": 2
+  },
+  {
+    "word": "att",
+    "value": 2
+  },
+  {
+    "word": "commitment",
+    "value": 2
   },
   {
     "word": "img",
@@ -400,23 +988,11 @@
     "value": 1
   },
   {
-    "word": "baby",
-    "value": 1
-  },
-  {
     "word": "morning",
     "value": 1
   },
   {
-    "word": "1k",
-    "value": 1
-  },
-  {
     "word": "hours",
-    "value": 1
-  },
-  {
-    "word": "lost",
     "value": 1
   },
   {
@@ -500,15 +1076,7 @@
     "value": 1
   },
   {
-    "word": "entire",
-    "value": 1
-  },
-  {
     "word": "uber",
-    "value": 1
-  },
-  {
-    "word": "eats",
     "value": 1
   },
   {
@@ -545,10 +1113,6 @@
   },
   {
     "word": "homes”",
-    "value": 1
-  },
-  {
-    "word": "reality",
     "value": 1
   },
   {
@@ -612,14 +1176,6 @@
     "value": 1
   },
   {
-    "word": "huge",
-    "value": 1
-  },
-  {
-    "word": "stuff",
-    "value": 1
-  },
-  {
     "word": "exorbitant",
     "value": 1
   },
@@ -648,23 +1204,11 @@
     "value": 1
   },
   {
-    "word": "performance",
-    "value": 1
-  },
-  {
     "word": "vehicles",
     "value": 1
   },
   {
     "word": "markups",
-    "value": 1
-  },
-  {
-    "word": "sit",
-    "value": 1
-  },
-  {
-    "word": "months",
     "value": 1
   },
   {
@@ -708,10 +1252,6 @@
     "value": 1
   },
   {
-    "word": "hoping",
-    "value": 1
-  },
-  {
     "word": "“deflation”",
     "value": 1
   },
@@ -744,15 +1284,7 @@
     "value": 1
   },
   {
-    "word": "die",
-    "value": 1
-  },
-  {
     "word": "tqqq",
-    "value": 1
-  },
-  {
-    "word": "update",
     "value": 1
   },
   {
@@ -761,14 +1293,6 @@
   },
   {
     "word": "daytrading",
-    "value": 1
-  },
-  {
-    "word": "leave",
-    "value": 1
-  },
-  {
-    "word": "comeback",
     "value": 1
   },
   {
@@ -781,10 +1305,6 @@
   },
   {
     "word": "be?",
-    "value": 1
-  },
-  {
-    "word": "bit",
     "value": 1
   },
   {
@@ -876,10 +1396,6 @@
     "value": 1
   },
   {
-    "word": "stocks",
-    "value": 1
-  },
-  {
     "word": "dafuq",
     "value": 1
   },
@@ -920,19 +1436,11 @@
     "value": 1
   },
   {
-    "word": "month",
-    "value": 1
-  },
-  {
     "word": "fucker",
     "value": 1
   },
   {
     "word": "posts",
-    "value": 1
-  },
-  {
-    "word": "lose",
     "value": 1
   },
   {
@@ -984,10 +1492,6 @@
     "value": 1
   },
   {
-    "word": "launch",
-    "value": 1
-  },
-  {
     "word": "pad?",
     "value": 1
   },
@@ -1016,10 +1520,6 @@
     "value": 1
   },
   {
-    "word": "profit",
-    "value": 1
-  },
-  {
     "word": "truer",
     "value": 1
   },
@@ -1029,10 +1529,6 @@
   },
   {
     "word": "spacemob",
-    "value": 1
-  },
-  {
-    "word": "[deleted]",
     "value": 1
   },
   {
@@ -1088,18 +1584,6 @@
     "value": 1
   },
   {
-    "word": "putting",
-    "value": 1
-  },
-  {
-    "word": "capital",
-    "value": 1
-  },
-  {
-    "word": "reading",
-    "value": 1
-  },
-  {
     "word": "kook",
     "value": 1
   },
@@ -1132,10 +1616,6 @@
     "value": 1
   },
   {
-    "word": "contracts",
-    "value": 1
-  },
-  {
     "word": "strike",
     "value": 1
   },
@@ -1156,15 +1636,7 @@
     "value": 1
   },
   {
-    "word": "clov",
-    "value": 1
-  },
-  {
     "word": "check",
-    "value": 1
-  },
-  {
-    "word": "data",
     "value": 1
   },
   {
@@ -1176,15 +1648,7 @@
     "value": 1
   },
   {
-    "word": "thinking",
-    "value": 1
-  },
-  {
     "word": "exact",
-    "value": 1
-  },
-  {
-    "word": "argument",
     "value": 1
   },
   {
@@ -1193,10 +1657,6 @@
   },
   {
     "word": "unemployment",
-    "value": 1
-  },
-  {
-    "word": "rise",
     "value": 1
   },
   {
@@ -1212,15 +1672,7 @@
     "value": 1
   },
   {
-    "word": "pretty",
-    "value": 1
-  },
-  {
     "word": "stubborn",
-    "value": 1
-  },
-  {
-    "word": "plan",
     "value": 1
   },
   {
@@ -1240,10 +1692,6 @@
     "value": 1
   },
   {
-    "word": "wrong",
-    "value": 1
-  },
-  {
     "word": "[img]emote|t52th52|18630",
     "value": 1
   },
@@ -1252,15 +1700,7 @@
     "value": 1
   },
   {
-    "word": "september",
-    "value": 1
-  },
-  {
     "word": "care",
-    "value": 1
-  },
-  {
-    "word": "single",
     "value": 1
   },
   {
@@ -1288,19 +1728,11 @@
     "value": 1
   },
   {
-    "word": "totally",
-    "value": 1
-  },
-  {
     "word": "inline",
     "value": 1
   },
   {
     "word": "strategy",
-    "value": 1
-  },
-  {
-    "word": "chance",
     "value": 1
   },
   {
@@ -1412,10 +1844,6 @@
     "value": 1
   },
   {
-    "word": "yeah",
-    "value": 1
-  },
-  {
     "word": "uhh",
     "value": 1
   },
@@ -1452,18 +1880,6 @@
     "value": 1
   },
   {
-    "word": "holding",
-    "value": 1
-  },
-  {
-    "word": "news",
-    "value": 1
-  },
-  {
-    "word": "feel",
-    "value": 1
-  },
-  {
     "word": "drop",
     "value": 1
   },
@@ -1481,10 +1897,6 @@
   },
   {
     "word": "smarter",
-    "value": 1
-  },
-  {
-    "word": "mate",
     "value": 1
   },
   {
@@ -1560,10 +1972,6 @@
     "value": 1
   },
   {
-    "word": "true",
-    "value": 1
-  },
-  {
     "word": "lucky",
     "value": 1
   },
@@ -1601,10 +2009,6 @@
   },
   {
     "word": "ain’t",
-    "value": 1
-  },
-  {
-    "word": "shit",
     "value": 1
   },
   {
@@ -1653,6 +2057,1694 @@
   },
   {
     "word": "sofi",
+    "value": 1
+  },
+  {
+    "word": "we’ve",
+    "value": 1
+  },
+  {
+    "word": "begun",
+    "value": 1
+  },
+  {
+    "word": "@246",
+    "value": 1
+  },
+  {
+    "word": "🚀🚀",
+    "value": 1
+  },
+  {
+    "word": "cue",
+    "value": 1
+  },
+  {
+    "word": "karen",
+    "value": 1
+  },
+  {
+    "word": "carpenter",
+    "value": 1
+  },
+  {
+    "word": "dropped",
+    "value": 1
+  },
+  {
+    "word": "reminder",
+    "value": 1
+  },
+  {
+    "word": "checking",
+    "value": 1
+  },
+  {
+    "word": "meme",
+    "value": 1
+  },
+  {
+    "word": "revival?",
+    "value": 1
+  },
+  {
+    "word": "economy?",
+    "value": 1
+  },
+  {
+    "word": "\"penny",
+    "value": 1
+  },
+  {
+    "word": "stock\"",
+    "value": 1
+  },
+  {
+    "word": "bedyet",
+    "value": 1
+  },
+  {
+    "word": "lettsss",
+    "value": 1
+  },
+  {
+    "word": "goo",
+    "value": 1
+  },
+  {
+    "word": "🚀🚀🚀🚀",
+    "value": 1
+  },
+  {
+    "word": "timeframe",
+    "value": 1
+  },
+  {
+    "word": "doubled",
+    "value": 1
+  },
+  {
+    "word": "nvidia",
+    "value": 1
+  },
+  {
+    "word": "smart",
+    "value": 1
+  },
+  {
+    "word": "diligence",
+    "value": 1
+  },
+  {
+    "word": "inevitable",
+    "value": 1
+  },
+  {
+    "word": "ass",
+    "value": 1
+  },
+  {
+    "word": "tits",
+    "value": 1
+  },
+  {
+    "word": "spacemobile",
+    "value": 1
+  },
+  {
+    "word": "“competitor”",
+    "value": 1
+  },
+  {
+    "word": "clamoring",
+    "value": 1
+  },
+  {
+    "word": "claiming",
+    "value": 1
+  },
+  {
+    "word": "“has",
+    "value": 1
+  },
+  {
+    "word": "rivals",
+    "value": 1
+  },
+  {
+    "word": "dominates",
+    "value": 1
+  },
+  {
+    "word": "space”",
+    "value": 1
+  },
+  {
+    "word": "tmobile",
+    "value": 1
+  },
+  {
+    "word": "realized",
+    "value": 1
+  },
+  {
+    "word": "timing",
+    "value": 1
+  },
+  {
+    "word": "nature",
+    "value": 1
+  },
+  {
+    "word": "announcement",
+    "value": 1
+  },
+  {
+    "word": "telling",
+    "value": 1
+  },
+  {
+    "word": "attempting",
+    "value": 1
+  },
+  {
+    "word": "viceversa",
+    "value": 1
+  },
+  {
+    "word": "road",
+    "value": 1
+  },
+  {
+    "word": "space?",
+    "value": 1
+  },
+  {
+    "word": "plans",
+    "value": 1
+  },
+  {
+    "word": "bw3",
+    "value": 1
+  },
+  {
+    "word": "admit",
+    "value": 1
+  },
+  {
+    "word": "earn",
+    "value": 1
+  },
+  {
+    "word": "contract",
+    "value": 1
+  },
+  {
+    "word": "sane",
+    "value": 1
+  },
+  {
+    "word": "size",
+    "value": 1
+  },
+  {
+    "word": "production",
+    "value": 1
+  },
+  {
+    "word": "10x",
+    "value": 1
+  },
+  {
+    "word": "bandwidth",
+    "value": 1
+  },
+  {
+    "word": "assist",
+    "value": 1
+  },
+  {
+    "word": "providing",
+    "value": 1
+  },
+  {
+    "word": "services",
+    "value": 1
+  },
+  {
+    "word": "satelllites",
+    "value": 1
+  },
+  {
+    "word": "implies",
+    "value": 1
+  },
+  {
+    "word": "model",
+    "value": 1
+  },
+  {
+    "word": "starlinkl",
+    "value": 1
+  },
+  {
+    "word": "space",
+    "value": 1
+  },
+  {
+    "word": "operational",
+    "value": 1
+  },
+  {
+    "word": "stationary",
+    "value": 1
+  },
+  {
+    "word": "wifi",
+    "value": 1
+  },
+  {
+    "word": "thesis",
+    "value": 1
+  },
+  {
+    "word": "comcast",
+    "value": 1
+  },
+  {
+    "word": "bankrupted",
+    "value": 1
+  },
+  {
+    "word": "happened",
+    "value": 1
+  },
+  {
+    "word": "account",
+    "value": 1
+  },
+  {
+    "word": "v2",
+    "value": 1
+  },
+  {
+    "word": "minis",
+    "value": 1
+  },
+  {
+    "word": "beams",
+    "value": 1
+  },
+  {
+    "word": "each?",
+    "value": 1
+  },
+  {
+    "word": "count",
+    "value": 1
+  },
+  {
+    "word": "ignores",
+    "value": 1
+  },
+  {
+    "word": "capabilities",
+    "value": 1
+  },
+  {
+    "word": "retail",
+    "value": 1
+  },
+  {
+    "word": "heavy",
+    "value": 1
+  },
+  {
+    "word": "bags",
+    "value": 1
+  },
+  {
+    "word": "skyrocketed",
+    "value": 1
+  },
+  {
+    "word": "exim",
+    "value": 1
+  },
+  {
+    "word": "financing",
+    "value": 1
+  },
+  {
+    "word": "included",
+    "value": 1
+  },
+  {
+    "word": "voda",
+    "value": 1
+  },
+  {
+    "word": "average",
+    "value": 1
+  },
+  {
+    "word": "4m",
+    "value": 1
+  },
+  {
+    "word": "5m",
+    "value": 1
+  },
+  {
+    "word": "conditional",
+    "value": 1
+  },
+  {
+    "word": "successful",
+    "value": 1
+  },
+  {
+    "word": "operation",
+    "value": 1
+  },
+  {
+    "word": "approval",
+    "value": 1
+  },
+  {
+    "word": "imminent",
+    "value": 1
+  },
+  {
+    "word": "contributing",
+    "value": 1
+  },
+  {
+    "word": "debtprepayment",
+    "value": 1
+  },
+  {
+    "word": "prepay",
+    "value": 1
+  },
+  {
+    "word": "400k",
+    "value": 1
+  },
+  {
+    "word": "build",
+    "value": 1
+  },
+  {
+    "word": "opex",
+    "value": 1
+  },
+  {
+    "word": "120m",
+    "value": 1
+  },
+  {
+    "word": "sats?",
+    "value": 1
+  },
+  {
+    "word": "global",
+    "value": 1
+  },
+  {
+    "word": "dead",
+    "value": 1
+  },
+  {
+    "word": "zones",
+    "value": 1
+  },
+  {
+    "word": "reduced",
+    "value": 1
+  },
+  {
+    "word": "tower",
+    "value": 1
+  },
+  {
+    "word": "improved",
+    "value": 1
+  },
+  {
+    "word": "emergency",
+    "value": 1
+  },
+  {
+    "word": "arpu",
+    "value": 1
+  },
+  {
+    "word": "list",
+    "value": 1
+  },
+  {
+    "word": "estimation",
+    "value": 1
+  },
+  {
+    "word": "ignorant",
+    "value": 1
+  },
+  {
+    "word": "situation",
+    "value": 1
+  },
+  {
+    "word": "vary",
+    "value": 1
+  },
+  {
+    "word": "product",
+    "value": 1
+  },
+  {
+    "word": "largest",
+    "value": 1
+  },
+  {
+    "word": "telecoms",
+    "value": 1
+  },
+  {
+    "word": "earth",
+    "value": 1
+  },
+  {
+    "word": "nevermind",
+    "value": 1
+  },
+  {
+    "word": "military",
+    "value": 1
+  },
+  {
+    "word": "\"i",
+    "value": 1
+  },
+  {
+    "word": "boat\"",
+    "value": 1
+  },
+  {
+    "word": "energy",
+    "value": 1
+  },
+  {
+    "word": "roaring",
+    "value": 1
+  },
+  {
+    "word": "kitty",
+    "value": 1
+  },
+  {
+    "word": "brother",
+    "value": 1
+  },
+  {
+    "word": "stopped",
+    "value": 1
+  },
+  {
+    "word": "announced",
+    "value": 1
+  },
+  {
+    "word": "enjoy",
+    "value": 1
+  },
+  {
+    "word": "dick",
+    "value": 1
+  },
+  {
+    "word": "gtfoutta",
+    "value": 1
+  },
+  {
+    "word": "logic",
+    "value": 1
+  },
+  {
+    "word": "riddled",
+    "value": 1
+  },
+  {
+    "word": "innacurate",
+    "value": 1
+  },
+  {
+    "word": "info",
+    "value": 1
+  },
+  {
+    "word": "digging",
+    "value": 1
+  },
+  {
+    "word": "deep",
+    "value": 1
+  },
+  {
+    "word": "\"coast",
+    "value": 1
+  },
+  {
+    "word": "coast\"",
+    "value": 1
+  },
+  {
+    "word": "continental",
+    "value": 1
+  },
+  {
+    "word": "silly",
+    "value": 1
+  },
+  {
+    "word": "serve",
+    "value": 1
+  },
+  {
+    "word": "markets",
+    "value": 1
+  },
+  {
+    "word": "ground",
+    "value": 1
+  },
+  {
+    "word": "units",
+    "value": 1
+  },
+  {
+    "word": "phones",
+    "value": 1
+  },
+  {
+    "word": "overlap",
+    "value": 1
+  },
+  {
+    "word": "difficulty",
+    "value": 1
+  },
+  {
+    "word": "nond2d",
+    "value": 1
+  },
+  {
+    "word": "bearing",
+    "value": 1
+  },
+  {
+    "word": "effort",
+    "value": 1
+  },
+  {
+    "word": "positions",
+    "value": 1
+  },
+  {
+    "word": "complete",
+    "value": 1
+  },
+  {
+    "word": "type",
+    "value": 1
+  },
+  {
+    "word": "compare",
+    "value": 1
+  },
+  {
+    "word": "apples",
+    "value": 1
+  },
+  {
+    "word": "peanuts",
+    "value": 1
+  },
+  {
+    "word": "tdlr",
+    "value": 1
+  },
+  {
+    "word": "pumping",
+    "value": 1
+  },
+  {
+    "word": "won’t",
+    "value": 1
+  },
+  {
+    "word": "competitornot",
+    "value": 1
+  },
+  {
+    "word": "hundreds",
+    "value": 1
+  },
+  {
+    "word": "direct",
+    "value": 1
+  },
+  {
+    "word": "mobile",
+    "value": 1
+  },
+  {
+    "word": "agree",
+    "value": 1
+  },
+  {
+    "word": "provider",
+    "value": 1
+  },
+  {
+    "word": "transport",
+    "value": 1
+  },
+  {
+    "word": "mission",
+    "value": 1
+  },
+  {
+    "word": "5k",
+    "value": 1
+  },
+  {
+    "word": "next?",
+    "value": 1
+  },
+  {
+    "word": "owns",
+    "value": 1
+  },
+  {
+    "word": "prepaid",
+    "value": 1
+  },
+  {
+    "word": "primary",
+    "value": 1
+  },
+  {
+    "word": "source",
+    "value": 1
+  },
+  {
+    "word": "generation",
+    "value": 1
+  },
+  {
+    "word": "diluting",
+    "value": 1
+  },
+  {
+    "word": "disservice",
+    "value": 1
+  },
+  {
+    "word": "shareholders",
+    "value": 1
+  },
+  {
+    "word": "\"investors",
+    "value": 1
+  },
+  {
+    "word": "claim",
+    "value": 1
+  },
+  {
+    "word": "triple",
+    "value": 1
+  },
+  {
+    "word": "digits",
+    "value": 1
+  },
+  {
+    "word": "soon\"",
+    "value": 1
+  },
+  {
+    "word": "minority",
+    "value": 1
+  },
+  {
+    "word": "delusional",
+    "value": 1
+  },
+  {
+    "word": "attributed",
+    "value": 1
+  },
+  {
+    "word": "derisking",
+    "value": 1
+  },
+  {
+    "word": "delivery",
+    "value": 1
+  },
+  {
+    "word": "schedulednfor",
+    "value": 1
+  },
+  {
+    "word": "basically",
+    "value": 1
+  },
+  {
+    "word": "high?",
+    "value": 1
+  },
+  {
+    "word": "start",
+    "value": 1
+  },
+  {
+    "word": "settling",
+    "value": 1
+  },
+  {
+    "word": "dust",
+    "value": 1
+  },
+  {
+    "word": "settled",
+    "value": 1
+  },
+  {
+    "word": "pull",
+    "value": 1
+  },
+  {
+    "word": "trades",
+    "value": 1
+  },
+  {
+    "word": "pre",
+    "value": 1
+  },
+  {
+    "word": "uninformed",
+    "value": 1
+  },
+  {
+    "word": "capable",
+    "value": 1
+  },
+  {
+    "word": "stalemate",
+    "value": 1
+  },
+  {
+    "word": "lax",
+    "value": 1
+  },
+  {
+    "word": "permitted",
+    "value": 1
+  },
+  {
+    "word": "interference",
+    "value": 1
+  },
+  {
+    "word": "anytime",
+    "value": 1
+  },
+  {
+    "word": "verdict",
+    "value": 1
+  },
+  {
+    "word": "100share",
+    "value": 1
+  },
+  {
+    "word": "sooner",
+    "value": 1
+  },
+  {
+    "word": "assuming",
+    "value": 1
+  },
+  {
+    "word": "unfurling",
+    "value": 1
+  },
+  {
+    "word": "[removed]",
+    "value": 1
+  },
+  {
+    "word": "op",
+    "value": 1
+  },
+  {
+    "word": "depth",
+    "value": 1
+  },
+  {
+    "word": "bb1",
+    "value": 1
+  },
+  {
+    "word": "models",
+    "value": 1
+  },
+  {
+    "word": "directed",
+    "value": 1
+  },
+  {
+    "word": "angle",
+    "value": 1
+  },
+  {
+    "word": "danglebeam?",
+    "value": 1
+  },
+  {
+    "word": "wide",
+    "value": 1
+  },
+  {
+    "word": "factors",
+    "value": 1
+  },
+  {
+    "word": "personally",
+    "value": 1
+  },
+  {
+    "word": "hitting",
+    "value": 1
+  },
+  {
+    "word": "100+",
+    "value": 1
+  },
+  {
+    "word": "originally",
+    "value": 1
+  },
+  {
+    "word": "onwards",
+    "value": 1
+  },
+  {
+    "word": "holds",
+    "value": 1
+  },
+  {
+    "word": "compares",
+    "value": 1
+  },
+  {
+    "word": "search",
+    "value": 1
+  },
+  {
+    "word": "informed",
+    "value": 1
+  },
+  {
+    "word": "decision",
+    "value": 1
+  },
+  {
+    "word": "position?",
+    "value": 1
+  },
+  {
+    "word": "boo",
+    "value": 1
+  },
+  {
+    "word": "dilute",
+    "value": 1
+  },
+  {
+    "word": "rest",
+    "value": 1
+  },
+  {
+    "word": "classic",
+    "value": 1
+  },
+  {
+    "word": "5min",
+    "value": 1
+  },
+  {
+    "word": "perfect",
+    "value": 1
+  },
+  {
+    "word": "short",
+    "value": 1
+  },
+  {
+    "word": "spent",
+    "value": 1
+  },
+  {
+    "word": "15mins",
+    "value": 1
+  },
+  {
+    "word": "realize",
+    "value": 1
+  },
+  {
+    "word": "opportunity",
+    "value": 1
+  },
+  {
+    "word": "absolutely",
+    "value": 1
+  },
+  {
+    "word": "massive",
+    "value": 1
+  },
+  {
+    "word": "live",
+    "value": 1
+  },
+  {
+    "word": "telecommunication",
+    "value": 1
+  },
+  {
+    "word": "margin",
+    "value": 1
+  },
+  {
+    "word": "intensive",
+    "value": 1
+  },
+  {
+    "word": "moat",
+    "value": 1
+  },
+  {
+    "word": "scraps",
+    "value": 1
+  },
+  {
+    "word": "towers",
+    "value": 1
+  },
+  {
+    "word": "capex",
+    "value": 1
+  },
+  {
+    "word": "succesfully",
+    "value": 1
+  },
+  {
+    "word": "launched",
+    "value": 1
+  },
+  {
+    "word": "happen",
+    "value": 1
+  },
+  {
+    "word": "warrant",
+    "value": 1
+  },
+  {
+    "word": "udisastrousmess8820",
+    "value": 1
+  },
+  {
+    "word": "angrily",
+    "value": 1
+  },
+  {
+    "word": "bully",
+    "value": 1
+  },
+  {
+    "word": "bother",
+    "value": 1
+  },
+  {
+    "word": "sub…",
+    "value": 1
+  },
+  {
+    "word": "blatantly",
+    "value": 1
+  },
+  {
+    "word": "obvious",
+    "value": 1
+  },
+  {
+    "word": "outcasted",
+    "value": 1
+  },
+  {
+    "word": "buyers",
+    "value": 1
+  },
+  {
+    "word": "customers",
+    "value": 1
+  },
+  {
+    "word": "southern",
+    "value": 1
+  },
+  {
+    "word": "california",
+    "value": 1
+  },
+  {
+    "word": "starting",
+    "value": 1
+  },
+  {
+    "word": "instances",
+    "value": 1
+  },
+  {
+    "word": "rivian",
+    "value": 1
+  },
+  {
+    "word": "term",
+    "value": 1
+  },
+  {
+    "word": "drug",
+    "value": 1
+  },
+  {
+    "word": "usage",
+    "value": 1
+  },
+  {
+    "word": "influenced",
+    "value": 1
+  },
+  {
+    "word": "ambitions",
+    "value": 1
+  },
+  {
+    "word": "faith",
+    "value": 1
+  },
+  {
+    "word": "viewpoints",
+    "value": 1
+  },
+  {
+    "word": "calm",
+    "value": 1
+  },
+  {
+    "word": "collected",
+    "value": 1
+  },
+  {
+    "word": "causing",
+    "value": 1
+  },
+  {
+    "word": "hits",
+    "value": 1
+  },
+  {
+    "word": "touching",
+    "value": 1
+  },
+  {
+    "word": "sell",
+    "value": 1
+  },
+  {
+    "word": "[img]emote|t52th52|31226",
+    "value": 1
+  },
+  {
+    "word": "position",
+    "value": 1
+  },
+  {
+    "word": "conviction",
+    "value": 1
+  },
+  {
+    "word": "pltr",
+    "value": 1
+  },
+  {
+    "word": "congratulations",
+    "value": 1
+  },
+  {
+    "word": "yolod",
+    "value": 1
+  },
+  {
+    "word": "9k",
+    "value": 1
+  },
+  {
+    "word": "35c",
+    "value": 1
+  },
+  {
+    "word": "expiring",
+    "value": 1
+  },
+  {
+    "word": "say???",
+    "value": 1
+  },
+  {
+    "word": "reject",
+    "value": 1
+  },
+  {
+    "word": "route",
+    "value": 1
+  },
+  {
+    "word": "terrestrial",
+    "value": 1
+  },
+  {
+    "word": "paper",
+    "value": 1
+  },
+  {
+    "word": "regulation",
+    "value": 1
+  },
+  {
+    "word": "needlessly",
+    "value": 1
+  },
+  {
+    "word": "minimal",
+    "value": 1
+  },
+  {
+    "word": "relaxation",
+    "value": 1
+  },
+  {
+    "word": "proposing",
+    "value": 1
+  },
+  {
+    "word": "downlink",
+    "value": 1
+  },
+  {
+    "word": "re1",
+    "value": 1
+  },
+  {
+    "word": "merit",
+    "value": 1
+  },
+  {
+    "word": "arguing",
+    "value": 1
+  },
+  {
+    "word": "updating",
+    "value": 1
+  },
+  {
+    "word": "advanced",
+    "value": 1
+  },
+  {
+    "word": "modeling",
+    "value": 1
+  },
+  {
+    "word": "techniques",
+    "value": 1
+  },
+  {
+    "word": "allocation",
+    "value": 1
+  },
+  {
+    "word": "overly",
+    "value": 1
+  },
+  {
+    "word": "manner",
+    "value": 1
+  },
+  {
+    "word": "agencies",
+    "value": 1
+  },
+  {
+    "word": "incentive",
+    "value": 1
+  },
+  {
+    "word": "lobbied",
+    "value": 1
+  },
+  {
+    "word": "corporations",
+    "value": 1
+  },
+  {
+    "word": "bands",
+    "value": 1
+  },
+  {
+    "word": "unnecessarily",
+    "value": 1
+  },
+  {
+    "word": "protect",
+    "value": 1
+  },
+  {
+    "word": "allocated",
+    "value": 1
+  },
+  {
+    "word": "stick",
+    "value": 1
+  },
+  {
+    "word": "neck",
+    "value": 1
+  },
+  {
+    "word": "change",
+    "value": 1
+  },
+  {
+    "word": "memeing",
+    "value": 1
+  },
+  {
+    "word": "\"begging",
+    "value": 1
+  },
+  {
+    "word": "intervention\"",
+    "value": 1
+  },
+  {
+    "word": "understand",
+    "value": 1
+  },
+  {
+    "word": "player",
+    "value": 1
+  },
+  {
+    "word": "telecommunications",
+    "value": 1
+  },
+  {
+    "word": "constantly",
+    "value": 1
+  },
+  {
+    "word": "bodies",
+    "value": 1
+  },
+  {
+    "word": "submitted",
+    "value": 1
+  },
+  {
+    "word": "expect",
+    "value": 1
+  },
+  {
+    "word": "products",
+    "value": 1
+  },
+  {
+    "word": "cutting",
+    "value": 1
+  },
+  {
+    "word": "edge",
+    "value": 1
+  },
+  {
+    "word": "5g",
+    "value": 1
+  },
+  {
+    "word": "fr2",
+    "value": 1
+  },
+  {
+    "word": "wifi7",
+    "value": 1
+  },
+  {
+    "word": "submit",
+    "value": 1
+  },
+  {
+    "word": "form",
+    "value": 1
+  },
+  {
+    "word": "complicated",
+    "value": 1
+  },
+  {
+    "word": "implementation",
+    "value": 1
+  },
+  {
+    "word": "re2",
+    "value": 1
+  },
+  {
+    "word": "arguments",
+    "value": 1
+  },
+  {
+    "word": "tenuous",
+    "value": 1
+  },
+  {
+    "word": "skimming",
+    "value": 1
+  },
+  {
+    "word": "supplementary",
+    "value": 1
+  },
+  {
+    "word": "application",
+    "value": 1
+  },
+  {
+    "word": "decent",
+    "value": 1
+  },
+  {
+    "word": "outlining",
+    "value": 1
+  },
+  {
+    "word": "\"worst",
+    "value": 1
+  },
+  {
+    "word": "case\"",
+    "value": 1
+  },
+  {
+    "word": "emissions",
+    "value": 1
+  },
+  {
+    "word": "output",
+    "value": 1
+  },
+  {
+    "word": "conclusion",
+    "value": 1
+  },
+  {
+    "word": "set",
+    "value": 1
+  },
+  {
+    "word": "3db",
+    "value": 1
+  },
+  {
+    "word": "ideal",
+    "value": 1
+  },
+  {
+    "word": "ue's",
+    "value": 1
+  },
+  {
+    "word": "10db",
+    "value": 1
+  },
+  {
+    "word": "aggressive",
+    "value": 1
+  },
+  {
+    "word": "fcc3gpp",
+    "value": 1
+  },
+  {
+    "word": "ultimate",
+    "value": 1
+  },
+  {
+    "word": "\"in",
+    "value": 1
+  },
+  {
+    "word": "barely",
+    "value": 1
+  },
+  {
+    "word": "real",
+    "value": 1
+  },
+  {
+    "word": "floor\"",
+    "value": 1
+  },
+  {
+    "word": "regulators",
+    "value": 1
+  },
+  {
+    "word": "rip",
+    "value": 1
+  },
+  {
+    "word": "shitty",
+    "value": 1
+  },
+  {
+    "word": "load",
+    "value": 1
+  },
+  {
+    "word": "blockbuster",
+    "value": 1
+  },
+  {
+    "word": "pissed",
+    "value": 1
+  },
+  {
+    "word": "netflix?",
+    "value": 1
+  },
+  {
+    "word": "can’t",
+    "value": 1
+  },
+  {
+    "word": "school",
+    "value": 1
+  },
+  {
+    "word": "bloated",
+    "value": 1
+  },
+  {
+    "word": "phone",
+    "value": 1
+  },
+  {
+    "word": "decimated",
+    "value": 1
+  },
+  {
+    "word": "sounds",
+    "value": 1
+  },
+  {
+    "word": "oligopoly",
+    "value": 1
+  },
+  {
+    "word": "inevitably",
+    "value": 1
+  },
+  {
+    "word": "denied",
+    "value": 1
+  },
+  {
+    "word": "declining",
+    "value": 1
+  },
+  {
+    "word": "demanding",
+    "value": 1
+  },
+  {
+    "word": "intervention",
+    "value": 1
+  },
+  {
+    "word": "prevent",
+    "value": 1
+  },
+  {
+    "word": "disruptive",
+    "value": 1
+  },
+  {
+    "word": "garbage",
+    "value": 1
+  },
+  {
+    "word": "dumb",
+    "value": 1
+  },
+  {
+    "word": "sucks",
+    "value": 1
+  },
+  {
+    "word": "rules",
+    "value": 1
+  },
+  {
+    "word": "changed",
+    "value": 1
+  },
+  {
+    "word": "attempt",
+    "value": 1
+  },
+  {
+    "word": "mad",
+    "value": 1
+  },
+  {
+    "word": "worldwide",
+    "value": 1
+  },
+  {
+    "word": "including",
+    "value": 1
+  },
+  {
+    "word": "competitors",
+    "value": 1
+  },
+  {
+    "word": "capture",
+    "value": 1
+  },
+  {
+    "word": "surprise",
+    "value": 1
+  },
+  {
+    "word": "conflict",
+    "value": 1
+  },
+  {
+    "word": "tsla",
+    "value": 1
+  },
+  {
+    "word": "bagholders",
+    "value": 1
+  },
+  {
+    "word": "100m",
+    "value": 1
+  },
+  {
+    "word": "apple",
+    "value": 1
+  },
+  {
+    "word": "manufacturing",
+    "value": 1
+  },
+  {
+    "word": "sucking",
+    "value": 1
+  },
+  {
+    "word": "daddy",
+    "value": 1
+  },
+  {
+    "word": "musks",
+    "value": 1
+  },
+  {
+    "word": "tasty",
+    "value": 1
+  },
+  {
+    "word": "dividends",
+    "value": 1
+  },
+  {
+    "word": "pump",
+    "value": 1
+  },
+  {
+    "word": "dump",
+    "value": 1
+  },
+  {
+    "word": "galactic",
+    "value": 1
+  },
+  {
+    "word": "bullish",
+    "value": 1
+  },
+  {
+    "word": "crying",
+    "value": 1
+  },
+  {
+    "word": "sign",
+    "value": 1
+  },
+  {
+    "word": "piece",
     "value": 1
   }
 ]
