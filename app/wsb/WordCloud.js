@@ -1,7 +1,7 @@
 "use client"
 import Chart from "chart.js/auto"
 import { WordCloudController, WordElement } from "chartjs-chart-wordcloud"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 // Register the WordCloud controller and element with Chart.js
 Chart.register(WordCloudController, WordElement)
@@ -39,14 +39,32 @@ const companyNames = new Set([
   "amd",
 ])
 
-const WordCloud = ({ words = [] }) => {
+const WordCloud = () => {
+  const [words, setWords] = useState([]);
+  const [loading, setLoading] = useState(true);
   const canvasRef = useRef(null)
   const chartInstanceRef = useRef(null)
 
   useEffect(() => {
-    if (canvasRef.current && Array.isArray(words) && words.length > 0 && !chartInstanceRef.current) {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext("2d")
+    const fetchWords = async () => {
+      try {
+        const response = await fetch("/api/processRedditData");
+        const data = await response.json();
+        setWords(data.wordList);
+      } catch (error) {
+        console.error("Failed to fetch words:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWords();
+  }, []);
+
+  useEffect(() => {
+    if (canvasRef.current && words.length > 0 && !chartInstanceRef.current) {
+      const canvas = canvasRef.current;
+      const ctx = canvas.getContext("2d");
 
       if (ctx) {
         chartInstanceRef.current = new Chart(ctx, {
@@ -70,28 +88,32 @@ const WordCloud = ({ words = [] }) => {
             elements: {
               word: {
                 color: function (context) {
-                  const index = context.dataIndex
-                  const word = words[index].word.toLowerCase()
-                  return companyNames.has(word) ? "#FF0000" : "#000000"
+                  const index = context.dataIndex;
+                  const word = words[index].word.toLowerCase();
+                  return companyNames.has(word) ? "#FF0000" : "#000000";
                 },
               },
             },
           },
-        })
+        });
       }
     }
 
     return () => {
       if (chartInstanceRef.current) {
-        chartInstanceRef.current.destroy()
-        chartInstanceRef.current = null
+        chartInstanceRef.current.destroy();
+        chartInstanceRef.current = null;
       }
     }
-  }, [words])
+  }, [words]);
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
-      <canvas ref={canvasRef} className="animate__animated animate__fadeIn max-h-full max-w-full"></canvas>
+      {loading ? (
+        <span className="loading loading-ring loading-lg"></span>
+      ) : (
+        <canvas ref={canvasRef} className="animate__animated animate__fadeIn max-h-full max-w-full"></canvas>
+      )}
     </div>
   )
 }
