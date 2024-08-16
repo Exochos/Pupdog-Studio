@@ -1328,8 +1328,12 @@ const countWords = (text) => {
     const isLongNoise = word.length > 30
     const isNumber = /^\d+$/.test(word)
     const isEmpty = word.trim() === ""
+    const isTooLong = word.length > 10 // New filter for words longer than 10 characters
 
-    if (!isUrl && !isNumber && !isEmpty && !isLongNoise && !stopWords.has(word)) {
+    // Enhanced filtering for [img], emotes, and other unwanted substrings
+    const isUnwantedPattern = word.startsWith("[img]") || word.includes("emote") || word.includes("|")
+
+    if (!isUrl && !isNumber && !isEmpty && !isLongNoise && !isTooLong && !isUnwantedPattern && !stopWords.has(word)) {
       counts[word] = counts[word] ? counts[word] + 1 : 1
     }
   })
@@ -1361,7 +1365,7 @@ export async function GET() {
       mergeCounts(allWordCounts, postCounts)
 
       post.comments.forEach((comment) => {
-        if (comment.body.trim().startsWith("[img]foobar")) {
+        if (comment.body.trim().startsWith("[img]")) {
           return
         }
         const commentCounts = countWords(comment.body)

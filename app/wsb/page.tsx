@@ -1,6 +1,5 @@
 import React from "react"
 import WordCloud from "./WordCloud"
-import wordCount from "./wordCount.json"
 
 export const metadata = {
   title: "WSB Word Cloud",
@@ -10,7 +9,7 @@ export const metadata = {
 const Page = () => {
   return (
     <>
-      <WordCloud words={wordCount} />
+      <WordCloud />
     </>
   )
 }
