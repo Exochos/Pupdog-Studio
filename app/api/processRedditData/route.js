@@ -1319,7 +1319,7 @@ const client = new MongoClient(MONGO_URI)
 const countWords = (text) => {
   const counts = {}
   const words = text
-    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+    .replace(/[.,\\/#!$%^&\\*;:{}=\-_`~()]/g, "")
     .toLowerCase()
     .split(/\s+/)
 
