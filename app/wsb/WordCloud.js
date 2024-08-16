@@ -56,7 +56,7 @@ const WordCloud = ({ words }) => {
             labels: words.map((d) => d.word),
             datasets: [
               {
-                data: words.map((d) => 4 + d.value * 10),
+                data: words.map((d) => 2 + d.value * 10),
               },
             ],
           },
