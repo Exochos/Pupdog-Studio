@@ -5,7 +5,10 @@ import { NextResponse } from "next/server"
 
 dotenv.config()
 
-const MONGO_URI = process.env.MONGO_DB_URL
+const MONGO_URI = process.env.MONGO_DB_URL || ""
+if (!MONGO_URI.startsWith("mongodb")) {
+  throw new Error("Invalid MongoDB connection string.")
+}
 const dbName = "redditData"
 const collectionName = "wsb24hour"
 
