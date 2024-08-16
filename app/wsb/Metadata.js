@@ -1,4 +1,3 @@
-
 const Metadata = ({ title, description }) => {
   return (
     <head>

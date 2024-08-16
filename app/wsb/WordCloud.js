@@ -1,5 +1,5 @@
 // components/WordCloud.js
-"use client";
+"use client"
 import Chart from "chart.js/auto"
 import { WordCloudController, WordElement } from "chartjs-chart-wordcloud"
 import { useEffect, useRef } from "react"
