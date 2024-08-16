@@ -17,10 +17,7 @@ let client
 let clientPromise
 
 if (!client) {
-  client = new MongoClient(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  client = new MongoClient(MONGO_URI)
   clientPromise = client.connect()
 }
 
