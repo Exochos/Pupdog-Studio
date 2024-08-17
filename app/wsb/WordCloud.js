@@ -37,6 +37,9 @@ const companyNames = new Set([
   "intel",
   "intc",
   "amd",
+  "rklb", // Rocket Lab
+  "rocket",
+  "asts", // AST SpaceMobile
 ])
 
 const WordCloud = () => {
