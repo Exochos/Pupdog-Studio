@@ -174,4 +174,17 @@ export const stopWords = new Set([
   "yours",
   "yourself",
   "yourselves",
-]);
+  "just",
+  "like",
+  "get",
+  "got",
+  "want",
+  "doesn't",
+  "gonna",
+  "still",
+  "two",
+  "one",
+  "since",
+  "please",
+  "without",
+])
