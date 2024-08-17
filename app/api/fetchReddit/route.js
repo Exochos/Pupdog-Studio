@@ -6,7 +6,7 @@ import fetch from "node-fetch"
 
 dotenv.config()
 
-const postUpvotesThreshold = 8
+const postUpvotesThreshold = 3
 const commentUpvotesThreshold = 2
 
 const ClientId = process.env.REDDIT_CLIENT_ID
@@ -31,7 +31,7 @@ export async function GET() {
     await collection.createIndex({ createdAt: 1 }, { expireAfterSeconds: 86400 })
 
     console.log("Fetching new posts from Reddit...")
-    const response = await fetch("https://www.reddit.com/r/wallstreetbets/new/.json?limit=10", {
+    const response = await fetch("https://www.reddit.com/r/wallstreetbets/new/.json?limit=8", {
       method: "GET",
       headers: {
         "User-Agent": UserAgent,
