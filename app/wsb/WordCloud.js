@@ -53,8 +53,9 @@ const WordCloud = () => {
       try {
         const response = await fetch("/api/processRedditData")
         const data = await response.json()
-        if (data.wordList && data.wordList.length > 0) {
-          setWords(data.wordList)
+        if (data.wordList && data.wordList.length > 0) {  
+          const filteredWords = data.wordList.filter(word => word.value > 1)
+          setWords(filteredWords)
         } else {
           console.error("No words returned from the API")
         }
@@ -80,7 +81,7 @@ const WordCloud = () => {
             labels: words.map((d) => d.word),
             datasets: [
               {
-                data: words.map((d) => 2 + d.value * 10),
+                data: words.map((d) => 1 + d.value * 6),
               },
             ],
           },
