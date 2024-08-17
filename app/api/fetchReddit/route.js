@@ -6,7 +6,7 @@ import fetch from "node-fetch"
 
 dotenv.config()
 
-const postUpvotesThreshold = 8
+const postUpvotesThreshold = 3
 const commentUpvotesThreshold = 2
 
 const ClientId = process.env.REDDIT_CLIENT_ID
