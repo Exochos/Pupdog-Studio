@@ -10,7 +10,6 @@ export const metadata = {
 }
 
 const Page = () => {
-
   // Track page view
   React.useEffect(() => {
     logEvent("User", "Viewed Page", "WallStreetBets Word Cloud")
