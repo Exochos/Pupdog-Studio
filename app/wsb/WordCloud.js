@@ -37,14 +37,17 @@ const companyNames = new Set([
   "intel",
   "intc",
   "amd",
-  "rklb", // Rocket Lab
+  "rklb",
   "rocket",
-  "asts", // AST SpaceMobile
+  "asts",
   "boeing",
   "ba",
+  "rivian",
 ])
 
 const WordCloud = () => {
+  // Smaller scale for mobile devices
+  const scaleFactor = window.innerWidth < 600 ? 1 : 4
   const [words, setWords] = useState([])
   const [loading, setLoading] = useState(true)
   const canvasRef = useRef(null)
@@ -55,8 +58,8 @@ const WordCloud = () => {
       try {
         const response = await fetch("/api/processRedditData")
         const data = await response.json()
-        if (data.wordList && data.wordList.length > 0) {  
-          const filteredWords = data.wordList.filter(word => word.value > 1)
+        if (data.wordList && data.wordList.length > 0) {
+          const filteredWords = data.wordList.filter((word) => word.value > 1)
           setWords(filteredWords)
         } else {
           console.error("No words returned from the API")
@@ -83,7 +86,7 @@ const WordCloud = () => {
             labels: words.map((d) => d.word),
             datasets: [
               {
-                data: words.map((d) => 1 + d.value * 6),
+                data: words.map((d) => 1 + d.value * scaleFactor),
               },
             ],
           },
@@ -97,6 +100,7 @@ const WordCloud = () => {
             },
             elements: {
               word: {
+                padding: 3,
                 color: function (context) {
                   const index = context.dataIndex
                   const word = words[index]?.word?.toLowerCase()
@@ -122,7 +126,11 @@ const WordCloud = () => {
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : words.length > 0 ? (
-        <canvas ref={canvasRef} className="animate__animated animate__fadeIn max-h-full max-w-full"></canvas>
+        <canvas
+          ref={canvasRef}
+          style={{ width: "100%", height: "100%", maxWidth: "100vw", maxHeight: "100vh" }}
+          className="animate__animated animate__fadeIn"
+        ></canvas>
       ) : (
         <p>No words available to display.</p>
       )}
