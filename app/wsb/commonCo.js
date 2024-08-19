@@ -1,15 +1,6 @@
-/**
- * A list of common companies mentioned on WSB
- * @type {string[] : {ticker: string, name: string}}
- * @example
- * [
- *  {ticker: "GME", name: "GameStop"},
- * 
- */
-
 const commonCompanies = [
   { ticker: "GME", name: "GameStop" },
-  { ticker: "rdfn", name: "Redfin" },
+  { ticker: "RDFN", name: "Redfin" },
   { ticker: "AMC", name: "AMC Entertainment" },
   { ticker: "BB", name: "BlackBerry" },
   { ticker: "PLTR", name: "Palantir" },
@@ -17,17 +8,15 @@ const commonCompanies = [
   { ticker: "NVDA", name: "Nvidia" },
   { ticker: "AAPL", name: "Apple" },
   { ticker: "MSFT", name: "Microsoft" },
-  { ticker: "SPY", name: "S&P 500" },
+  { ticker: "SPY", name: "S&P 500 ETF" },
   { ticker: "NOK", name: "Nokia" },
   { ticker: "TLRY", name: "Tilray" },
   { ticker: "AMZN", name: "Amazon" },
   { ticker: "AMD", name: "AMD" },
-  { ticker: "NVDA", name: "Nvidia" },
-  { ticker: "FB", name: "Facebook" },
+  { ticker: "META", name: "Meta (formerly Facebook)" },
   { ticker: "SNAP", name: "Snap" },
   { ticker: "TWTR", name: "Twitter" },
-  { ticker: "GOOGL", name: "Google" },
-  { ticker: "GOOG", name: "Google" },
+  { ticker: "GOOGL", name: "Alphabet" },
   { ticker: "MS", name: "Morgan Stanley" },
   { ticker: "JPM", name: "JPMorgan Chase" },
   { ticker: "GS", name: "Goldman Sachs" },
@@ -40,7 +29,7 @@ const commonCompanies = [
   { ticker: "NIO", name: "NIO" },
   { ticker: "XPEV", name: "XPeng" },
   { ticker: "LI", name: "Li Auto" },
-  { ticker: "CCIV", name: "Churchill Capital" },
+  { ticker: "CCIV", name: "Lucid Motors" },
   { ticker: "SPCE", name: "Virgin Galactic" },
   { ticker: "DKNG", name: "DraftKings" },
   { ticker: "CLOV", name: "Clover Health" },
@@ -66,20 +55,13 @@ const commonCompanies = [
   { ticker: "JD", name: "JD.com" },
   { ticker: "TCEHY", name: "Tencent" },
   { ticker: "BIDU", name: "Baidu" },
-  { ticker: "NIO", name: "NIO" },
-  { ticker: "XPEV", name: "XPeng" },
-  { ticker: "LI", name: "Li Auto" },
-  { ticker: "CCIV", name: "Churchill Capital" },
-  { ticker: "SPCE", name: "Virgin Galactic" },
-  { ticker: "DKNG", name: "DraftKings" },
-  { ticker: "CLOV", name: "Clover Health" },
-  { ticker: "PLUG", name: "Plug Power" },
-  { ticker: "WKHS", name: "Workhorse" },
-  { ticker: "RIDE", name: "Lordstown Motors" },
-  { ticker: "QS", name: "QuantumScape" },
   { ticker: "LCID", name: "Lucid Motors" },
   { ticker: "LMT", name: "Lockheed Martin" },
   { ticker: "RTX", name: "Raytheon Technologies" },
+  { ticker: "BA", name: "Boeing" },
+  { ticker: "GE", name: "General Electric" },
+  { ticker: "MON", name: "Monsanto" },
+  { ticker: "BYND", name: "Beyond Meat" },
 ]
 
 export default commonCompanies

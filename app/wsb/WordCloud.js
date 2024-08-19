@@ -98,7 +98,7 @@ const WordCloud = () => {
         chartInstanceRef.current = null
       }
     }
-  }, [words])
+  }, [scaleFactor, words])
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-black">
