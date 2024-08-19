@@ -16,7 +16,7 @@ logEvent("WordCloud", "Viewed")
 
 const WordCloud = () => {
   // Smaller scale for mobile devices
-  const scaleFactor = window.innerWidth < 600 ? 1 : 4
+  const scaleFactor = window.innerWidth < 600 ? 1 : 2
   const [words, setWords] = useState([])
   const [loading, setLoading] = useState(true)
   const canvasRef = useRef(null)
@@ -44,16 +44,18 @@ const WordCloud = () => {
   }, [])
 
   useEffect(() => {
+    const filteredWords = words.filter((d) => d.value >= 2) // Filter out words with low frequency
     if (canvasRef.current && words.length > 0 && !chartInstanceRef.current) {
       const ctx = canvasRef.current.getContext("2d")
       if (ctx) {
         chartInstanceRef.current = new Chart(ctx, {
           type: "wordCloud",
           data: {
-            labels: words.map((d) => d.word),
+            labels: filteredWords.map((d) => d.word),
             datasets: [
               {
-                data: words.map((d) => 1 + d.value * scaleFactor),
+                label: "Word Cloud",
+                data: filteredWords.map((d) => d.value * scaleFactor),
               },
             ],
           },
@@ -83,7 +85,7 @@ const WordCloud = () => {
                   } else if (sentimentScore < 0) {
                     return `rgb(${Math.min(255, -sentimentScore * 50)}, 0, 0)` // Red for negative sentiment
                   }
-                  return "#FFFFFF" // White for neutral sentiment
+                  return "#000000" // Black for neutral sentiment
                 },
               },
             },
@@ -101,7 +103,7 @@ const WordCloud = () => {
   }, [scaleFactor, words])
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-black">
+    <div className="flex h-screen w-screen items-center justify-center bg-white">
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : words.length > 0 ? (
