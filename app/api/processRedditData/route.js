@@ -6,7 +6,7 @@ import { stopWords } from "./stopWords"
 
 dotenv.config()
 
-const MONGO_URI = process.env.MONGO_DB_URL || ""
+const MONGO_URI = process.env.MONGO_DB_URL || "mongodb://localhost:27017"
 if (!MONGO_URI.startsWith("mongodb")) {
   throw new Error("Invalid MongoDB connection string.")
 }
