@@ -1,49 +1,18 @@
 "use client"
+
 import Chart from "chart.js/auto"
+import "animate.css"
 import { WordCloudController, WordElement } from "chartjs-chart-wordcloud"
 import { useEffect, useRef, useState } from "react"
+import { logEvent } from "app/utils/googleAnalytics"
+import afinn165 from "./afinn165.js" // Import the AFINN sentiment data
+import commonCompanies from "./commonCo.js" // Import the common company names
 
 // Register the WordCloud controller and element with Chart.js
 Chart.register(WordCloudController, WordElement)
 
-// Common Company Names
-const companyNames = new Set([
-  "aapl",
-  "apple",
-  "tesla",
-  "tsla",
-  "amc",
-  "gme",
-  "gamestop",
-  "nokia",
-  "nok",
-  "bb",
-  "blackberry",
-  "amzn",
-  "amazon",
-  "goog",
-  "google",
-  "msft",
-  "microsoft",
-  "fb",
-  "facebook",
-  "snap",
-  "snapchat",
-  "twtr",
-  "twitter",
-  "roku",
-  "shop",
-  "shopify",
-  "intel",
-  "intc",
-  "amd",
-  "rklb",
-  "rocket",
-  "asts",
-  "boeing",
-  "ba",
-  "rivian",
-])
+// Log event to Google Analytics
+logEvent("WordCloud", "Viewed")
 
 const WordCloud = () => {
   // Smaller scale for mobile devices
@@ -53,14 +22,14 @@ const WordCloud = () => {
   const canvasRef = useRef(null)
   const chartInstanceRef = useRef(null)
 
+  // Fetch the processed Reddit data
   useEffect(() => {
-    const fetchWords = async () => {
+    const fetchProcessedWords = async () => {
       try {
         const response = await fetch("/api/processRedditData")
         const data = await response.json()
         if (data.wordList && data.wordList.length > 0) {
-          const filteredWords = data.wordList.filter((word) => word.value > 1)
-          setWords(filteredWords)
+          setWords(data.wordList)
         } else {
           console.error("No words returned from the API")
         }
@@ -71,14 +40,12 @@ const WordCloud = () => {
       }
     }
 
-    fetchWords()
+    fetchProcessedWords()
   }, [])
 
   useEffect(() => {
     if (canvasRef.current && words.length > 0 && !chartInstanceRef.current) {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext("2d")
-
+      const ctx = canvasRef.current.getContext("2d")
       if (ctx) {
         chartInstanceRef.current = new Chart(ctx, {
           type: "wordCloud",
@@ -104,7 +71,19 @@ const WordCloud = () => {
                 color: function (context) {
                   const index = context.dataIndex
                   const word = words[index]?.word?.toLowerCase()
-                  return companyNames.has(word) ? "#FF0000" : "#000000"
+                  const company = commonCompanies.find(
+                    (c) => c.ticker.toLowerCase() === word || c.name.toLowerCase() === word
+                  )
+                  if (company) {
+                    return "#0000FF" // Blue for company names
+                  }
+                  const sentimentScore = afinn165[word] || 0
+                  if (sentimentScore > 0) {
+                    return `rgb(0, ${Math.min(255, sentimentScore * 50)}, 0)` // Green for positive sentiment
+                  } else if (sentimentScore < 0) {
+                    return `rgb(${Math.min(255, -sentimentScore * 50)}, 0, 0)` // Red for negative sentiment
+                  }
+                  return "#FFFFFF" // White for neutral sentiment
                 },
               },
             },
@@ -122,7 +101,7 @@ const WordCloud = () => {
   }, [words])
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gray-100">
+    <div className="flex h-screen w-screen items-center justify-center bg-black">
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : words.length > 0 ? (

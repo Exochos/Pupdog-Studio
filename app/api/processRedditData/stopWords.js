@@ -195,4 +195,5 @@ export const stopWords = new Set([
   "can't",
   "you're",
   "will",
+  "=",
 ])

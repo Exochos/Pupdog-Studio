@@ -1,7 +1,7 @@
 import React from "react"
-import { logEvent } from "app/utils/googleAnalytics"
 import WordCloud from "./WordCloud"
 
+// Metadata for the page
 export const metadata = {
   title: "A WallStreet Bets (almost) live Word Cloud",
   description: "A Word cloud which tracks the most recent (24 hours) posts on the WallStreetBets subreddit",
@@ -10,10 +10,6 @@ export const metadata = {
 }
 
 const Page = () => {
-  // Track page view
-  React.useEffect(() => {
-    logEvent("User", "Viewed Page", "WallStreetBets Word Cloud")
-  }, [])
   return (
     <>
       <WordCloud />
