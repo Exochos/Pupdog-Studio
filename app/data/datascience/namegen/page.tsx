@@ -66,6 +66,24 @@ export default function Home() {
             min={1}
             max={100}
           />
+          <button onClick={handleGenerate} disabled={loading}>
+            {loading ? 'Generating...' : 'Generate Names'}
+          </button>
+        </div>
+
+        <div>
+          {names.length > 0 ? (
+            <ul>
+              {names.map((name, index) => (
+                <li key={index}>
+                  <span>{name}</span>
+                  <button onClick={() => handleCopy(name)}>Copy</button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No names generated yet. Click Generate Names to start!</p>
+          )}
         </div>
         <Button
           onClick={handleGenerate}
