@@ -1,13 +1,13 @@
 // pages/index.js
 
-import { useState } from 'react';
 import Head from 'next/head';
+import { useState } from 'react';
+import { generateStartupName } from './generateName';
+import { middles, prefixes, suffixes } from './wordList';
 import styles from '../styles/Home.module.css';
-import { prefixes, middles, suffixes } from '../data/wordLists';
-import { generateStartupName } from '../utils/generateName';
 
 export default function Home() {
-  const [names, setNames] = useState([]);
+  const [names, setNames] = useState<string[]>([]);
   const [numNames, setNumNames] = useState(20);
   const [loading, setLoading] = useState(false);
 
@@ -20,7 +20,7 @@ export default function Home() {
       generatedNames.add(name);
     }
 
-    setNames(Array.from(generatedNames));
+    setNames(Array.from(generatedNames) as string[]);
     setLoading(false);
   };
 
@@ -28,7 +28,9 @@ export default function Home() {
     generateNames();
   };
 
-  const handleCopy = (name) => {
+  interface HomeProps {}
+
+  const handleCopy = (name: string): void => {
     navigator.clipboard.writeText(name).then(() => {
       alert(`Copied "${name}" to clipboard!`);
     }).catch(err => {
@@ -75,7 +77,7 @@ export default function Home() {
               ))}
             </ul>
           ) : (
-            <p>No names generated yet. Click "Generate Names" to start!</p>
+            <p>No names generated yet. Click Generate Names to start!</p>
           )}
         </div>
       </main>
