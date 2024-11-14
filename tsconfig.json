@@ -18,6 +18,10 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["./app/*"],
+      "components/*": ["./components/*"],
+    },
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "plugins": [
       {
