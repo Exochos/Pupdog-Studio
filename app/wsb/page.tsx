@@ -1,4 +1,5 @@
 import React from "react"
+import InfoButton from "./infoButton"
 import WordCloud from "./WordCloud"
 
 // Metadata for the page
@@ -12,6 +13,7 @@ const Page = () => {
   return (
     <>
       <WordCloud />
+      <InfoButton />
     </>
   )
 }
