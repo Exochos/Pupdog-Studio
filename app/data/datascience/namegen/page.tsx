@@ -71,7 +71,7 @@ export default function Home() {
               {names.map((name, index) => (
                 <li key={index}>
                   <span>{name}</span>
-                  <button onClick={() => handleCopy(name)}>Copy</button>
+                  <button onClick={() => handleCopy(name)}>&nbsp;&nbsp;&nbsp;&nbsp;Copy</button>
                 </li>
               ))}
             </ul>
