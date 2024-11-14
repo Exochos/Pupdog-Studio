@@ -4,7 +4,6 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { generateStartupName } from './generateName';
 import { middles, prefixes, suffixes } from './wordList';
-import styles from '../styles/Home.module.css';
 
 export default function Home() {
   const [names, setNames] = useState<string[]>([]);
@@ -39,19 +38,19 @@ export default function Home() {
   };
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Startup Name Generator</title>
         <meta name="description" content="Generate unique and creative startup names" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
+      <main>
+        <h1>
           Startup Name Generator
         </h1>
 
-        <div className={styles.controls}>
+        <div>
           <label htmlFor="numNames">Number of Names:</label>
           <input
             type="number"
@@ -66,7 +65,7 @@ export default function Home() {
           </button>
         </div>
 
-        <div className={styles.namesList}>
+        <div>
           {names.length > 0 ? (
             <ul>
               {names.map((name, index) => (
@@ -82,7 +81,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className={styles.footer}>
+      <footer>
         <a
           href="https://github.com/yourusername/startup-name-generator"
           target="_blank"
