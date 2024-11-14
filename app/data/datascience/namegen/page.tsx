@@ -15,7 +15,6 @@ import { useState } from "react"
 import { generateStartupName } from "./generateName"
 import { middles, prefixes, suffixes } from "./wordList"
 import { Button } from "@/components/ui/button"
-import "react-toastify/dist/ReactToastify.css"
 
 export default function Home() {
   const [numNames, setNumNames] = useState(20)
