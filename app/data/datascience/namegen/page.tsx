@@ -54,13 +54,12 @@ const Home: React.FC = () => {
   }, [notification]);
 
   return (
+    <>
+    <Head>
+      <title>Startup Name Generator</title>
+      <meta name="description" content="Generate startup names using this simple tool!" />
+    </Head>
     <div className="min-h-screen bg-base-100 flex flex-col justify-center items-center">
-      <Head>
-        <title>Startup Name Generator</title>
-        <meta name="description" content="Generate unique and creative startup names" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       {/* Notification */}
       {notification && (
         <Notification
@@ -119,7 +118,7 @@ const Home: React.FC = () => {
 
       <footer className="mt-8">
         <a
-          href="https://github.com/yourusername/startup-name-generator"
+          href="https://github.com/exochos/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-blue-500 hover:underline"
@@ -128,6 +127,7 @@ const Home: React.FC = () => {
         </a>
       </footer>
     </div>
+    </>
   );
 };
 
