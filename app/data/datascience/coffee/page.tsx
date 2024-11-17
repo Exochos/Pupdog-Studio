@@ -1,10 +1,14 @@
-import { supabase } from "../../../utils/supabase/server";
+import { supabase } from "../../../utils/supabase/server"
 // @ts-ignore
-import SyntaxHighlighter from "react-syntax-highlighter";
+import SyntaxHighlighter from "react-syntax-highlighter"
 // @ts-ignore
-import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs"
 
 export default async function CoffeePage() {
+  // Fetch data using Supabase RPC calls
+  const { data: data1, error: error1 } = await supabase.rpc("top_export")
+  const { data: data2, error: error2 } = await supabase.rpc("top_total_production")
+
   // SQL Query Strings for Syntax Highlighting
   const codeString01 = `
 BEGIN
@@ -17,11 +21,9 @@ BEGIN
     ORDER BY (1990 + 1991 + 1992 + 1993 + 1994) DESC
     LIMIT 1
   );
-END;`;
+END;`
 
   const codeString02 = `
-CREATE OR REPLACE FUNCTION top_total_production()
-RETURNS JSONB AS $$
 BEGIN
   RETURN (
     SELECT jsonb_agg(
@@ -39,12 +41,7 @@ BEGIN
     ) subquery
   );
 END;
-$$ LANGUAGE plpgsql;
-`;
-
-  // Fetch Data from Supabase RPC Calls
-  const { data: data1, error: error1 } = await supabase.rpc("top_export");
-  const { data: data2, error: error2 } = await supabase.rpc("top_total_production");
+`
 
   return (
     <div className="container mx-auto my-2 space-y-8 rounded-lg bg-black p-6 shadow-lg">
@@ -66,7 +63,6 @@ $$ LANGUAGE plpgsql;
           <div>
             <table className="table w-full rounded-lg">
               <thead>
-                <tr>Result:</tr>
                 <tr>
                   <th>Country</th>
                   <th>Total Export</th>
@@ -87,7 +83,8 @@ $$ LANGUAGE plpgsql;
       <div className="space-y-4">
         <h1 className="text-2xl font-bold">Top Coffee Producers (1999/00 - 2000/01)</h1>
         <h2>
-          <b>Scenario:</b> To plan future coffee sourcing strategies, the company needs to identify key coffee-producing countries. <br />
+          <b>Scenario:</b> To plan future coffee sourcing strategies, the company needs to identify key coffee-producing
+          countries. <br />
           <b>Task: </b>Find the top 3 coffee producers during the years 1999/00 - 2000/01.
         </h2>
 
@@ -99,7 +96,6 @@ $$ LANGUAGE plpgsql;
           <div>
             <table className="table w-full rounded-lg">
               <thead>
-                <tr>Result:</tr>
                 <tr>
                   <th>Rank</th>
                   <th>Country</th>
@@ -135,5 +131,5 @@ $$ LANGUAGE plpgsql;
         </SyntaxHighlighter>
       </div>
     </div>
-  );
+  )
 }
