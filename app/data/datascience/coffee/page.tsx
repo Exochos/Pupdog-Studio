@@ -29,15 +29,15 @@ BEGIN
     SELECT jsonb_agg(
       jsonb_build_object(
         'country', "Country",
-        'total_production', (COALESCE("1999/00", 0) + COALESCE("2000/01", 0))
+        'total_production', total_production
       )
     )
     FROM (
       SELECT "Country", 
-             (COALESCE("1999/00", 0) + COALESCE("2000/01", 0)) AS total_production
+             (COALESCE("1999/00", 0) + COALESCE("2000/01", 0) + COALESCE("2001/02", 0) + COALESCE("2002/03", 0) + COALESCE("2003/04", 0)) AS total_production
       FROM coffee_production
       ORDER BY total_production DESC
-      LIMIT 3
+      LIMIT 5
     ) subquery
   );
 END;
@@ -81,11 +81,11 @@ END;
 
       {/* Top Coffee Producers (1999/00 - 2000/01) */}
       <div className="space-y-4">
-        <h1 className="text-2xl font-bold">Top Coffee Producers (1999/00 - 2000/01)</h1>
+        <h1 className="text-2xl font-bold">Top Coffee Producers (1999-2004):</h1>
         <h2>
           <b>Scenario:</b> To plan future coffee sourcing strategies, the company needs to identify key coffee-producing
           countries. <br />
-          <b>Task: </b>Find the top 3 coffee producers during the years 1999/00 - 2000/01.
+          <b>Task: </b>Find the top 3 coffee producers during the years 1999 - 2004.
         </h2>
 
         {error2 ? (
