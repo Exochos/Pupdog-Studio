@@ -347,6 +347,12 @@ END;
           {codeString04}
         </SyntaxHighlighter>
       </div>
+      <footer className="text-center text-white text-sm">
+      <p>©2024 - Built with Next.js, Supabase, DaisyUi and Tailwind CSS<br />
+      <a href="https://github.com/Exochos/Pupdog-Studio/blob/main/app/data/datascience/coffee/page.tsx" className="text-blue-500">View Source Code</a>
+      </p>
+    </footer>
     </div>
+
   )
 }
