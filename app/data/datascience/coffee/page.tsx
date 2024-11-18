@@ -247,7 +247,7 @@ END;
         </h2>
         <p>
           <b>Expected Output:</b> A CSV file containing columns for country, export volume, import volume, and total
-          combined volume for the specified period.{" "}
+          combined volume for the specified period.
         </p>
         <DownloadButton data={data4} />
         <div className="container mx-auto p-6">
@@ -295,10 +295,31 @@ END;
       {/* Closing Thoughts */}
       <h1 className="text-2xl font-bold">Closing Thoughts:</h1>
       <p>
-        A lot of this would have gone easier if I had done this work on my local machine, but I wanted to show how to
-        interact with the Supabase API and how to use the data returned from the API. As well as formatting the data in a
-        way that is easy to read and understand. The download button also presented quite the challenge, but I was able
-        to get it working in the end. I hope you enjoyed this project and I hope you have a great day!
+        A lot of this would have gone easier if I had done this work on my local machine, but I wanted to be fancy and
+        use a cloudDB and a frontend. The code highlighter also took a while to get working but was a good experience
+        with a npm package I have not used before. The download button also presented quite the challenge, but I was
+        able to get it working in the end. Shout out to this github repo for the help with pandas
+        <br />
+        <a
+          className="text-blue-500"
+          href="
+        https://github.com/pb111/Data-Cleaning-with-Python-and-Pandas/blob/master/Data%20Cleaning%20with%20Python%20and%20Pandas.ipynb
+        "
+        >
+          Data Cleaning with Python and Pandas
+        </a>
+        <br />
+        React Syntax Highlighter was also a big help
+        <br />
+        <a className="text-blue-500" href="https://github.com/react-syntax-highlighter/react-syntax-highlighter">
+          React Syntax Highlighter
+        </a>{" "}
+        <br />
+        This jsFiddle was also a big help with the download button
+        <br />
+        <a className="text-blue-500" href="https://jsfiddle.net/Wijmo5/wqjsvr2z/">
+          js fiddle
+        </a>
       </p>
 
       {/* Syntax Highlighters for SQL Queries */}
